@@ -1,0 +1,45 @@
+@import ../variables
+@import ../mixins
+
+.todos
+
+.todos--table
+  +section-shadow
+  display: table
+  width: 100%
+  table-layout: fixed
+  overflow-wrap: break-word
+  border-collapse: collapse
+
+.todos--row
+  display: table-row
+  overflow: hidden
+
+  &[done="false"]
+    background-color: $todo-color
+    &:hover
+      background-color: lighten($todo-color, 10)
+  &[done="true"]
+    background-color: lighten(desaturate($todo-color, 30), 30)
+    &:hover
+      background-color: lighten(desaturate($todo-color, 30), 35)
+
+.todos--cell
+  display: table-cell
+  vertical-align: middle
+  font-size: $font-size
+  padding: ($form--field-padding / 2) $form--field-padding
+
+  &[w-auto]
+    width: auto
+  &[w-1]
+    width: $todo--cell-width * 1.5
+  &[w-2]
+    width: $todo--cell-width * 2
+  &[w-3]
+    width: $todo--cell-width * 3
+
+  &[align-center]
+    text-align: center
+  &[align-right]
+    text-align: right

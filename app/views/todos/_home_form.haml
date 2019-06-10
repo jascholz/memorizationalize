@@ -1,0 +1,4 @@
+- @todo ||= Todo.new(creator: current_user)
+
+= home_form_for @todo do |form|
+  = render 'todos/form_fields', form: form

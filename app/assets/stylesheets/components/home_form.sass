@@ -1,0 +1,78 @@
+@import ../variables
+
+.home-form
+  position: relative
+  overflow: hidden
+  width: 100%
+  background-color: $grey
+  box-shadow: 0 3px 3px 0 transparentize(grey, 0.5)
+  box-shadow: 3px 3px 10px darken($grey, 30)
+
+.home-form--radio-buttons
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  padding-left: $sidebar-width / 2
+
+.home-form--radio-button-label
+  background-color: $grey
+  font-size: 20px
+  padding: 10px 30px
+  transition: background-color 0.5s ease-out
+
+
+  &[dropdown-trigger-current], &:hover
+    cursor: pointer
+    box-shadow: 0px 0px 10px darken($grey, 30)
+    z-index: 1
+
+    &[bookmark]
+      background-color: $bookmark-color
+    &[file]
+      background-color: $file-color
+    &[idea]
+      background-color: $idea-color
+    &[note]
+      background-color: $note-color
+    &[todo]
+      background-color: $todo-color
+    &[image]
+      background-color: $image-color
+
+  &:hover:not([dropdown-trigger-current])
+    z-index: 0
+
+.home-form--collapse
+  position: absolute
+  bottom: 0
+  width: 100%
+  height: 40px
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-top: 40px
+  font-size: 20px
+  transition: background-color 0.5s
+
+  &:hover
+    background-color: lighten(grey, 20)
+    cursor: pointer
+
+[dropdown-element]
+  overflow: hidden
+  height: 0
+  width: 100%
+  transition: background-color 0.5s ease-out, height 0.5s
+  margin: auto
+
+  &[state="collapse"]
+    height: 0
+
+.home-form--dropdown
+  z-index: 1
+  position: relative
+  & [dropdown-content]
+    position: absolute
+    bottom: $margin + 45px
+    width: 100%

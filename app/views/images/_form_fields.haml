@@ -1,0 +1,13 @@
+.form--fields(image)
+
+  = render 'images/gallery_fields', form: form
+
+  = render 'shared/basic_fields', form: form
+
+  .form--section
+
+    .form--group
+      = form.label :file, class: 'form--label'
+      = form.file_field :file, class: 'form--field'
+
+  = render 'shared/submit_fields', form: form

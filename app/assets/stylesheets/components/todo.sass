@@ -1,0 +1,46 @@
+@import ../variables
+
+=todo--field
+  display: flex
+  height: $form--field-height
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  align-items: center
+
+.todo
+
+.todo--done
+  +todo--field
+  justify-content: center
+
+.todo--priority
+  +todo--field
+  justify-content: center
+
+.todo--name
+  +todo--field
+  font-weight: bold
+
+.todo--description
+  +todo--field
+  font-size: $font-size-small
+
+.todo--deadline
+  +todo--field
+  justify-content: flex-end
+  font-size: $font-size-small
+  font-weight: bold
+
+.todo--checkbox-label
+  display: flex
+  align-items: center
+  font-size: $font-size
+  cursor: pointer
+
+  &:hover
+    & .checkbox
+      background-color: darken($todo-color, 10)
+      &:after
+        content: '✔️'
+        color: darken($grey, 30)

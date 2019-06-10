@@ -1,0 +1,6 @@
+- @memo ||= Memo.new(creator: current_user)
+
+= home_form_for @memo do |form|
+  .form--fields(memo)
+    = render 'shared/basic_fields', form: form
+    = render 'shared/submit_fields', form: form

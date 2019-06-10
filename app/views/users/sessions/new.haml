@@ -1,0 +1,11 @@
+= form_for @session, url: '/users/sessions', method: :post, html: { class: 'form' } do |f|
+  .form--fields
+    = f.label :email, class: 'form--label'
+    = f.text_field :email, class: 'form--text-field'
+
+    = f.label :password, class: 'form--label'
+    = f.password_field :password, class: 'form--text-field'
+
+    = f.submit 'Anmelden', class: 'form--button'
+
+    = link_to 'registrieren', new_user_path, class: 'form--link'

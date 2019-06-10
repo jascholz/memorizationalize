@@ -1,0 +1,6 @@
+- @idea ||= Idea.new(creator: current_user)
+
+= home_form_for @idea do |form|
+  .form--fields(idea)
+    = render 'shared/basic_fields', form: form
+    = render 'shared/submit_fields', form: form

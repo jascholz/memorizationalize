@@ -1,0 +1,23 @@
+@import ../variables
+
+.inline-form
+  transition: height 0.5s
+  overflow: hidden
+
+.inline-form--content
+  display: flex
+  justify-content: space-between
+  width: 100%
+  margin: auto
+  flex-wrap: wrap
+
+.inline-form--group
+  display: flex
+  flex-direction: column
+  margin-top: $form--group-margin
+
+  &[w-50]
+    width: calc(50% - 10px) // $margin-small == 20px
+
+  &[w-100]
+    width: 100%

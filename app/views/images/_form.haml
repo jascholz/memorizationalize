@@ -1,0 +1,4 @@
+- @image ||= Image.new(creator: current_user)
+
+= form_for @image do |form|
+  = render 'images/form_fields', form: form

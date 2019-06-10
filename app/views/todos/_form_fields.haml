@@ -1,0 +1,15 @@
+.form--fields(todo)
+
+  = render 'shared/basic_fields', form: form
+
+  .form--section
+
+    .form--group
+      = form.label :deadline, class: 'form--label'
+      = form.date_field :deadline, class: 'form--field'
+
+    .form--group
+      = form.label :priority, class: 'form--label'
+      = form.select :priority, (1..10), {}, class: 'form--select'
+
+  = render 'shared/submit_fields', form: form

@@ -1,0 +1,55 @@
+@import ../variables
+@import ../mixins
+
+.image
+  display: flex
+  flex-direction: column
+  align-items: center
+  max-height: 100%
+  max-width: 100%
+  flex: 1
+
+.image--caption
+  margin: $margin-tiny
+
+.image--thumbnail-container
+  +section-shadow
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  min-width: 100px
+  min-height: 100px
+  max-width: 150px
+  max-height: 150px
+  width: 100%
+  flex: 1
+
+  &:before
+    content: ""
+    display: block
+    padding-top: 100%
+
+.image--thumbnail
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+  z-index: 0
+  transition: width 0.5s, height 0.5s, top 0.5s, left 0.5s, z-index 0.5s
+
+  &:hover
+    left: -25px
+    top: -25px
+    width: 150%
+    height: 150%
+    overflow: hidden
+    z-index: 99
+    transition: width 0.2s, height 0.2s, top 0.2s, left 0.2s, z-index 0s
+    box-shadow: 0 5px 30px darken($grey, 60)
+
+.image--image
+  max-height: 100%
+  max-width: 100%
