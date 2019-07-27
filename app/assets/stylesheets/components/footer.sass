@@ -1,0 +1,16 @@
+@import ../variables
+
+.footer
+  position: relative
+  background-color: $grey
+  min-height: $wide-spacing * 2
+  width: 100%
+  box-shadow: 0 -3px 10px darken($grey, 30)
+
+  &:after
+    content: ' '
+    background-color: $grey
+    height: $spacing
+    width: 100%
+    position: absolute
+    bottom: -$spacing
