@@ -1,7 +1,9 @@
 .home-index
 
-  .home-index--section= render 'todos/index_list'
-  .home-index--section= render 'galleries/index_list'
+
+  = render 'todos/index_list'
+  
+  = render 'galleries/index_list'
   .home-index--section
     .entries
       - (Note.all + Idea.all).each do |entry|

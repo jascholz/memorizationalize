@@ -3,7 +3,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     create_table :users do |t|
       t.timestamps
 
-      t.string :name
+      t.string :first_name
+      t.string :last_name
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
