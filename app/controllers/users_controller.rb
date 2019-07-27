@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
   def save_user
     action = @user.new_record? ? :new : :edit
-    debugger
     if @user.save
       sign_in @user if action == :new
       redirect_to root_path

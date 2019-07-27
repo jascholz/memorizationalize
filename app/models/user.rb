@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def category_selected?(category)
     category_mappings.find_by(category: category)&.selected
   end
+
+  def name
+    [first_name, last_name].join(' ')
+  end
 end

@@ -1,6 +1,10 @@
-.header--title
-  = user_signed_in? ? "#{current_user.name}s memorizationalize" : 'memorizationalize'
-.header--links
-  - if user_signed_in?
-    .header--sign-out
-      = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link'
+.header--banner
+  = link_to header_title, root_path, class: 'header--title', 'up-target': '.content--body'
+
+  .header--links
+    - if user_signed_in?
+      .header--sign-out
+        = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link', 'up-target': 'body'
+
+- if user_signed_in?
+  = render 'home/forms'

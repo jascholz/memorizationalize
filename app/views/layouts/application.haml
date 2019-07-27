@@ -12,10 +12,10 @@
     .content
       -#= render 'layouts/flash_message'
       - if user_signed_in?
-        = render 'home/forms'
         .content--body
           = render 'layouts/sidebar'
           = yield
       - else
-        = yield
+        .content--body
+          = yield
     .footer= render 'layouts/footer'
