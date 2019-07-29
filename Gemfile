@@ -38,6 +38,7 @@ gem 'has_defaults'
 gem 'listen'
 gem 'mini_magick'
 gem 'modularity', '>=2'
+gem 'tod'
 gem 'unpoly-rails'
 
 group :development, :test do

@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
 
       t.string :first_name
       t.string :last_name
+      t.date :calendar_date
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

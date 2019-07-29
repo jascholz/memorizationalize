@@ -7,6 +7,7 @@ class Category < ApplicationRecord
   has_many :ideas, dependent: :nullify
   has_many :notes, dependent: :nullify
   has_many :todos, dependent: :nullify
+  has_one :calendar, dependent: :nullify
 
   has_many :category_mappings, class_name: 'User::CategoryMapping', dependent: :destroy
   has_many :users, through: :category_mappings

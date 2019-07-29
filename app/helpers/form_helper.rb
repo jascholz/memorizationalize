@@ -1,7 +1,7 @@
 module FormHelper
 
   def memo_kinds
-    ['bookmark', 'file', 'idea', 'note', 'todo', 'image']
+    ['bookmark', 'file', 'idea', 'note', 'todo', 'image', 'event']
   end
 
   def form_colors
@@ -13,6 +13,7 @@ module FormHelper
         note: 'hsl(180, 80%, 80%)',
         todo: '#FFAD05',
         image: 'rgb(188, 255, 155)',
+        event: '#1AFFD5',
       }
     }
   end

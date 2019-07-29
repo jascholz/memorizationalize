@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :todos, only: [:create, :update, :show]
   resources :ideas, only: :create
   resources :images, only: [:create, :show]
+  resources :events, only: [:create, :update, :new, :edit, :show]
 
   # resources :categories, only: [:index, :create, :update]
 

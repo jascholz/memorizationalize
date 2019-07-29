@@ -1,7 +1,9 @@
+- domain ||= :category
+
 = form.hidden_field :creator_id
 
 .form--section
-  = render 'shared/category_fields', form: form
+  = render "shared/#{domain}_fields", form: form
 
 .form--section
 

@@ -9,23 +9,25 @@ module Shared::DoesEntriesController
       send("load_#{name}")
     end
 
-    define_method "create" do
+    define_method 'new' do
+      send("build_#{name}")
+    end
+
+    define_method 'edit' do
+      send("load_#{name}")
+    end
+
+    define_method 'create' do
       send("build_#{name}")
       if !send("save_#{name}")
         render partial: "#{name}s/form"
       end
     end
 
-    define_method "update" do
+    define_method 'update' do
       send("load_#{name}")
       send("build_#{name}")
       send("save_#{name}")
-    end
-
-    def update
-      load_todo
-      build_todo
-      save_todo
     end
 
     private
@@ -35,7 +37,7 @@ module Shared::DoesEntriesController
     end
 
     define_method "build_#{name}" do
-      instance_variable_set(instance_variable, instance_variable_get(instance_variable) || class_name.constantize.new)
+      instance_variable_set(instance_variable, instance_variable_get(instance_variable) || class_name.constantize.new(creator: current_user))
       instance_variable_get(instance_variable).attributes = send("#{name}_params")
       if instance_variable_get(instance_variable).send("#{domain}_id")
         instance_variable_get(instance_variable).send("#{domain}=", domain_class.find(instance_variable_get(instance_variable).send("#{domain}_id")))
@@ -46,7 +48,7 @@ module Shared::DoesEntriesController
       if instance_variable_get(instance_variable).save
         if domain == :category
           category = instance_variable_get(instance_variable).category
-        else
+        elsif respond_to?(:category)
           category = instance_variable_get(instance_variable).send(domain).category
         end
         if category && current_user.categories.exclude?(category)

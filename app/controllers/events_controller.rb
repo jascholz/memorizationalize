@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  include Shared::DoesEntriesController[:event]
+  include Shared::DoesEntriesController[:event, domain: :calendar]
 
   before_action :require_login
 
@@ -8,16 +8,15 @@ class EventsController < ApplicationController
   def permitted_params
     [
       :creator_id,
-      :category_id,
+      :calendar_id,
       :name,
       :description,
-      :category,
       :start_date,
       :end_date,
       :start_time,
       :end_time,
       :repeating_interval,
-      :week_days,
+      :all_day,
     ]
   end
 

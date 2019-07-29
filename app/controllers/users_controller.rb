@@ -44,7 +44,17 @@ class UsersController < ApplicationController
 
   def user_params
     user_params = params[:user]
-    user_params ? user_params.permit(:name, :email, :password, category_mappings_attributes: [:id, :selected]) : {}
+    permitted_user_params = [
+      :name,
+      :email,
+      :password,
+      :'calendar_date(1i)',
+      :'calendar_date(2i)',
+      :'calendar_date(3i)',
+      :calendar_day_selected,
+      category_mappings_attributes: [:id, :selected],
+    ]
+    user_params ? user_params.permit(permitted_user_params) : {}
   end
 
   def user_scope

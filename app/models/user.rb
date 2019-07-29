@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Shared::DoesCalendarDate
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, :confirmable
 
   has_many :galleries, class_name: 'Gallery', foreign_key: :creator_id, dependent: :destroy, inverse_of: :creator

@@ -7,4 +7,6 @@ class Todo < ApplicationRecord
 
   validates :priority, presence: true
 
+  has_defaults deadline: -> { Date.today }
+
 end
