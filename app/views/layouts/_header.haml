@@ -1,5 +1,5 @@
 .header--banner
-  = link_to header_title, root_path, class: 'header--title', 'up-target': '.content--body'
+  = link_to header_title, root_path, class: 'header--title', 'up-target': '.content', 'up-restore-scroll': true
 
   .header--links
     - if user_signed_in?

@@ -1,14 +1,14 @@
-.home-index
-  = render 'todos/index_list'
-  = render 'galleries/index_list'
-  = render 'calendars/index_list'
+.home-hero
+  = render 'todos/hero_list'
+  = render 'calendars/hero_list'
 
-  .home-index--section
-    .entries
-      - (Note.all + Idea.all).each do |entry|
-        .entry{ "#{entry.class.name.underscore}": '' }
-          .entry--content
-            .entry--name= entry.name
-            .entry--description= entry.description
-            - if entry.creator != current_user
-              .entry--footer= entry.creator.name
+= render 'galleries/index_list'
+-# .home-index--section
+-#   .entries
+-#     - (Note.all + Idea.all).each do |entry|
+-#       .entry{ "#{entry.class.name.underscore}": '' }
+-#         .entry--content
+-#           .entry--name= entry.name
+-#           .entry--description= entry.description
+-#           - if entry.creator != current_user
+-#             .entry--footer= entry.creator.name

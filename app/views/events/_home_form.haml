@@ -1,0 +1,4 @@
+- @event ||= Event.new(creator: current_user)
+
+= home_form_for @event do |form|
+  = render 'events/form_fields', form: form

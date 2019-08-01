@@ -7,8 +7,13 @@
   overflow: hidden
   text-overflow: ellipsis
   align-items: center
+  font-size: $font-size-tiny
+  font-weight: normal
 
 .todo
+  &:hover
+    .checkbox
+      border-color: $nuance-color
 
 .todo--done
   +todo--field
@@ -20,7 +25,8 @@
 
 .todo--name
   +todo--field
-  font-weight: bold
+  // font-weight: bold
+  font-weight: normal
 
 .todo--description
   +todo--field
@@ -30,7 +36,8 @@
   +todo--field
   justify-content: flex-end
   font-size: $font-size-small
-  font-weight: bold
+  // font-weight: bold
+  font-weight: normal
 
 .todo--checkbox-label
   display: flex

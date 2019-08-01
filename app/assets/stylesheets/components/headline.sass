@@ -1,6 +1,11 @@
 @import ../variables
 
 .headline
+  display: flex
+  justify-content: flex-start
   font-family: $headline-font
   font-size: $font-size-big
   margin: 0 0 $margin-tiny 0
+
+  &.-center
+    justify-content: center

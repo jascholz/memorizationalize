@@ -1,0 +1,11 @@
+.home-hero--section
+  = form_for current_user, html: { class: 'calendar', calendar: true, 'up-autosubmit': true, 'up-target': '.calendar', 'up-restore-scroll': true, 'up-data': { day: current_user.calendar_date.day }.to_json } do |form|
+
+    .calendar--date-fields
+      - previous_month = (form.object.calendar_date - 1.month)
+      - next_month = (form.object.calendar_date + 1.month)
+      = link_to '◄', '', class: 'calendar--month-link', month: previous_month.month, year: previous_month.year
+      = form.date_select :calendar_date, { order: [:month, :year] }, { class: 'form--select' }
+      = link_to '►', '', class: 'calendar--month-link', month: next_month.month, year: next_month.year
+
+    = calendar(form.object.calendar_date, current_power.calendars)

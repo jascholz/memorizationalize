@@ -1,0 +1,122 @@
+@import ../variables
+@import ../mixins
+
+$day-height: 60px
+$day-width: 90px
+$calendar-margin: 2px
+
+.calendar
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  width: 100%
+  align-items: center
+  font-size: $font-size-tiny
+
+.calendar--month
+  display: flex
+  flex-direction: column
+
+.calendar--date-fields
+  display: flex
+  align-items: center
+  // padding-top: $spacing
+  & select
+    -webkit-appearance: none
+    font-size: $font-size-big
+    font-family: $headline-font
+    background-color: transparentize($background-color, 1)
+    box-shadow: none
+    border: none
+    height: auto
+    &:focus
+      outline: none
+
+.calendar--month-link
+  font-size: $font-size
+
+.calendar--week
+  display: flex
+  max-height: $day-height
+
+  &:not(:last-child)
+    border-bottom: 1px solid $border-color
+
+.calendar--week-number
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 35px
+  height: $day-height
+  // border-bottom: 1px solid $border-color
+
+.calendar--week-days
+  display: flex
+
+.calendar--week-days-spacer
+  width: 35px
+  height: 35px
+  // margin: $calendar-margin
+  // border: 1px solid transparentize($black, 1)
+
+.calendar--week-days-day
+  display: flex
+  justify-content: center
+  align-items: center
+  width: $day-width
+  height: 35px
+  // margin: $calendar-margin
+  // border: 1px solid transparentize($black, 1)
+
+.calendar--day
+  display: flex
+  flex-direction: column
+  width: $day-width
+  // height: $day-height
+  // margin: $calendar-margin
+  // border: 1px solid transparentize($black, 1)
+  // background-color: $grey
+  // background-color: $background-color
+
+  &.-today
+    background-color: lighten($grey, 10)
+
+  &.-selected
+    background-color: lighten($grey, 10)
+    // box-shadow: 0 0 5px 0 darken($grey, 30)
+
+  &:hover
+    background-color: $hover-color
+
+.calendar--day-number
+  font-size: $font-size-tiny
+  text-align: center
+  // border-bottom: 1px solid darken($grey, 20)
+  // border-bottom: 1px solid transparentize($black, 1)
+  margin: 4px
+
+.calendar--events
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  padding: 0 2px 4px 2px
+
+.calendar--event
+  height: calc(100%)
+  background-color: desaturate($purple, 50)
+  overflow: hidden
+  flex: 10px
+  margin: 1px 2px
+  height: 9px
+  min-width: 10px
+
+  &:hover
+    background-color: desaturate($purple, 20)
+
+.calendar--new-event
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 100%
+  width: 100%

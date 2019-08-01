@@ -1,0 +1,4 @@
+- @event ||= Event.new(creator: current_user)
+
+= form_for @event, html: { class: 'form', event: true, 'up-target': ".form[event]" } do |form|
+  = render 'events/form_fields', form: form
