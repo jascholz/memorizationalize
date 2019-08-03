@@ -9,6 +9,8 @@ class Image < ApplicationRecord
   validates :creator, :name, presence: true
   validates :file, presence: true
 
+  has_defaults gallery: Gallery.first
+
   def reject_domain(params)
     gallery_id != 0
   end

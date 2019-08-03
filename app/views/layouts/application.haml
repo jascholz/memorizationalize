@@ -12,8 +12,5 @@
     .content
       -#= render 'layouts/flash_message'
       .content--body
-        - if user_signed_in?
-          = render 'layouts/sidebar'
-        .content--container
-          = yield
+        = yield
     .footer= render 'layouts/footer'

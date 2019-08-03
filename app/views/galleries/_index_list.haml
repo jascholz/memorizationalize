@@ -1,20 +1,23 @@
 - if @galleries.length > 0 || @images.length > 0
-  .home-index--section
+  .home-content--section
     .galleries
       - @galleries.each do |gallery|
-        .headline
-          = gallery.name
-          = "(Category: #{gallery.category.name})"
-          = link_to '(show all)', gallery_show_all_path(gallery)
-        .gallery(gallery="#{gallery.id}")
-          - gallery.images.each do |image|
-            = link_to image_tag(image.file.thumb.url, class: 'image--thumbnail'), image_path(image), 'up-modal': '.image', class: ['image--thumbnail-container', 'gallery--image']
-          .gallery--fill
+        .galleries--container
+          .headline
+            = gallery.name
+            = "(Category: #{gallery.category&.name})"
+            = link_to '(show all)', gallery_show_all_path(gallery)
+          .gallery(gallery="#{gallery.id}")
+            - gallery.images.each do |image|
+              = link_to image_tag(image.file.thumb.url, class: 'image--thumbnail'), image_path(image), 'up-modal': '.image', class: ['image--thumbnail-container', 'gallery--image']
+            .gallery--fill
 
-    .headline
-      Other images
-      -# = link_to '(show all)', gallery_show_all_path(gallery)
-    .gallery(gallery)
-      - @images.each do |image|
-        = link_to image_tag(image.file.thumb.url, class: 'image--thumbnail'), image_path(image), 'up-modal': '.image', class: ['image--thumbnail-container', 'gallery--image']
-      .gallery--fill
+      - if @images.length > 0
+        .galleries--container
+          .headline
+            Other images
+            -# = link_to '(show all)', gallery_show_all_path(gallery)
+          .gallery(gallery)
+            - @images.each do |image|
+              = link_to image_tag(image.file.thumb.url, class: 'image--thumbnail'), image_path(image), 'up-modal': '.image', class: ['image--thumbnail-container', 'gallery--image']
+            .gallery--fill

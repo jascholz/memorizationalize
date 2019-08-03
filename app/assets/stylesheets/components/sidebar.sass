@@ -2,15 +2,15 @@
 @import ../mixins
 
 .sidebar
-  position: relative
+  position: absolute
   top: 0
   bottom: 0
+  left: 0
   display: flex
   flex-direction: column
-  padding: $margin
+  padding: ($wide-spacing + $spacing) $spacing
   min-width: $sidebar-width
   width: $sidebar-width
-  // border-right: 1px solid $border-color
 
 .sidebar--headline
   font-family: $headline-font

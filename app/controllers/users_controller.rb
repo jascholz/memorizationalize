@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    load_user
+    load_user_form
     build_user
     save_user
   end
@@ -25,6 +25,10 @@ class UsersController < ApplicationController
 
   def load_user
     @user ||= user_scope.find(params[:id])
+  end
+
+  def load_user_form
+    @user ||= ActiveType::cast(user_scope.find(params[:id]), User::Form)
   end
 
   def build_user
@@ -44,6 +48,7 @@ class UsersController < ApplicationController
 
   def user_params
     user_params = params[:user]
+    user_params.delete(:password) if user_params[:password]&.empty?
     permitted_user_params = [
       :name,
       :email,

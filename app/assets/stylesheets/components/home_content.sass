@@ -1,0 +1,41 @@
+@import ../variables
+
+@function cut-gradient($angle, $cut-position, $color-1, $color-2)
+  $cut-position-after: $cut-position + 0.05%
+  $color-1-transparent: transparentize($color-1, 0.5)
+  @return linear-gradient($angle, $transparent 0%, $transparent $cut-position, $color-1 $cut-position, $color-1 $cut-position-after, $color-1-transparent $cut-position-after, $color-2 100%)
+
+$gradient-red: rgb(200, 0, 65)
+$gradient-blue: rgb(0, 212, 255)
+$gradient-green: rgb(0, 255, 235)
+$gradient-yellow: rgba(200, 255, 0, 0.5)
+$gradient-rose: #FFEDDF
+$gradient-dark: #172A3A
+$transparent: rgba(0, 0, 0, 0)
+$gradient-angle: 45deg
+$gradient-angle-reverse: 135deg
+
+.home-content
+  // background-color: darken($grey, 40)
+  background: linear-gradient(0deg, lighten($grey, 15) 0%, lighten($gradient-blue, 35) 100%)
+  background-attachment: fixed
+  // background-color: $white
+
+.home-content--section
+  padding: $very-wide-spacing * 2 0
+
+  &:nth-child(4n + 1)
+    background: cut-gradient($gradient-angle, 35%, $gradient-red, $gradient-blue)
+    background-attachment: fixed
+
+  &:nth-child(4n + 2)
+    background: cut-gradient(-45deg, 55%, $gradient-green, $gradient-yellow)
+    background-attachment: fixed
+
+  &:nth-child(4n + 3)
+    background: cut-gradient(-135deg, 75%, $gradient-blue, $gradient-green)
+    background-attachment: fixed
+
+  &:nth-child(4n + 4)
+    background: cut-gradient(135deg, 45%, $gradient-rose, $gradient-dark)
+    background-attachment: fixed

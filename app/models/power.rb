@@ -1,8 +1,9 @@
 class Power
   include Consul::Power
 
-  include Power::DoesCategory
   include Power::DoesCalendar
+  include Power::DoesCategory
+  include Power::DoesGallery
 
   def initialize(user)
     @user = user

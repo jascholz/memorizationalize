@@ -166,6 +166,11 @@ up.compiler('[dropdown]', (dropdown, data) => {
     collapseElementWithoutErrors(event.target)
   })
 
+  up.on('app:reset', (event) => {
+    init()
+    collapseElementWithoutErrors(event.target)
+  })
+
   up.on(element, 'click', 'input[type="submit"]', (event) => {
     document.addEventListener('up:proxy:loaded', (event) => {
       let oldContentBody = up.element.first('.content--body')

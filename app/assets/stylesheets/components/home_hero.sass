@@ -1,13 +1,45 @@
 @import ../variables
 
+
 .home-hero
+  position: relative
+  left: 0px
+  display: flex
+  justify-content: center
+  padding: $very-wide-spacing 0
+  overflow: hidden
+  width: 200%
+
+  background: image-url('backgrounds/notebook_semi_wide.png')
+  background-size: auto 1000px
+  background-position: 0 -85px
+
+  transition: 0.75s ease-in-out
+  &.-options
+    left: -100%
+    background-position: 100% -85px
+
+.home-hero--tab
+  width: 100%
+  display: flex
+  justify-content: center
+
+  &.-left
+    padding-left: $sidebar-width + 150px
+  &.-right
+    padding-right: $sidebar-width + 150px
+
+.home-hero--content
+  position: relative
   max-width: $main-content-width
   display: flex
   justify-content: flex-start
   flex-wrap: wrap
-  background-color: transparentize($white, 0.8)
+  background-color: transparentize($white, 0.7)
   height: 730px
+  width: 800px
   overflow: hidden
+  // margin-left: 350px
 
 .home-hero--section
   margin: $margin

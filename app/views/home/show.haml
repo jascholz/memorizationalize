@@ -1,8 +1,32 @@
-.home-hero
-  = render 'todos/hero_list'
-  = render 'calendars/hero_list'
+.home
+  .home-hero
+    .home-hero--tab.-left
+      - if user_signed_in?
+        = render 'layouts/sidebar'
+      .home-hero--content
+        = render 'todos/hero_list'
+        = render 'calendars/hero_list'
 
-= render 'galleries/index_list'
+    .home-hero--tab.-right
+      .home-hero--content
+        = render 'options'
+
+  .home-content
+    = render 'galleries/index_list'
+    = render 'galleries/index_list'
+    .placeholder.-huge
+    = render 'galleries/index_list'
+    = render 'galleries/index_list'
+    .placeholder.-huge
+    = render 'galleries/index_list'
+    .placeholder.-huge
+    .placeholder.-huge
+    = render 'galleries/index_list'
+    = render 'galleries/index_list'
+    .placeholder.-huge
+    = render 'galleries/index_list'
+    = render 'galleries/index_list'
+    .placeholder.-huge
 -# .home-index--section
 -#   .entries
 -#     - (Note.all + Idea.all).each do |entry|
