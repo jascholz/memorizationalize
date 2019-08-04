@@ -9,17 +9,18 @@
   padding: $very-wide-spacing 0
   overflow: hidden
   width: 200%
+  transition: 0.75s ease-in-out
 
   background: image-url('backgrounds/notebook_semi_wide.png')
   background-size: auto 1000px
   background-position: 0 -85px
 
-  transition: 0.75s ease-in-out
   &.-options
     left: -100%
     background-position: 100% -85px
 
 .home-hero--tab
+  position: relative
   width: 100%
   display: flex
   justify-content: center
@@ -39,7 +40,11 @@
   height: 730px
   width: 800px
   overflow: hidden
-  // margin-left: 350px
+  transition: height 0.5s, width 0.5s
+
+  &.-minimized
+    height: 55px
+    width: 55px
 
 .home-hero--section
   margin: $margin
@@ -48,3 +53,31 @@
 
   &:not(:last-child)
     border-bottom: 1px solid $border-color
+
+  .-minimized &
+    display: none
+
+.home-hero--notes
+  position: absolute
+  top: 0
+  bottom: 0
+  left: $sidebar-width + 150px
+  right: 0
+
+.home-hero--content-toggle
+  position: absolute
+  top: $spacing + 6px
+  right: $spacing
+  height: 25px
+  width: 25px
+  transition: transform 1s, top 0.5s, right 0.5s
+  transform: rotateZ(180deg)
+
+  .-minimized &
+    top: 15px
+    right: 15px
+    transform: rotateZ(0deg)
+
+  &:hover
+    cursor: pointer
+    background-color: transparentize($grey, 0.5)

@@ -7,7 +7,7 @@
       .header--sign-out
         = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link', 'up-target': 'body'
       = link_to nil, class: 'header--icon', 'settings-toggle': '' do
-        = render 'shared/settings'
+        = render 'svg/settings'
 
 - if user_signed_in?
   = render 'home/forms'

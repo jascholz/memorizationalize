@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   resource :home, only: :show
 
-  resources :notes, only: :create
+  resources :notes, only: [:create, :update, :show]
   resources :todos, only: [:create, :update, :show]
-  resources :ideas, only: :create
-  resources :images, only: [:create, :show]
+  resources :ideas, only: [:create, :update, :show]
+  resources :images, only: [:create, :update, :show]
   resources :events, only: [:create, :update, :new, :edit, :show]
 
   # resources :categories, only: [:index, :create, :update]

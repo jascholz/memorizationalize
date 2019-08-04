@@ -6,6 +6,11 @@ class CreateNotes < ActiveRecord::Migration[5.1]
       t.references :category
       t.string :name
       t.string :description
+
+      t.decimal :post_it_x
+      t.decimal :post_it_y
+      t.decimal :post_it_angle
+      t.boolean :post_it_flipped
     end
   end
 end

@@ -115,6 +115,10 @@ ActiveRecord::Schema.define(version: 2019_07_27_112208) do
     t.bigint "category_id"
     t.string "name"
     t.string "description"
+    t.decimal "post_it_x"
+    t.decimal "post_it_y"
+    t.decimal "post_it_angle"
+    t.boolean "post_it_flipped"
     t.index ["category_id"], name: "index_notes_on_category_id"
     t.index ["creator_id"], name: "index_notes_on_creator_id"
   end

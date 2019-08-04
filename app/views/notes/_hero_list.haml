@@ -1,0 +1,14 @@
+.home-hero--notes
+  - if @notes.length > 0
+    - @notes.each do |note|
+      .post-it.-hidden{ 'position': '', 'up-data': post_it_json(note), 'note': note.id }
+        .post-it--image(flippable)= render 'svg/post_it'
+        .post-it--header
+          = link_to note.name, notes_path(note), class: 'post-it--name', id: note.id, 'up-modal': '.note'
+          = image_tag 'drag.svg', class: 'post-it--drag', 'drag': ''
+        .post-it--description
+          - note.description.split("\n").each do |paragraph|
+            %p= paragraph
+        = form_for note, html: { 'up-target': ".post-it[note=\"#{note.id}\"]" } do |form|
+          = form.hidden_field :post_it_x, 'position-x': "post-it-x-#{note.id}"
+          = form.hidden_field :post_it_y, 'position-y': "post-it-y-#{note.id}"

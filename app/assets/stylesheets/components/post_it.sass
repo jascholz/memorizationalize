@@ -1,0 +1,68 @@
+@import ../variables
+@import ../mixins
+
+.post-it
+  position: absolute
+  display: flex
+  flex-direction: column
+  width: 200px
+  height: 200px
+  padding: 5px
+  overflow: hidden
+
+  &.-hidden
+    visibility: hidden
+
+.post-it--image
+  position: absolute
+  top: 0px
+  left: 0px
+
+  svg
+    fill: $post-it-yellow
+
+.post-it--header
+  position: relative
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  text-align: center
+  overflow: hidden
+  width: 180px
+  height: 30px
+  padding: 5px
+
+.post-it--name
+  display: inline-block
+  position: relative
+  width: 140px
+  max-height: 45px
+  text-overflow: ellipsis
+  overflow: hidden
+  font-size: $font-size-tiny
+  text-transform: uppercase
+  padding: 5px
+
+.post-it--description
+  overflow: hidden
+  position: relative
+  width: 180px
+  height: 120px
+  padding: 5px
+  font-size: $font-size-tiny
+  word-wrap: break-word
+
+  p
+    margin: 0
+
+.post-it--drag
+  width: $font-size
+  height: $font-size
+  position: absolute
+  right: 10px
+
+  &:hover
+    cursor: grab
+
+  &:active
+    cursor: grabbing

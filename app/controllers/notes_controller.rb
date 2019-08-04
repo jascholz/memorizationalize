@@ -6,7 +6,15 @@ class NotesController < ApplicationController
   private
 
   def permitted_params
-    [ :creator_id, :category_id, :name, :description, :category ]
+    [
+      :creator_id,
+      :category_id,
+      :name,
+      :description,
+      :category,
+      :post_it_x,
+      :post_it_y,
+    ]
   end
 
 end

@@ -1,9 +1,11 @@
 .home
   .home-hero
     .home-hero--tab.-left
+      = render 'notes/hero_list'
       - if user_signed_in?
         = render 'layouts/sidebar'
       .home-hero--content
+        = image_tag 'minimize.svg', class: 'home-hero--content-toggle', 'hero-content-toggle': ''
         = render 'todos/hero_list'
         = render 'calendars/hero_list'
 
@@ -13,26 +15,3 @@
 
   .home-content
     = render 'galleries/index_list'
-    = render 'galleries/index_list'
-    .placeholder.-huge
-    = render 'galleries/index_list'
-    = render 'galleries/index_list'
-    .placeholder.-huge
-    = render 'galleries/index_list'
-    .placeholder.-huge
-    .placeholder.-huge
-    = render 'galleries/index_list'
-    = render 'galleries/index_list'
-    .placeholder.-huge
-    = render 'galleries/index_list'
-    = render 'galleries/index_list'
-    .placeholder.-huge
--# .home-index--section
--#   .entries
--#     - (Note.all + Idea.all).each do |entry|
--#       .entry{ "#{entry.class.name.underscore}": '' }
--#         .entry--content
--#           .entry--name= entry.name
--#           .entry--description= entry.description
--#           - if entry.creator != current_user
--#             .entry--footer= entry.creator.name
