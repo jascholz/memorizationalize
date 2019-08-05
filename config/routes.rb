@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resource :home, only: :show
 
-  resources :notes, only: [:create, :update, :show]
+  resources :notes, only: [:create, :update, :show, :destroy]
   resources :todos, only: [:create, :update, :show]
   resources :ideas, only: [:create, :update, :show]
   resources :images, only: [:create, :update, :show]

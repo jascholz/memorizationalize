@@ -3,6 +3,12 @@ class NotesController < ApplicationController
 
   before_action :require_login
 
+  def destroy
+    load_note
+    @note.destroy
+    redirect_to root_path
+  end
+
   private
 
   def permitted_params

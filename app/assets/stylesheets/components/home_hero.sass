@@ -43,6 +43,7 @@
   transition: height 0.5s, width 0.5s
 
   &.-minimized
+    transition: height 0.5s, width 0.5s 0.5s
     height: 55px
     width: 55px
 
@@ -71,12 +72,11 @@
   height: 25px
   width: 25px
   transition: transform 1s, top 0.5s, right 0.5s
-  transform: rotateZ(180deg)
 
   .-minimized &
     top: 15px
     right: 15px
-    transform: rotateZ(0deg)
+    transform: rotateZ(-180deg)
 
   &:hover
     cursor: pointer

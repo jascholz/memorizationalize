@@ -10,8 +10,12 @@
   padding: 5px
   overflow: hidden
 
-  &.-hidden
-    visibility: hidden
+  &.-moving
+    transition: top 1s, left 1s
+
+  &.-uninitialized
+    top: 50%
+    left: 50%
 
 .post-it--image
   position: absolute
@@ -35,7 +39,7 @@
 .post-it--name
   display: inline-block
   position: relative
-  width: 140px
+  width: 180px
   max-height: 45px
   text-overflow: ellipsis
   overflow: hidden
@@ -58,11 +62,25 @@
 .post-it--drag
   width: $font-size
   height: $font-size
-  position: absolute
-  right: 10px
 
   &:hover
     cursor: grab
 
   &:active
     cursor: grabbing
+
+  &.-hidden
+    display: none
+
+.post-it--delete
+  position: absolute
+  bottom: 40px
+  right: 35px
+  width: 15px
+  height: 15px
+
+  &.-hidden
+    display: none
+
+  &.-flipped
+    left: 25px

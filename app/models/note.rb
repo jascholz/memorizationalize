@@ -3,6 +3,8 @@ class Note < ApplicationRecord
 
   before_validation :randomize_post_it
 
+  scope :ordered, -> { order(updated_at: :asc) }
+
   private
 
   def randomize_post_it
