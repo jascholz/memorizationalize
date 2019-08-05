@@ -48,7 +48,6 @@ class UsersController < ApplicationController
 
   def user_params
     user_params = params[:user]
-    user_params.delete(:password) if user_params[:password]&.empty?
     permitted_user_params = [
       :name,
       :email,
@@ -59,7 +58,12 @@ class UsersController < ApplicationController
       :calendar_day_selected,
       category_mappings_attributes: [:id, :selected],
     ]
-    user_params ? user_params.permit(permitted_user_params) : {}
+    if user_params
+      user_params.delete(:password) if user_params[:password]&.empty?
+      user_params.permit(permitted_user_params)
+    else
+       {}
+    end
   end
 
   def user_scope
