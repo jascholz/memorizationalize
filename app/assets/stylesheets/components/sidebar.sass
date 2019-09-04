@@ -33,11 +33,9 @@ $width: $sidebar-width - $spacing * 2
   padding: ($margin-small / 4) ($margin-small / 2)
   cursor: pointer
 
-  &:hover
-    background-color: $grey
-    & .checkbox:after
-        content: '✖'
-        color: darken($grey, 20)
+  &:hover .checkbox:after
+    content: '✖'
+    color: darken($grey, 20)
 
   & .checkbox
     margin-right: $margin-tiny
