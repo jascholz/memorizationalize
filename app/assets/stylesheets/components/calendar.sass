@@ -12,6 +12,7 @@ $calendar-margin: 2px
   width: 100%
   align-items: center
   font-size: $font-size-tiny
+  // background-color: transparentize($grey, 0.4)
 
 .calendar--month
   display: flex
@@ -20,7 +21,7 @@ $calendar-margin: 2px
 .calendar--date-fields
   display: flex
   align-items: center
-  // padding-top: $spacing
+
   & select
     -webkit-appearance: none
     font-size: $font-size-big
@@ -53,7 +54,6 @@ $calendar-margin: 2px
   align-items: center
   width: 35px
   height: $day-height
-  // border-bottom: 1px solid $border-color
 
 .calendar--week-days
   display: flex
@@ -61,8 +61,6 @@ $calendar-margin: 2px
 .calendar--week-days-spacer
   width: 35px
   height: 35px
-  // margin: $calendar-margin
-  // border: 1px solid transparentize($black, 1)
 
 .calendar--week-days-day
   display: flex
@@ -70,25 +68,17 @@ $calendar-margin: 2px
   align-items: center
   width: $day-width
   height: 35px
-  // margin: $calendar-margin
-  // border: 1px solid transparentize($black, 1)
 
 .calendar--day
   display: flex
   flex-direction: column
   width: $day-width
-  // height: $day-height
-  // margin: $calendar-margin
-  // border: 1px solid transparentize($black, 1)
-  // background-color: $grey
-  // background-color: $background-color
 
   &.-today
     background-color: lighten($grey, 10)
 
   &.-selected
     background-color: lighten($grey, 10)
-    // box-shadow: 0 0 5px 0 darken($grey, 30)
 
   &:hover
     background-color: $hover-color
@@ -96,8 +86,6 @@ $calendar-margin: 2px
 .calendar--day-number
   font-size: $font-size-tiny
   text-align: center
-  // border-bottom: 1px solid darken($grey, 20)
-  // border-bottom: 1px solid transparentize($black, 1)
   margin: 4px
 
 .calendar--events

@@ -1,6 +1,9 @@
 @import ../variables
 @import ../mixins
 
+$padding: ($wide-spacing + $spacing) $spacing
+$width: $sidebar-width - $spacing * 2
+
 .sidebar
   position: absolute
   top: 0
@@ -8,9 +11,8 @@
   left: 0
   display: flex
   flex-direction: column
-  padding: ($wide-spacing + $spacing) $spacing
-  min-width: $sidebar-width
-  width: $sidebar-width
+  padding: $padding
+  width: $width
 
 .sidebar--headline
   font-family: $headline-font

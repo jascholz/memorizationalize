@@ -70,7 +70,7 @@ module CalendarHelper
           events_tags = ''.html_safe
           today_events = @events[@date_iterator]
           today_events.to_a.each do |event|
-            events_tags << link_to('', edit_event_path(event.id), class: 'calendar--event', 'up-modal': '.form[event]')
+            events_tags << link_to('', edit_event_path(event.id), class: 'calendar--event', 'up-modal': '.modal')
           end
           events_tags
         end
