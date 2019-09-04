@@ -11,6 +11,7 @@ module Shared::DoesEntriesController
 
     define_method 'new' do
       send("build_#{name}")
+      render layout: 'modal'
     end
 
     define_method 'edit' do
