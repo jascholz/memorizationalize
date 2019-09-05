@@ -1,0 +1,5 @@
+.modal--header
+  = @note.name
+.modal--content
+  = @note.description.split("\n").each do |line|
+    %p= line
