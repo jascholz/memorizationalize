@@ -1,0 +1,9 @@
+
+.modal--header
+  Categiories
+.modal--content
+  .categiories
+    - @categories.each do |category|
+      .category
+        = category.name
+        = "(#{category.priority})"

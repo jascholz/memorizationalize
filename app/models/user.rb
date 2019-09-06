@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include Shared::DoesCalendarDate
+  include Shared::DoesFlag[:confirmed, default: false]
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable #, :confirmable
 
   has_many :galleries, class_name: 'Gallery', foreign_key: :creator_id, dependent: :destroy, inverse_of: :creator
