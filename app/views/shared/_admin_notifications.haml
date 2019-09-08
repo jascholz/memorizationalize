@@ -1,5 +1,16 @@
-- if current_user&.role == 'admin'
+- unconfirmed_users = current_power.users.unconfirmed
+
+- if current_user&.role == 'admin' && unconfirmed_users.any?
   .notifications
-    .headline Unconfirmed users:
-    - current_power.users.unconfirmed.each do |user|
-      .notification--user= user.name
+    .user-confirmation
+      .headline Unconfirmed users:
+      - unconfirmed_users.each do |user|
+        .user-confirmation--user
+          .user-confirmation--links
+            = form_for user, html: { 'up-autosubmit': true, 'up-target': '.notifications', 'up-restore-scroll': true } do |f|
+              = f.label :confirmed, '✔️', class: ['link', 'user-confirmation--link']
+              = f.check_box :confirmed, class: :hidden
+            = link_to '❌', user, method: :destroy
+          .user-confirmation--info
+            = "#{user.name} (#{user.created_at.strftime('%d.%m.%Y')})"
+            = " - Message: “#{user.sign_up_message}“" if user.sign_up_message # „

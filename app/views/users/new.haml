@@ -17,4 +17,8 @@
         = f.password_field :password, class: 'form--field'
 
       .form--group
+        = f.label :sign_up_message, class: 'form--label'
+        = f.text_area :sign_up_message, class: 'form--field'
+
+      .form--group
         = f.submit 'Submit', class: 'form--button'

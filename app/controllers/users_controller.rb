@@ -52,6 +52,8 @@ class UsersController < ApplicationController
       :name,
       :email,
       :password,
+      :confirmed,
+      :sign_up_message,
       :'calendar_date(1i)',
       :'calendar_date(2i)',
       :'calendar_date(3i)',

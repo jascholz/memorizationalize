@@ -10,8 +10,6 @@ class Power
     @user = user
   end
 
-  debugger
-
   def role
     @user.role
   end
