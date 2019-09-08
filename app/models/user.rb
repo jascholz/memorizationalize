@@ -14,6 +14,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, presence: true, on: :create
 
+  assignable_values_for :role, default: 'editor' do
+    ['admin', 'editor', 'viewer']
+  end
+
+  scope :unconfirmed, ->  { where(confirmed: false) }
+
   def category_selected?(category)
     category_mappings.find_by(category: category)&.selected
   end

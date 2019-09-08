@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_195011) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "confirmed"
+    t.string "role"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"

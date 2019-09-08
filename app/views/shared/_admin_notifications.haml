@@ -1,0 +1,5 @@
+- if current_user&.role == 'admin'
+  .notifications
+    .headline Unconfirmed users:
+    - current_power.users.unconfirmed.each do |user|
+      .notification--user= user.name
