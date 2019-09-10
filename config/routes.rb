@@ -4,12 +4,17 @@ Rails.application.routes.draw do
 
   resource :home, only: :show
 
+  resources :drawers, only: [:index, :new, :create, :edit, :update] do
+    collection do
+      post :invitation
+    end
+  end
+  
+  resources :events, only: [:create, :update, :new, :edit, :show]
   resources :notes, only: [:create, :update, :show, :destroy]
-  resources :todos, only: [:create, :update, :show]
   resources :ideas, only: [:create, :update, :show]
   resources :images, only: [:create, :update, :show]
-  resources :events, only: [:create, :update, :new, :edit, :show]
-  resources :categories, only: [:index, :create, :update]
+  resources :todos, only: [:create, :update, :show]
 
   # resources :categories, only: [:index, :create, :update]
 

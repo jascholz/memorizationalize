@@ -7,12 +7,9 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
 
-  %body(layout="application")
+  %body(layout="plain")
     .header= render 'layouts/header'
-    = render 'home/forms'
     .content
-      = render 'shared/admin_notifications'
-      -#= render 'layouts/flash_message'
       .content--body
         = yield
     .footer= render 'layouts/footer'

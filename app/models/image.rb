@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
   belongs_to :creator, class_name: 'User'
-  belongs_to :gallery, optional: true
+  belongs_to :gallery
 
   accepts_nested_attributes_for :gallery, reject_if: :reject_domain
 

@@ -38,14 +38,14 @@ module FormHelper
     end
   end
 
-  def sorted_categories(categories)
-    categories.sort do |category_1, category_2|
-      if category_1.new_record?
+  def sorted_drawers(drawers)
+    drawers.sort do |drawer_1, drawer_2|
+      if drawer_1.new_record?
         -1
-      elsif category_2.new_record?
+      elsif drawer_2.new_record?
         1
       else
-        category_2.priority || 0 <=> category_1.priority || 0
+        drawer_2.priority || 0 <=> drawer_1.priority || 0
       end
     end
   end
@@ -63,12 +63,12 @@ module FormHelper
     galleries
   end
 
-  def new_category_for(object)
-    category = current_user.categories.build
-    if object.category.nil?
-      object.category = category
+  def new_drawer_for(object)
+    drawer = current_user.drawers.build
+    if object.drawer.nil?
+      object.drawer = drawer
     end
-    category
+    drawer
   end
 
   def new_gallery_for(object)

@@ -1,8 +1,6 @@
 class ImagesController < ApplicationController
   include Shared::DoesEntriesController[:image, domain: :gallery]
 
-  before_action :require_login
-
   private
 
   def permitted_params
@@ -17,8 +15,8 @@ class ImagesController < ApplicationController
         :creator_id,
         :name,
         :description,
-        :category_id,
-        category_attributes: [
+        :drawer_id,
+        drawer_attributes: [
           :name,
           :priority,
         ],

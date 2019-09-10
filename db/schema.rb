@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_211915) do
+ActiveRecord::Schema.define(version: 2019_09_09_201837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 2019_09_08_211915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.string "name"
     t.text "description"
     t.string "url"
-    t.index ["category_id"], name: "index_bookmarks_on_category_id"
     t.index ["creator_id"], name: "index_bookmarks_on_creator_id"
+    t.index ["drawer_id"], name: "index_bookmarks_on_drawer_id"
   end
 
   create_table "calendars", force: :cascade do |t|
@@ -37,11 +37,14 @@ ActiveRecord::Schema.define(version: 2019_09_08_211915) do
     t.index ["creator_id"], name: "index_calendars_on_creator_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "drawers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.integer "priority"
+    t.string "color"
+    t.string "invitation_code"
+    t.integer "description"
+    t.date "invitation_expiry_date"
   end
 
   create_table "events", force: :cascade do |t|
@@ -65,35 +68,35 @@ ActiveRecord::Schema.define(version: 2019_09_08_211915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.string "name"
     t.string "description"
     t.string "file"
     t.string "folder"
-    t.index ["category_id"], name: "index_files_on_category_id"
     t.index ["creator_id"], name: "index_files_on_creator_id"
+    t.index ["drawer_id"], name: "index_files_on_drawer_id"
   end
 
   create_table "galleries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.string "name"
     t.string "description"
-    t.index ["category_id"], name: "index_galleries_on_category_id"
     t.index ["creator_id"], name: "index_galleries_on_creator_id"
+    t.index ["drawer_id"], name: "index_galleries_on_drawer_id"
   end
 
   create_table "ideas", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.string "name"
     t.string "description"
-    t.index ["category_id"], name: "index_ideas_on_category_id"
     t.index ["creator_id"], name: "index_ideas_on_creator_id"
+    t.index ["drawer_id"], name: "index_ideas_on_drawer_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -112,39 +115,39 @@ ActiveRecord::Schema.define(version: 2019_09_08_211915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.string "name"
     t.string "description"
     t.decimal "post_it_x"
     t.decimal "post_it_y"
     t.decimal "post_it_angle"
     t.boolean "post_it_flipped"
-    t.index ["category_id"], name: "index_notes_on_category_id"
     t.index ["creator_id"], name: "index_notes_on_creator_id"
+    t.index ["drawer_id"], name: "index_notes_on_drawer_id"
   end
 
   create_table "todos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.string "name"
     t.text "description"
     t.date "deadline"
     t.boolean "done"
     t.integer "priority"
-    t.index ["category_id"], name: "index_todos_on_category_id"
     t.index ["creator_id"], name: "index_todos_on_creator_id"
+    t.index ["drawer_id"], name: "index_todos_on_drawer_id"
   end
 
-  create_table "user_category_mappings", force: :cascade do |t|
+  create_table "user_drawer_mappings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "category_id"
+    t.bigint "drawer_id"
     t.boolean "selected"
-    t.index ["category_id"], name: "index_user_category_mappings_on_category_id"
-    t.index ["user_id"], name: "index_user_category_mappings_on_user_id"
+    t.index ["drawer_id"], name: "index_user_drawer_mappings_on_drawer_id"
+    t.index ["user_id"], name: "index_user_drawer_mappings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

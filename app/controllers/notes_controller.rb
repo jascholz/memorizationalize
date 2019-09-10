@@ -1,8 +1,6 @@
 class NotesController < ApplicationController
   include Shared::DoesEntriesController[:note]
 
-  before_action :require_login
-
   def destroy
     load_note
     @note.destroy
@@ -14,10 +12,10 @@ class NotesController < ApplicationController
   def permitted_params
     [
       :creator_id,
-      :category_id,
+      :drawer_id,
       :name,
       :description,
-      :category,
+      :drawer,
       :post_it_x,
       :post_it_y,
     ]

@@ -4,7 +4,7 @@ module Power::DoesUsers
       if role == 'admin'
         User.all
       else
-        User.find(@user.id)
+        User.where(id: @user.id)
       end
     end
   end

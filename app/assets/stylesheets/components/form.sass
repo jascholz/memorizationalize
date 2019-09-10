@@ -1,4 +1,5 @@
 @import ../variables
+@import ../mixins
 
 =field
   height: $form--field-height
@@ -13,8 +14,8 @@
 .form
   display: flex
   flex-direction: column
-  align-items: center
-  width: 100%
+  max-width: 900px
+  margin: $spacing
 
 .form--fields
   position: relative
@@ -63,7 +64,7 @@
 
 .form--text-area
   +field
-  resize: vertical
+  resize: none
   height: $form--field-height * 4
 
 .form--label
@@ -94,15 +95,28 @@
   max-width: 900px
 
 .form--button
-  height: $form--button-height
-  margin-top: $margin-small
+  +button
   margin-left: calc(30% + #{$spacing})
   width: calc(70% - #{$spacing})
-  font-size: 18px
-  background-color: lighten(grey, 10)
-  border: 1px solid grey
-  border-radius: 2px
-  box-shadow: inset 0 0 2px $grey
+
+.form--radio_buttons
+  display: flex
+  width: 100%
+
+.form--radio-button-label
+  +button
+  margin: $spacing 0
+  border: none
+  border-radius: 0
+  flex-grow: 1
+  box-shadow: none
 
   &:hover
-    background-color: lighten(grey, 20)
+    cursor: pointer
+
+.form--text
+  margin: $spacing 0
+  // text-align: center
+
+  p
+    margin: 0

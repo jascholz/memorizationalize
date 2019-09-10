@@ -1,8 +1,6 @@
 class TodosController < ApplicationController
   include Shared::DoesEntriesController[:todo]
 
-  before_action :require_login
-
   private
 
   def permitted_params
@@ -13,8 +11,8 @@ class TodosController < ApplicationController
       :done,
       :deadline,
       :priority,
-      :category_id,
-      category_attributes: [
+      :drawer_id,
+      drawer_attributes: [
         :name,
         :priority,
       ],

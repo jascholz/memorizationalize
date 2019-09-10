@@ -1,9 +1,11 @@
 up.compiler('.header', (header) => {
+  let body = document.querySelector('body')
   let title = header.querySelector('.header--title')
   up.on(title, 'click', (event) => {
-    event.preventDefault()
-    console.log("Dwddwdw")
-    up.scroll(document.scrollingElement, 0)
-    up.emit('app:reset')
+    if (body.getAttribute('layout') == 'application') {
+      event.preventDefault()
+      up.scroll(document.scrollingElement, 0)
+      up.emit('app:reset')
+    }
   })
 })

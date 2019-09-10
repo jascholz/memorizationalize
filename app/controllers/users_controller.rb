@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
 
   def show
     load_user
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def new
     build_user
+    render layout: 'plain'
   end
 
   def update
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
       sign_in @user if action == :new
       redirect_to root_path
     else
-      render action
+      render action, layout: 'plain'
     end
   end
 
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
       :'calendar_date(2i)',
       :'calendar_date(3i)',
       :calendar_day_selected,
-      category_mappings_attributes: [:id, :selected],
+      drawer_mappings_attributes: [:id, :selected],
     ]
     if user_params
       user_params.delete(:password) if user_params[:password]&.empty?

@@ -1,6 +1,5 @@
 .header--banner
-  -# = link_to header_title, root_path, class: 'header--title', 'up-target': '.content, [settings-toggle]', 'up-restore-scroll': true
-  = link_to header_title, nil, class: 'header--title'
+  = link_to header_title, root_path, class: 'header--title', 'up-target': '.content'
 
   .header--links
     - if user_signed_in?
@@ -8,6 +7,3 @@
         = render 'svg/settings'
       .header--sign-out
         = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link', 'up-target': 'body'
-
-- if user_signed_in?
-  = render 'home/forms'

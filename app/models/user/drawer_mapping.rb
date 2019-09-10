@@ -1,10 +1,10 @@
-class User::CategoryMapping < ApplicationRecord
+class User::DrawerMapping < ApplicationRecord
   include Shared::DoesFlag[:selected, default: true]
 
   scope :selected, ->  { where(selected: true) }
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :drawer
 
-  validates :user, uniqueness: { scope: :category }
+  validates :user, uniqueness: { scope: :drawer }
 end

@@ -3,15 +3,11 @@ class HomeController < ApplicationController
   before_action :require_login
 
   def show
-    build_new_category
+    redirect_to :new_drawer, layout: 'plain' if current_user.drawers.empty?
     load_entries
   end
 
   private
-
-  def build_new_category
-    @category= current_user.categories.build
-  end
 
   def load_entries
     @todos = Todo.undone

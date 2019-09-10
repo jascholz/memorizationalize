@@ -2,6 +2,7 @@ class Users::SessionsController < ApplicationController
 
   def new
     @session = User::Session.new
+    render layout: 'plain'
   end
 
   def create

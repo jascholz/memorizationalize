@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   include Consul::Controller
   include Devise::Controllers::Helpers
+  
   protect_from_forgery(with: :exception, prepend: true)
+  before_action :require_login, except: [:new, :create]
 
   current_power do
     Power.new(current_user)

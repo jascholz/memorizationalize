@@ -1,5 +1,5 @@
 module Shared::DoesEntriesController
-  as_trait do |name, domain: :category|
+  as_trait do |name, domain: :drawer|
     class_name = name.to_s.camelize
     domain_class = domain.to_s.camelize.constantize
     instance_variable = "@#{name}"
@@ -49,13 +49,13 @@ module Shared::DoesEntriesController
 
     define_method "save_#{name}" do
       if instance_variable_get(instance_variable).save
-        if domain == :category
-          category = instance_variable_get(instance_variable).category
-        elsif respond_to?(:category)
-          category = instance_variable_get(instance_variable).send(domain).category
+        if domain == :drawer
+          drawer = instance_variable_get(instance_variable).drawer
+        elsif respond_to?(:drawer)
+          drawer = instance_variable_get(instance_variable).send(domain).drawer
         end
-        if category && current_user.categories.exclude?(category)
-          current_user.categories << category
+        if drawer && current_user.drawer.exclude?(drawer)
+          current_user.drawer << drawer
         end
         redirect_to root_path
       end
