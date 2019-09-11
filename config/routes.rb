@@ -9,12 +9,12 @@ Rails.application.routes.draw do
       post :invitation
     end
   end
-  
+
   resources :events, only: [:create, :update, :new, :edit, :show]
   resources :notes, only: [:create, :update, :show, :destroy]
   resources :ideas, only: [:create, :update, :show]
   resources :images, only: [:create, :update, :show]
-  resources :todos, only: [:create, :update, :show]
+  resources :todos, only: [:create, :update, :show, :index]
 
   # resources :categories, only: [:index, :create, :update]
 

@@ -6,7 +6,7 @@ class Users::SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:user_session][:email])
+    @user = User.active.find_by(email: params[:user_session][:email])
     sign_in @user if @user
     redirect_to root_path
   end

@@ -2,8 +2,14 @@ module Shared::DoesEntriesController
   as_trait do |name, domain: :drawer|
     class_name = name.to_s.camelize
     domain_class = domain.to_s.camelize.constantize
+    collection_variable = "@#{name}s"
     instance_variable = "@#{name}"
     domain_variable = "@#{domain}"
+
+    define_method "index" do
+      send("load_#{name}s")
+      render layout: 'modal'
+    end
 
     define_method "show" do
       send("load_#{name}")
@@ -35,6 +41,10 @@ module Shared::DoesEntriesController
 
     private
 
+    define_method "load_#{name}s" do
+      instance_variable_set(collection_variable, class_name.constantize.all)
+    end
+
     define_method "load_#{name}" do
       instance_variable_set(instance_variable, class_name.constantize.find(params[:id]))
     end
@@ -54,8 +64,8 @@ module Shared::DoesEntriesController
         elsif respond_to?(:drawer)
           drawer = instance_variable_get(instance_variable).send(domain).drawer
         end
-        if drawer && current_user.drawer.exclude?(drawer)
-          current_user.drawer << drawer
+        if drawer && current_user.drawers.exclude?(drawer)
+          current_user.drawers << drawer
         end
         redirect_to root_path
       end
@@ -64,10 +74,6 @@ module Shared::DoesEntriesController
     define_method "#{name}_params" do
       instance_params = params[name]
       instance_params ? instance_params.permit(permitted_params) : {}
-    end
-
-    define_method "load_#{name}s" do
-      instance_variable_set("@#{name}", class_name.constantize)
     end
 
   end

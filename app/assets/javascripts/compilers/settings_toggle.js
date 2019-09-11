@@ -9,6 +9,7 @@ up.compiler('[settings-toggle]', (settingsToggle) => {
   })
 
   up.on('app:reset', () => {
+    let hero = up.element.first(document, '.home-hero')
     hero.classList.remove('-options')
   })
 })
