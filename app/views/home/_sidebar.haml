@@ -9,7 +9,7 @@
       = form.fields_for :drawer_mappings do |drawer_mappings_form|
         .sidebar--drawer
           = drawer_mappings_form.label :selected, class: 'sidebar--drawer-label', 'checkbox': true do
-            .checkbox{selected: drawer_mappings_form.object.selected?}
-            = drawer_mappings_form.object.drawer
-            [color]
+            - color = drawer_mappings_form.object.selected? ? drawer_mappings_form.object.drawer.color : nil
+            .checkbox{ selected: drawer_mappings_form.object.selected?, color: color }
+            .checkbox--text= drawer_mappings_form.object.drawer
           = drawer_mappings_form.check_box :selected, class: :hidden

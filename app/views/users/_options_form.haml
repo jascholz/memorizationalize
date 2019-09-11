@@ -1,17 +1,20 @@
-.content--form
-  = form_for ActiveType.cast(current_user, User::Form), html: { class: 'form' } do |f|
-    .form--fields
-      .form--group
-        = f.label :name, class: 'form--label'
-        = f.text_field :name, class: 'form--field'
+.modal--header
+  .headline Edit user
+.modal--content
+  .content--form
+    = form_for ActiveType.cast(current_user, User::Form), html: { class: 'form' } do |f|
+      .form--fields
+        .form--group
+          = f.label :name, class: 'form--label'
+          = f.text_field :name, class: 'form--field'
 
-      .form--group
-        = f.label :email, class: 'form--label'
-        = f.text_field :email, class: 'form--field'
+        .form--group
+          = f.label :email, class: 'form--label'
+          = f.text_field :email, class: 'form--field'
 
-      .form--group
-        = f.label :password, class: 'form--label'
-        = f.password_field :password, class: 'form--field'
+        .form--group
+          = f.label :password, class: 'form--label'
+          = f.password_field :password, class: 'form--field'
 
-      .form--group
-        = f.submit 'Submit', class: 'form--button'
+        .form--group
+          = f.submit 'Submit', class: 'form--button'

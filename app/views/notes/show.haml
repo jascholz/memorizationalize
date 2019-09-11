@@ -1,5 +1,5 @@
 .modal--header
-  = @note.name
+  .headline.-bold= @note.name
 .modal--content
-  = @note.description.split("\n").each do |line|
+  - @note.description.split("\n").each do |line|
     %p= line
