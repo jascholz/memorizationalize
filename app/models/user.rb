@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Shared::DoesCalendarDate
   include Shared::DoesFlag[:confirmed, default: false]
+  include Shared::DoesTrash
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
@@ -18,7 +19,7 @@ class User < ApplicationRecord
     ['admin', 'editor', 'viewer']
   end
 
-  scope :unconfirmed, ->  { where(confirmed: false) }
+  scope :unconfirmed, ->  { active.where(confirmed: false) }
 
   def drawer_selected?(drawer)
     drawer_mappings.find_by(drawer: drawer)&.selected

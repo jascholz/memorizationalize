@@ -5,7 +5,7 @@
         .galleries--container
           .headline
             = gallery.name
-            = "(Category: #{gallery.category&.name})"
+            = "(Drawer: #{gallery.drawer.name})"
             = link_to '(show all)', gallery_show_all_path(gallery)
           .gallery(gallery="#{gallery.id}")
             - gallery.images.each do |image|

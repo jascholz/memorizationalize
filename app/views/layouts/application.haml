@@ -8,8 +8,9 @@
     = javascript_include_tag 'application'
 
   %body(layout="application")
-    .header= render 'layouts/header'
-    = render 'home/forms'
+    .header
+      = render 'layouts/header'
+      = render 'home/forms'
     .content
       = render 'shared/admin_notifications'
       -#= render 'layouts/flash_message'

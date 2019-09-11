@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     save_user
   end
 
+  def destroy
+    load_user
+    @user.trash!
+    redirect_to root_path
+  end
+
   private
 
   def load_user
@@ -70,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def user_scope
-    User.all
+    User.active
   end
 
 end

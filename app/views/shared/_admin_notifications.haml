@@ -10,7 +10,7 @@
             = form_for user, html: { 'up-autosubmit': true, 'up-target': '.notifications', 'up-restore-scroll': true } do |f|
               = f.label :confirmed, '✔️', class: ['link', 'user-confirmation--link']
               = f.check_box :confirmed, class: :hidden
-            = link_to '❌', user, method: :destroy
+            = link_to '❌', user, method: :delete
           .user-confirmation--info
             = "#{user.name} (#{user.created_at.strftime('%d.%m.%Y')})"
             = " - Message: “#{user.sign_up_message}“" if user.sign_up_message # „

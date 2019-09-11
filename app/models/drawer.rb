@@ -16,11 +16,7 @@ class Drawer < ApplicationRecord
   scope :ordered, -> { order(priority: :desc, name: :desc) }
 
   def to_s
-    if self.persisted?
-      "#{name} (#{priority})"
-    else
-     name.presence || 'New Drawer'
-    end
+    name
   end
 
 end
