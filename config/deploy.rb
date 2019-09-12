@@ -4,7 +4,6 @@ lock '~> 3.11.1'
 abort 'You must run this using "bundle exec..."' unless ENV['BUNDLE_BIN_PATH'] || ENV['BUNDLE_GEMFILE']
 
 set :application, 'memorizationalize'
-set :scm, :git
 set :repo_url, 'git@github.com:jascholz/memorizationalize.git'
 set :log_level, :info
 
