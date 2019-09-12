@@ -6,7 +6,7 @@
           .headline
             = gallery.name
             = "(Drawer: #{gallery.drawer.name})"
-            = link_to '(show all)', gallery_show_all_path(gallery)
+            -# = link_to '(all)', gallery_show_all_path(gallery)
           .gallery(gallery="#{gallery.id}")
             - gallery.images.each do |image|
               = link_to image_tag(image.file.thumb.url, class: 'image--thumbnail'), image_path(image), 'up-modal': '.image', class: ['image--thumbnail-container', 'gallery--image']

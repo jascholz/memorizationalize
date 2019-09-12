@@ -1,4 +1,6 @@
 class Drawer::Invitation < ActiveType::Object
+  # include DoesCopyError[from: :drawer, to: :invite_code]
+
   attribute  :invite_code, :string
   attribute :drawer_id, :integer
   belongs_to :drawer

@@ -1,11 +1,7 @@
 .form--fields(image)
-  = render 'shared/basic_fields', form: form
+  = render 'shared/basic_fields', domain: :gallery, form: form
 
   .form--section
-
-    .form--group
-      = form.label :gallery_id, class: 'form--label'
-      = form.collection_select :gallery_id, current_power.galleries, :id, :name, {}, { class: 'form--select' }
 
     .form--group
       = form.label :file, class: 'form--label'

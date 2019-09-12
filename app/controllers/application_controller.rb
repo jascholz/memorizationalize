@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_confirmed
+    if user_signed_in? && !current_user.confirmed?
+      if current_user.drawers.empty?
+        redirect_to new_drawer_path, layout: 'plain'
+      end
+    end
+  end
+
 end

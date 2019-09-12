@@ -1,4 +1,0 @@
-- if form.object.respond_to?(:drawer)
-  .form--group
-    = form.label :drawer_id, class: 'form--label'
-    = form.collection_select :drawer_id, current_power.drawers, :id, :name, {}, { class: 'form--select' }

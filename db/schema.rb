@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_211105) do
+ActiveRecord::Schema.define(version: 2019_09_12_214019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_211105) do
     t.string "invitation_code"
     t.integer "description"
     t.date "invitation_expiry_date"
+    t.string "invite_code"
   end
 
   create_table "events", force: :cascade do |t|

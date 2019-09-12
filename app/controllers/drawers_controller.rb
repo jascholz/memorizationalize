@@ -1,6 +1,6 @@
 class DrawersController < ApplicationController
 
-  before_action :require_approved, only: [:create]
+  before_action :require_confirmed, only: [:create]
   skip_before_action :require_login, only: [:new, :invitation]
 
   power :drawers, map: {
@@ -95,7 +95,7 @@ class DrawersController < ApplicationController
   def drawer_invitation_params
     drawer_invitation_params = params[:drawer_invitation]
     permitted_drawer_invitation_params = [
-      :invitation_code,
+      :invite_code,
     ]
     drawer_invitation_params ? drawer_invitation_params.permit(permitted_drawer_invitation_params) : {}
   end

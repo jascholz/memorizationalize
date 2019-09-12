@@ -4,12 +4,6 @@
   .form--section
 
     .form--group
-      = form.label :calendar_id, class: 'form--label'
-      = form.collection_select :calendar_id, current_power.calendars, :id, :name, {}, { class: 'form--select' }
-
-  .form--section
-
-    .form--group
       = form.label :start_date, class: 'form--label'
       = form.date_field :start_date, class: 'form--field'
 

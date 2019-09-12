@@ -9,7 +9,8 @@
     %p Please create your first drawer or apply your invitation, before you can start using memorizationalize!
 
   .form--radio_buttons
-    = collection_radio_buttons :adding, :mode, ['invitation', 'new_drawer'], :to_s, :humanize do |b|
+    - options = current_user.confirmed? ? ['invitation', 'new_drawer'] : ['invitation']
+    = collection_radio_buttons :adding, :mode, options, :to_s, :humanize do |b|
       = label_tag('adding_' + b.value, b.value, class: 'form--radio-button-label', "#{b.value}": '') do
         = radio_button_tag(:adding, b.value, false, class: 'form--radio-button hidden', 'up-switch': '[drawer-form]', 'dropdown-trigger': true) + b.text
 

@@ -9,7 +9,7 @@ module Power::DoesDrawer
     end
 
     power :creatable_drawers do
-      Drawer.none
+      Drawer.none # if @user.confirmed?
     end
 
     power :destroyable_drawers do
