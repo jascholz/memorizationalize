@@ -25,7 +25,7 @@ gem 'redis'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'tod'
-gem 'uglifier', '>= 1.3.0'
+# gem 'uglifier', '>= 1.3.0'
 gem 'unpoly-rails'
 gem 'whenever'
 

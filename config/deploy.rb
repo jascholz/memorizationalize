@@ -7,7 +7,7 @@ set :application, 'memorizationalize'
 set :repo_url, 'git@github.com:jascholz/memorizationalize.git'
 set :log_level, :info
 
-set :linked_files, %w(config/database.yml)
+set :linked_files, %w(config/database.yml config/secrets.yml)
 set :linked_dirs, %w(log public/system tmp/pids storage)
 
 set :keep_releases, 10
