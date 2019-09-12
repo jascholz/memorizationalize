@@ -1,5 +1,14 @@
 class DrawersController < ApplicationController
 
+  before_action :require_approved, only: [:create]
+  skip_before_action :require_login, only: [:new, :invitation]
+
+  power :drawers, map: {
+    [:update] => :updatable_drawers,
+    [:new, :create] => :creatable_drawers,
+    [:destroy] => :destroyable_drawers
+  }, as: :drawer_scope
+
   def index
     load_drawers
     render layout: 'modal'
@@ -8,9 +17,12 @@ class DrawersController < ApplicationController
   def new
     build_drawer
     build_drawer_invitation
-    render layout: 'plain' if !current_user.confirmed?
+    if current_user.confirmed?
+      render layout: 'modal'
+    else
+      render layout: 'plain'
+    end
   end
-
 
   def create
     build_drawer
@@ -25,12 +37,12 @@ class DrawersController < ApplicationController
   private
 
   def load_drawers
-    @drawers = current_user.drawers
+    @drawers = drawer_scope
   end
 
   def build_drawer
     attributes = drawer_params
-    @drawer ||= current_user.drawers.build
+    @drawer ||= drawer_scope.build
     @drawer.attributes = drawer_params
   end
 
@@ -43,21 +55,30 @@ class DrawersController < ApplicationController
   def save_drawer
     action = @drawer.new_record? ? :new : :edit
     if @drawer.save
-      current_user.drawers << @drawer
+      drawer_scope << @drawer
       redirect_to root_path
     else
       build_drawer_invitation
-      render action, layout: 'plain'
+
+      if current_user.confirmed?
+        render action, layout: 'modal'
+      else
+        render action, layout: 'plain'
+      end
     end
   end
 
   def save_drawer_invitation
     if @drawer_invitation.valid?
-      current_user.drawers << @drawer_invitation.drawer
+      drawer_scope << @drawer_invitation.drawer
       redirect_to root_path
     else
       build_drawer
-      render :new, layout: 'plain'
+      if current_user.confirmed?
+        render :new, layout: 'modal'
+      else
+        render :new, layout: 'plain'
+      end
     end
   end
 

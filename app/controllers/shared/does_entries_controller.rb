@@ -42,18 +42,18 @@ module Shared::DoesEntriesController
     private
 
     define_method "load_#{name}s" do
-      instance_variable_set(collection_variable, class_name.constantize.all)
+      instance_variable_set(collection_variable, send("#{name}_scope").all)
     end
 
     define_method "load_#{name}" do
-      instance_variable_set(instance_variable, class_name.constantize.find(params[:id]))
+      instance_variable_set(instance_variable, send("#{name}_scope").find(params[:id]))
     end
 
     define_method "build_#{name}" do
-      instance_variable_set(instance_variable, instance_variable_get(instance_variable) || class_name.constantize.new(creator: current_user))
+      instance_variable_set(instance_variable, instance_variable_get(instance_variable) || send("#{name}_scope").new(creator: current_user))
       instance_variable_get(instance_variable).attributes = send("#{name}_params")
       if instance_variable_get(instance_variable).send("#{domain}_id")
-        instance_variable_get(instance_variable).send("#{domain}=", domain_class.find(instance_variable_get(instance_variable).send("#{domain}_id")))
+        instance_variable_get(instance_variable).send("#{domain}=", current_power.send("updatable_#{domain}s").find(instance_variable_get(instance_variable).send("#{domain}_id")))
       end
     end
 

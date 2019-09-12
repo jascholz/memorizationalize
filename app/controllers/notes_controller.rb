@@ -1,6 +1,12 @@
 class NotesController < ApplicationController
   include Shared::DoesEntriesController[:note]
 
+  power :notes, map: {
+    [:update] => :updatable_notes,
+    [:new, :create] => :creatable_notes,
+    [:destroy] => :updatable_notes
+  }, as: :note_scope
+
   def destroy
     load_note
     @note.destroy

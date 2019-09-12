@@ -45,7 +45,7 @@ module FormHelper
       elsif drawer_2.new_record?
         1
       else
-        drawer_2.priority || 0 <=> drawer_1.priority || 0
+        0
       end
     end
   end

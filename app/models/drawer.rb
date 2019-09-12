@@ -1,11 +1,11 @@
 class Drawer < ApplicationRecord
-  has_many :todos, dependent: :nullify
-  has_many :galleries, dependent: :nullify
-  has_many :events, dependent: :nullify
-  has_many :ideas, dependent: :nullify
-  has_many :notes, dependent: :nullify
-  has_many :todos, dependent: :nullify
-  has_one :calendar, dependent: :nullify
+  has_many :todos, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :ideas, dependent: :destroy
+  has_many :notes, dependent: :destroy
+  has_many :todos, dependent: :destroy
+  has_many :galleries, dependent: :destroy
+  has_many :calendars, dependent: :destroy
 
   has_many :user_mappings, class_name: 'User::DrawerMapping', dependent: :destroy
   has_many :users, through: :user_mappings

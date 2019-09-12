@@ -2,6 +2,12 @@ class UsersController < ApplicationController
 
   skip_before_action :require_login, only: [:new, :create]
 
+  power :users, map: {
+    [:update] => :updatable_users,
+    [:new, :create] => :creatable_users,
+    [:destroy] => :updatable_users
+  }, as: :user_scope
+
   def show
     load_user
   end
@@ -73,10 +79,6 @@ class UsersController < ApplicationController
     else
        {}
     end
-  end
-
-  def user_scope
-    User.active
   end
 
 end

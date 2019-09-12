@@ -3,17 +3,18 @@ class HomeController < ApplicationController
   before_action :require_login
 
   def show
-    redirect_to :new_drawer, layout: 'plain' if current_user.drawers.empty?
     load_entries
   end
 
   private
 
   def load_entries
-    @todos = Todo.undone
-    @notes = Note.all
-    @ideas = Idea.all
-    @galleries = Gallery.all
-    @images = Image.where(gallery: nil)
+    @users = current_power.users.active
+    @todos = current_power.todos.undone
+    @notes = current_power.notes.all
+    @ideas = current_power.ideas.all
+    @calendars = current_power.calendars.all
+    @drawers = current_power.drawers.all
+    @galleries = current_power.galleries.all
   end
 end

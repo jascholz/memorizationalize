@@ -1,6 +1,12 @@
 class ImagesController < ApplicationController
   include Shared::DoesEntriesController[:image, domain: :gallery]
 
+  power :images, map: {
+    [:update] => :updatable_images,
+    [:new, :create] => :creatable_images,
+    [:destroy] => :updatable_images
+  }, as: :image_scope
+
   private
 
   def permitted_params

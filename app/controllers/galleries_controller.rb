@@ -1,6 +1,10 @@
 class GalleriesController < ApplicationController
 
-  before_action :require_login
+  power :galleries, map: {
+    [:update] => :updatable_galleries,
+    [:new, :create] => :creatable_galleries,
+    [:destroy] => :updatable_galleries
+  }, as: :gallery_scope
 
   def show_all
     load_gallery
@@ -10,7 +14,7 @@ class GalleriesController < ApplicationController
   private
 
   def load_gallery
-    @gallery ||= Gallery.find(gallery_params[:id])
+    @gallery ||= gallery_scope.find(gallery_params[:id])
   end
 
   def gallery_params
