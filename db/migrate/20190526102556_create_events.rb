@@ -2,8 +2,9 @@ class CreateEvents < ActiveRecord::Migration[5.1]
   def change
     create_table :events do |t|
       t.timestamps
+
       t.belongs_to :creator
-      t.references :calendar
+      t.belongs_to :calendar
       t.string :name
       t.string :description
       t.date :start_date

@@ -16,8 +16,8 @@
   = form_for @drawer_invitation, url: invitation_drawers_path, html: { class: 'drawer-invitation-form', 'up-target': '.drawer-invitation-form', 'drawer-form': true, 'up-show-for': 'invitation' } do |f|
     .form--fields
       .form--group
-        = f.label :invitation_code, class: 'form--label'
-        = f.text_field :invitation_code, class: 'form--field'
+        = f.label :invite_code, class: 'form--label'
+        = f.text_field :invite_code, class: 'form--field'
 
       .form--group
         = f.submit 'Submit', class: 'form--button'
