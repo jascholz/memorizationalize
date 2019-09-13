@@ -3,6 +3,9 @@ set :stage, :production
 set :deploy_to, '/var/www/jakob.scholz_privat_memorizationalize'
 set :rails_env, 'production'
 set :branch, ENV['DEPLOY_BRANCH'] || 'master'
+set :user, 'deploy-memorizationalize_p'
+
+# shell: ssh deploy-memorizationalize_p@c23.makandra-3.makandra.de
 
 server 'c23.makandra-3.makandra.de', user: 'deploy-memorizationalize_p', roles: %w(app web cron db)
 server 'c42.makandra-3.makandra.de', user: 'deploy-memorizationalize_p', roles: %w(app web)

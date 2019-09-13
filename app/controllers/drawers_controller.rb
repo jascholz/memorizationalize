@@ -41,13 +41,11 @@ class DrawersController < ApplicationController
   end
 
   def build_drawer
-    attributes = drawer_params
-    @drawer ||= drawer_scope.build
+    @drawer ||= ActiveType.cast(drawer_scope.build, Drawer::Form)
     @drawer.attributes = drawer_params
   end
 
   def build_drawer_invitation
-    attributes = drawer_invitation_params
     @drawer_invitation ||= Drawer::Invitation.new
     @drawer_invitation.attributes = drawer_invitation_params
   end
