@@ -1,7 +1,7 @@
 module Power::DoesDrawer
   as_trait do
     power :drawers do
-      @user.drawers
+      @user.drawers.selected
     end
 
     power :updatable_drawers do
@@ -13,7 +13,7 @@ module Power::DoesDrawer
     end
 
     power :destroyable_drawers do
-      drawers.joins(:user_mappings).group('drawers.id').having('count(user_mappings) = 1')
+      @user.drawers.joins(:user_mappings).group('drawers.id').having('count(user_mappings) = 1')
     end
   end
 end

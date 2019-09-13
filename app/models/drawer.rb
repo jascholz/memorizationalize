@@ -14,6 +14,7 @@ class Drawer < ApplicationRecord
   has_defaults color: '#000000'
 
   scope :ordered, -> { order(priority: :desc, name: :desc) }
+  scope :selected, -> { Power.current.user.drawer_mappings.selected.traverse_association(:drawer) }
 
   def to_s
     name
