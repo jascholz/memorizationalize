@@ -17,7 +17,7 @@ class DrawersController < ApplicationController
   def new
     build_drawer
     build_drawer_invitation
-    if current_user.confirmed?
+    if current_user.confirmed? && current_user.drawers.any?
       render layout: 'modal'
     else
       render layout: 'plain'
@@ -53,7 +53,7 @@ class DrawersController < ApplicationController
   def save_drawer
     action = @drawer.new_record? ? :new : :edit
     if @drawer.save
-      drawer_scope << @drawer
+      current_user.drawers << @drawer
       redirect_to root_path
     else
       build_drawer_invitation
@@ -68,7 +68,7 @@ class DrawersController < ApplicationController
 
   def save_drawer_invitation
     if @drawer_invitation.valid?
-      drawer_scope << @drawer_invitation.drawer
+      current_user.drawers << @drawer_invitation.drawer
       redirect_to root_path
     else
       build_drawer
