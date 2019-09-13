@@ -35,15 +35,12 @@ gem 'whenever'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capistrano', require: false
+  gem 'capistrano-opscomplete'
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails'
   gem 'capistrano-sidekiq'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-end
-
-group :production do
-  gem 'capistrano-opscomplete'
 end
 
 group :development do
