@@ -53,7 +53,7 @@ class DrawersController < ApplicationController
   def save_drawer
     action = @drawer.new_record? ? :new : :edit
     if @drawer.save
-      current_user.drawers << @drawer
+      current_user.drawer_mappings.create(drawer: @drawer, may_edit: true)
       redirect_to root_path
     else
       build_drawer_invitation

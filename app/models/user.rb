@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :galleries, class_name: 'Gallery', foreign_key: :creator_id, dependent: :destroy, inverse_of: :creator
   has_many :drawer_mappings, class_name: 'User::DrawerMapping', dependent: :destroy
-  has_many :drawers, class_name: 'Drawer', through: :drawer_mappings
+  has_many :drawers, through: :drawer_mappings
 
   accepts_nested_attributes_for :drawer_mappings, update_only: true
 
