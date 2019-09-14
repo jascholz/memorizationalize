@@ -18,6 +18,10 @@ class Event < ApplicationRecord
 
   has_defaults start_date: -> { Date.today }, end_date: -> { Date.today }
 
+  def to_s
+    name
+  end
+
   private
 
   def not_all_day?

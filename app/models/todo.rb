@@ -9,4 +9,8 @@ class Todo < ApplicationRecord
 
   has_defaults deadline: -> { Date.today }
 
+  def to_s
+    name
+  end
+
 end

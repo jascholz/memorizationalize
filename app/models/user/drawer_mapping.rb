@@ -11,4 +11,9 @@ class User::DrawerMapping < ApplicationRecord
   belongs_to :drawer
 
   validates :user, uniqueness: { scope: :drawer }
+
+  def to_s
+    [user, drawer].join(' - ')
+  end
+
 end

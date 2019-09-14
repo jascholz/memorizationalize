@@ -1,0 +1,14 @@
+.klasses
+  - @klasses.each do |klass|
+    .klass
+      .klass--name= klass.to_s.pluralize
+      - klass.all.each do |record|
+        - invalid = record.invalid?
+        .klass--record{ class: ('-invalid' if invalid) }
+          = "(#{record.id}) name: \"#{record.to_s}\""
+          = "creator: #{record.creator&.name}" if record.respond_to?(:creator)
+          - if invalid
+            - record.errors.each do |error, description|
+              .klass--eror
+                = error
+                = description

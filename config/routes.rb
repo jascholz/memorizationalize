@@ -32,4 +32,6 @@ Rails.application.routes.draw do
     end
     resources :category_mappings, only: :update, controller: 'users/category_mappings'
   end
+
+  resources :admin, only: :index
 end

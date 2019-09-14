@@ -5,6 +5,10 @@ class Note < ApplicationRecord
 
   scope :ordered, -> { order(updated_at: :asc) }
 
+  def to_s
+    name
+  end
+
   private
 
   def randomize_post_it

@@ -2,7 +2,7 @@ class Image < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   belongs_to :gallery
 
-  accepts_nested_attributes_for :gallery, reject_if: :reject_domain
+  accepts_nested_attributes_for :gallery
 
   mount_uploader :file, ImageUploader
 
@@ -11,7 +11,8 @@ class Image < ApplicationRecord
 
   has_defaults gallery: Gallery.first
 
-  def reject_domain(params)
-    gallery_id != 0
+  def to_s
+    name
   end
+
 end
