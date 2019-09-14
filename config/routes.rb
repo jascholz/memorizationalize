@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     collection do
       post :invitation
     end
+
+    member do
+      patch :invite_code
+    end
   end
 
   resources :events, only: [:create, :update, :new, :edit, :show]

@@ -11,6 +11,7 @@ class Drawer < ApplicationRecord
   has_many :users, through: :user_mappings
 
   validates :name, :color, presence: true
+  validates :invite_code, uniqueness: true
   has_defaults color: '#000000'
 
   scope :ordered, -> { order(name: :desc) }
@@ -18,6 +19,11 @@ class Drawer < ApplicationRecord
 
   def to_s
     name
+  end
+
+  def generate_invite_code
+    self.invite_code = SecureRandom.hex(4)
+    self.invitation_expiry = 1.week.from_now
   end
 
 end

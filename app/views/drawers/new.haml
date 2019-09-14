@@ -1,41 +1,10 @@
-.form
-  .headline
-    Add a drawer
-  .form--text
-    %p Drawers are cool.
-    %p Drawers are your new way to organize things.
-    %p You can have multiple drawers.
-    %p You can share drawers with your friends.
-    %p Please create your first drawer or apply your invitation, before you can start using memorizationalize!
+.headline
+  Add a drawer
+.form--text
+  %p Drawers are cool.
+  %p Drawers are your new way to organize things.
+  %p You can have multiple drawers.
+  %p You can share drawers with your friends.
+  %p Please create your first drawer or apply your invitation, before you can start using memorizationalize!
 
-  .form--radio_buttons
-    - options = current_user.confirmed? ? ['invitation', 'new_drawer'] : ['invitation']
-    = collection_radio_buttons :adding, :mode, options, :to_s, :humanize do |b|
-      = label_tag('adding_' + b.value, b.value, class: 'form--radio-button-label', "#{b.value}": '') do
-        = radio_button_tag(:adding, b.value, false, class: 'form--radio-button hidden', 'up-switch': '[drawer-form]', 'dropdown-trigger': true) + b.text
-
-  = form_for @drawer_invitation, url: invitation_drawers_path, html: { class: 'drawer-invitation-form', 'up-target': '.drawer-invitation-form', 'drawer-form': true, 'up-show-for': 'invitation' } do |f|
-    .form--fields
-      .form--group
-        = f.label :invite_code, class: 'form--label'
-        = f.text_field :invite_code, class: 'form--field'
-
-      .form--group
-        = f.submit 'Submit', class: 'form--button'
-
-  = form_for @drawer, html: { class: 'drawer-form', 'up-target': '.drawer-form', 'drawer-form': true, 'up-show-for': 'new_drawer' } do |f|
-    .form--fields
-      .form--group
-        = f.label :name, class: 'form--label'
-        = f.text_field :name, class: 'form--field'
-
-      .form--group
-        = f.label :color, class: 'form--label'
-        = f.color_field :color, class: 'form--field'
-
-      .form--group
-        = f.label :description, class: 'form--label'
-        = f.text_area :description, class: 'form--text-area'
-
-      .form--group
-        = f.submit 'Submit', class: 'form--button'
+= render 'drawers/form'

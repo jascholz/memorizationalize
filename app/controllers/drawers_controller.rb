@@ -4,7 +4,7 @@ class DrawersController < ApplicationController
   skip_before_action :require_login, only: [:new, :invitation]
 
   power :drawers, map: {
-    [:update] => :updatable_drawers,
+    [:update, :invite_code] => :updatable_drawers,
     [:new, :create] => :creatable_drawers,
     [:destroy] => :destroyable_drawers
   }, as: :drawer_scope
@@ -17,11 +17,7 @@ class DrawersController < ApplicationController
   def new
     build_drawer
     build_drawer_invitation
-    if current_user.confirmed? && current_user.drawers.any?
-      render layout: 'modal'
-    else
-      render layout: 'plain'
-    end
+    render layout: 'plain'
   end
 
   def create
@@ -31,13 +27,25 @@ class DrawersController < ApplicationController
 
   def invitation
     build_drawer_invitation
+    # @drawer_invitation.drawer = Drawer.find_by(invite_code: @drawer_invitation.invite_code)
     save_drawer_invitation
+  end
+
+  def invite_code
+    load_drawer
+    @drawer.generate_invite_code
+    @drawer.save
+    redirect_to drawers_path, layout: 'modal'
   end
 
   private
 
   def load_drawers
     @drawers = drawer_scope
+  end
+
+  def load_drawer
+    @drawer = drawer_scope.find(params[:id])
   end
 
   def build_drawer
@@ -68,7 +76,7 @@ class DrawersController < ApplicationController
 
   def save_drawer_invitation
     if @drawer_invitation.valid?
-      current_user.drawers << @drawer_invitation.drawer
+      current_user.drawer_mappings.create(drawer: @drawer_invitation.drawer, may_edit: true)
       redirect_to root_path
     else
       build_drawer

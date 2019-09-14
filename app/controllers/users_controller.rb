@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     load_user
+    render layout: 'modal'
   end
 
   def create

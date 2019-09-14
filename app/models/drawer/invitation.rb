@@ -1,7 +1,7 @@
 class Drawer::Invitation < ActiveType::Object
   # include DoesCopyError[from: :drawer, to: :invite_code]
 
-  attribute  :invite_code, :string
+  attribute :invite_code, :string
   attribute :drawer_id, :integer
   belongs_to :drawer
 
@@ -9,10 +9,8 @@ class Drawer::Invitation < ActiveType::Object
 
   validates :invite_code, :drawer, presence: true
 
-  private
-
   def find_drawer
-    @drawer_id = Drawer.find_by(invite_code: invite_code)
+    self.drawer_id = Drawer.find_by(invite_code: invite_code).id
   end
 
 end

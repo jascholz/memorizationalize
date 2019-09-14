@@ -2,8 +2,8 @@
   .sidebar--section
     .sidebar--headline
       Drawers
-      -# = link_to drawers_path, 'up-modal': '.modal' do
-      -#   (edit)
+      = link_to drawers_path, 'up-modal': '.modal' do
+        (edit)
 
     = form_for current_user, html: { 'up-autosubmit': 'true', 'up-target': '.content--body', 'up-restore-scroll': 'true' } do |form|
       = form.fields_for :drawer_mappings, form.object.drawer_mappings.ordered_by_drawer do |drawer_mappings_form|
