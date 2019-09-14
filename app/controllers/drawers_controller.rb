@@ -11,6 +11,8 @@ class DrawersController < ApplicationController
 
   def index
     load_drawers
+    build_drawer
+    build_drawer_invitation
     render layout: 'modal'
   end
 
@@ -27,7 +29,6 @@ class DrawersController < ApplicationController
 
   def invitation
     build_drawer_invitation
-    # @drawer_invitation.drawer = Drawer.find_by(invite_code: @drawer_invitation.invite_code)
     save_drawer_invitation
   end
 

@@ -1,0 +1,31 @@
+@import ../variables
+
+.drawer
+  display: flex
+  align-items: center
+
+.drawer--name
+
+.drawer--users
+  display: flex
+
+.drawer--user
+
+.drawer--invite-code
+  background-color: $light-grey
+  min-width: 50px
+  border: 1px solid $grey
+  border-right: none
+  border-top-left-radius: 2px
+  border-bottom-left-radius: 2px
+  padding: 3px
+
+.drawer--new-invite-code
+  &::before
+    content: '⭯'
+    background-color: $light-grey
+    border: 1px solid $grey
+    border-left: none
+    border-top-right-radius: 2px
+    border-bottom-right-radius: 2px
+    padding: 3px

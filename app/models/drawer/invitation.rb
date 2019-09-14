@@ -9,6 +9,8 @@ class Drawer::Invitation < ActiveType::Object
 
   validates :invite_code, :drawer, presence: true
 
+  private
+
   def find_drawer
     self.drawer_id = Drawer.find_by(invite_code: invite_code).id
   end

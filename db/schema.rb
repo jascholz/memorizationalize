@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_135530) do
     t.string "color"
     t.string "invitation_code"
     t.integer "description"
-    t.date "invitation_expiry_date"
+    t.date "invitation_expiry"
     t.string "invite_code"
   end
 
