@@ -1,5 +1,7 @@
 class User::Form < ActiveType::Record[User]
   def name=(name)
-    self.first_name, self.last_name = name.split(' ').values_at(0, -1)
+    names = name.split(' ')
+    self.first_name = names[0]
+    self.last_name = names[-1] if names.count > 1
   end
 end
