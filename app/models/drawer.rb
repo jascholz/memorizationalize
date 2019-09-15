@@ -11,7 +11,7 @@ class Drawer < ApplicationRecord
   has_many :users, through: :user_mappings
 
   validates :name, :color, presence: true
-  validates :invite_code, uniqueness: true
+  validates :invite_code, uniqueness: true, allow_blank: true
   has_defaults color: '#000000'
 
   scope :ordered, -> { order(name: :desc) }

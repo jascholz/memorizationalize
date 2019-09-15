@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2019_09_14_135530) do
     t.string "name"
     t.string "color"
     t.string "invitation_code"
-    t.integer "description"
     t.date "invitation_expiry"
     t.string "invite_code"
+    t.string "description"
   end
 
   create_table "events", force: :cascade do |t|

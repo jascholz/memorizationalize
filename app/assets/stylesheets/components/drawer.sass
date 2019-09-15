@@ -3,29 +3,45 @@
 .drawer
   display: flex
   align-items: center
+  margin-bottom: $spacing
+
+.drawer--color
+  width: 1em
+  height: 1em
+  border: 1px solid $black
+  border-radius: 3px
 
 .drawer--name
+  font-weight: bold
+  margin: 0 15px
 
 .drawer--users
   display: flex
+  margin: 0 15px
 
 .drawer--user
+  margin: 0 5px
+  text-decoration: underline
+
+  &:hover
+    text-decoration: none
 
 .drawer--invite-code
-  background-color: $light-grey
-  min-width: 50px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  height: calc(1.5em + 2px)
+  width: 150px
+  background-color: lighten($light-grey, 10)
   border: 1px solid $grey
-  border-right: none
-  border-top-left-radius: 2px
-  border-bottom-left-radius: 2px
-  padding: 3px
+  border-radius: 3px
+  margin: 0 15px
+  padding: 3px 15px
 
-.drawer--new-invite-code
-  &::before
-    content: '⭯'
-    background-color: $light-grey
-    border: 1px solid $grey
-    border-left: none
-    border-top-right-radius: 2px
-    border-bottom-right-radius: 2px
-    padding: 3px
+.drawer--generate-invite-code
+  margin: -10px 0 -10px 0
+  font-size: 1.5em
+  font-weight: bold
+
+  &:hover
+    color: $highlight-color

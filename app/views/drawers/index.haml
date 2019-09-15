@@ -2,16 +2,17 @@
   .headline.-bold Drawers
 .modal--content
   .drawers
-    - @drawers.each do |drawer|
+    - @drawers.ordered.each do |drawer|
       .drawer
-        .drawer--name= drawer.name
-        .drawer--color= drawer.color
-        .drawer--users
-          - drawer.users.each do |user|
-            .drawer--user= link_to user, user, 'up-target': '.modal'
         .drawer--invite-code
+          .drawer--color(colored="#{drawer.color}")
           = drawer.invite_code
-          = "(valid until #{l(drawer.invitation_expiry, format: '%A, %d.%m.%Y')})" if drawer.invitation_expiry
-        = link_to '', invite_code_drawer_path(drawer), method: :patch, class: 'drawer--new-invite-code', 'up-target': '.drawers'
+          = link_to '⭯', invite_code_drawer_path(drawer), method: :patch, class: 'drawer--generate-invite-code', 'up-target': '.drawers'
+          -# = "(valid until #{l(drawer.invitation_expiry, format: '%A, %d.%m.%Y')})" if drawer.invitation_expiry
+        .drawer--name= drawer.name
+        .drawer--description= drawer.description
+        .drawer--users
+          - drawer.users.where.not(id: current_user.id).each do |user|
+            = link_to user, user, class: 'drawer--user', 'up-target': '.modal'
 
   = render 'drawers/form'
