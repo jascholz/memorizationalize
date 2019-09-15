@@ -1,5 +1,6 @@
 .header--banner
-  = link_to header_title, root_path, class: 'header--title', 'up-target': '.content'
+  -# = link_to header_title, root_path, class: 'header--title', 'up-target': '.content'
+  = link_to header_title, '', class: 'header--title'
 
   .header--links
     - if user_signed_in?
