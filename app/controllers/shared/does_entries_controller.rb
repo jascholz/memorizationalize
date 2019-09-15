@@ -53,7 +53,7 @@ module Shared::DoesEntriesController
       instance_variable_set(instance_variable, instance_variable_get(instance_variable) || send("#{name}_scope").new(creator: current_user))
       instance_variable_get(instance_variable).attributes = send("#{name}_params")
       if instance_variable_get(instance_variable).send("#{domain}_id")
-        instance_variable_get(instance_variable).send("#{domain}=", current_power.send("updatable_#{domain}s").find(instance_variable_get(instance_variable).send("#{domain}_id")))
+        instance_variable_get(instance_variable).send("#{domain}=", current_power.send("updatable_#{domain.to_s.pluralize}").find(instance_variable_get(instance_variable).send("#{domain}_id")))
       end
     end
 

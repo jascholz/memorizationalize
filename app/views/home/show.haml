@@ -1,9 +1,9 @@
 .home
   .home-hero
+    .home-hero--background
     .home-hero--tab.-left
       = render 'notes/hero_list'
-      - if user_signed_in?
-        = render 'sidebar'
+      = render 'sidebar'
       .home-hero--content
         = image_tag 'minimize.svg', class: 'home-hero--content-toggle', 'hero-content-toggle': ''
         = render 'todos/hero_list'

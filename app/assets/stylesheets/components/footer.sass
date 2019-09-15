@@ -1,8 +1,17 @@
 @import ../variables
 
 .footer
+  display: flex
+  justify-content: flex-end
+  align-items: center
   position: relative
+  padding: 0 50px
   background-color: $grey
   height: $footer-height - 20px
-  width: 100%
+  // width: 100%
   box-shadow: 0 -3px 10px transparentize($black, 0.3)
+
+.footer--link
+  margin: 0 5px
+  &:hover
+    text-decoration: underline
