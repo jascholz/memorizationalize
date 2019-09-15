@@ -64,7 +64,7 @@ module CalendarHelper
     def day_tag
       content_tag(:div, class: ['calendar--day', ('-today' if @date_iterator == Date.today)], day: @date_iterator.day, 'up-modal': '.form[event]') do
         tags = ''.html_safe
-        tags << link_to(@date_iterator.day.to_s, new_event_path, class: 'calendar--day-number', 'up-modal': '.modal')
+        tags << link_to(@date_iterator.day.to_s, new_event_path(date: @date_iterator), class: 'calendar--day-number', 'up-modal': '.modal')
 
         tags << content_tag(:div, class: 'calendar--events') do
           events_tags = ''.html_safe

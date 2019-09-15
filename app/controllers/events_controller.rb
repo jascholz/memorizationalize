@@ -9,6 +9,15 @@ class EventsController < ApplicationController
     [:destroy] => :updatable_events
   }, as: :event_scope
 
+  def new
+    build_event
+    if (params[:date])
+      @event.start_date = params[:date]
+      @event.end_date = params[:date]
+    end
+    render layout: 'modal'
+  end
+
   private
 
   def permitted_params
