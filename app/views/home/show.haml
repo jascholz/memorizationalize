@@ -1,5 +1,5 @@
 .home
-  .home-hero
+  .home-hero(scrolly-page)
     .home-hero--background
     .home-hero--tab.-left
       = render 'notes/hero_list'
@@ -13,5 +13,5 @@
       .home-hero--content
         = render 'options'
 
-  .home-content
+  .home-content(scroll-page)
     = render 'galleries/index_list'
