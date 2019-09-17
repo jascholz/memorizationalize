@@ -3,16 +3,6 @@
 .modal--content
   .drawers
     - @drawers.ordered.each do |drawer|
-      .drawer
-        .drawer--invite-code
-          .drawer--color(colored="#{drawer.color}")
-          = drawer.invite_code
-          = link_to '⭯', invite_code_drawer_path(drawer), method: :patch, class: 'drawer--generate-invite-code', 'up-target': '.drawers'
-          -# = "(valid until #{l(drawer.invitation_expiry, format: '%A, %d.%m.%Y')})" if drawer.invitation_expiry
-        .drawer--name= drawer.name
-        .drawer--description= drawer.description
-        .drawer--users
-          - drawer.users.where.not(id: current_user.id).each do |user|
-            = link_to user, user, class: 'drawer--user', 'up-target': '.modal'
+      = render 'edit_form', drawer: drawer
 
   = render 'drawers/form'

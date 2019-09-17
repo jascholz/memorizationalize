@@ -1,5 +1,10 @@
 @import ../variables
 
+.drawers
+  display: flex
+  flex-direction: column
+  align-items: center
+
 .drawer
   display: flex
   align-items: center
@@ -10,9 +15,20 @@
   height: 1em
   border: 1px solid $black
   border-radius: 3px
+  color: transparentize($black, 1)
+
+  &:hover
+    cursor: pointer
 
 .drawer--name
+  display: flex
+  align-items: center
   font-weight: bold
+  margin: 0 15px
+
+.drawer--description
+  display: flex
+  align-items: center
   margin: 0 15px
 
 .drawer--users
@@ -26,7 +42,7 @@
   &:hover
     text-decoration: none
 
-.drawer--invite-code
+.drawer--invitation
   display: flex
   justify-content: space-between
   align-items: center
@@ -37,6 +53,9 @@
   border-radius: 3px
   margin: 0 15px
   padding: 3px 15px
+
+.drawer--invite-code
+  position: relative
 
 .drawer--generate-invite-code
   margin: -10px 0 -10px 0

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resource :home, only: :show
 
-  resources :drawers, only: [:index, :new, :create, :edit, :update] do
+  resources :drawers, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       post :invitation
     end

@@ -24,7 +24,18 @@ class DrawersController < ApplicationController
 
   def create
     build_drawer
+    save_new_drawer
+  end
+
+  def update
+    load_drawer
+    build_drawer
     save_drawer
+  end
+
+  def destroy
+    current_user.drawers.delete(current_user.drawers.find(params[:id]))
+    redirect_to root_path
   end
 
   def invitation
@@ -60,6 +71,12 @@ class DrawersController < ApplicationController
   end
 
   def save_drawer
+    @drawer.save
+    # render :edit
+    render partial: 'drawers/edit_form', drawer: @drawer, locals: { drawer: @drawer }
+  end
+
+  def save_new_drawer
     action = @drawer.new_record? ? :new : :edit
     if @drawer.save
       current_user.drawer_mappings.create(drawer: @drawer, may_edit: true)
@@ -92,6 +109,7 @@ class DrawersController < ApplicationController
   def drawer_params
     drawer_params = params[:drawer]
     permitted_drawer_params = [
+      :id,
       :name,
       :color,
       :description,
