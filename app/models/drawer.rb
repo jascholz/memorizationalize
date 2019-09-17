@@ -1,6 +1,5 @@
 class Drawer < ApplicationRecord
   has_many :todos, dependent: :destroy
-  has_many :events, dependent: :destroy
   has_many :ideas, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :todos, dependent: :destroy
