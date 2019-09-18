@@ -91,6 +91,13 @@ $calendar-margin: 2px
   display: flex
   justify-content: center
   align-items: center
+  min-height: 19px
+  padding: 0 2px 4px 2px
+
+.calendar--all-day-events
+  display: flex
+  justify-content: center
+  align-items: center
   padding: 0 2px 4px 2px
 
 .calendar--event
@@ -102,6 +109,12 @@ $calendar-margin: 2px
   width: 15px
   border: 1px solid darken($grey, 60)
   border-radius: 3px
+
+  &[all-day]
+    width: 150%
+    height: 6px
+    border-bottom-left-radius: 0
+    border-bottom-right-radius: 0
 
   &::after
     position: absolute

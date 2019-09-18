@@ -12,8 +12,8 @@ class Event < ApplicationRecord
   validates :start_time, :end_time, presence: true, if: :not_all_day?
   # validate :valid_weekdays
 
-  assignable_values_for :repeating_interval, default: nil, allow_blank: true do
-    ['daily', 'weekly', 'monthly']
+  assignable_values_for :repeating_interval, default: nil, allow_blank: :one_day? do
+    ['daily', 'weekly', 'monthly', 'every_year']
   end
 
   has_defaults start_date: -> { Date.today }, end_date: -> { Date.today }
@@ -22,11 +22,31 @@ class Event < ApplicationRecord
     name
   end
 
-  private
+  def daily?
+    repeating_interval == 'daily'
+  end
+
+  def weekly?
+    repeating_interval == 'weekly'
+  end
+
+  def monthly?
+    repeating_interval == 'monthly'
+  end
+
+  def every_year?
+    repeating_interval == 'every_year'
+  end
 
   def not_all_day?
     !all_day
   end
+
+  def one_day?
+    start_date == end_date
+  end
+
+  private
 
   # def valid_weekdays
   #   return if week_days.nil?
