@@ -17,7 +17,9 @@ up.compiler('[position]', (element, data) => {
   let elementHeight = elementRect.height
   let elementWidth = elementRect.width
 
-  function setPosition(notSmooth = false) {
+  let state = undefined
+
+  function setPosition() {
       widthRange = (container.scrollWidth - element.scrollWidth)
       divisorX = widthRange / container.scrollWidth
       heightRange = (container.scrollHeight - element.scrollHeight)
@@ -30,11 +32,26 @@ up.compiler('[position]', (element, data) => {
       element.style.top = percentY + '%'
 
       elementRect = element.getBoundingClientRect()
+
+      state = 'positioned'
   }
 
   function arrange() {
-    element.style.left = (elementWidth * parseInt(element.getAttribute('position'))) + 'px'
-    element.style.top = '100px'
+    let position = parseInt(element.getAttribute('position'))
+    let placeableAreaWidth = element.parentElement.getBoundingClientRect().width
+    let elementsPerRow = Math.floor(placeableAreaWidth / elementWidth)
+    let positionInRow = 0
+    if (elementsPerRow > 0) {
+      positionInRow = position % elementsPerRow
+    }
+    let row = Math.floor(position / elementsPerRow)
+    let y = row * elementHeight
+    let x = elementWidth * positionInRow
+
+    element.style.left = `${x}px`
+    element.style.top = `${y}px`
+
+    state = 'arranged'
   }
 
   function init() {
@@ -88,7 +105,11 @@ up.compiler('[position]', (element, data) => {
   })
 
   up.on(window, 'resize', () => {
-    setPosition(true)
+    if (state === 'positioned') {
+      setPosition()
+    } else {
+      arrange()
+    }
   })
 
   let unbindScroll = up.on(window, 'scroll', () => {
