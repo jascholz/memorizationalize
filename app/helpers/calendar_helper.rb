@@ -47,8 +47,8 @@ module CalendarHelper
     end
 
     def week_tag
-      week = @date_iterator.cweek
-      first_day_of_week = Date.today.beginning_of_week
+      # week = @date_iterator.cweek
+      # first_day_of_week = Date.today.beginning_of_week
       content_tag(:div, class: 'calendar--week') do
         tags = ''.html_safe
         tags << content_tag(:div, nil, class: 'calendar--week-number')
@@ -79,7 +79,6 @@ module CalendarHelper
           events_tags = ''.html_safe
           today_events = @events[@date_iterator]&.select(&:all_day?)
           today_events.to_a.each do |event|
-            all_day = nil
             if event.all_day? && event.start_date <= @date_iterator && event.end_date >= @date_iterator
               events_tags << link_to('', edit_event_path(event.id), class: 'calendar--event', 'colored': event.calendar.drawer.color, 'up-modal': '.modal', 'all-day': true)
             end
