@@ -10,12 +10,13 @@
   padding: 5px
   overflow: hidden
 
-  &.-moving
+  &.-moving:not(.-uninitialized)
     transition: top 1s, left 1s
 
   &.-uninitialized
     top: 50%
     left: 50%
+    opacity: 0
 
 .post-it--image
   position: absolute
