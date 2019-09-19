@@ -1,15 +1,4 @@
 .home-hero--notes
   - if @notes.length > 0
     - @notes.ordered.each_with_index do |note, index|
-      .post-it.-uninitialized{ 'position': index, 'up-data': post_it_json(note), 'note': note.id }
-        .post-it--image(flippable)= render 'svg/post_it'
-        .post-it--header
-          = link_to note.name, note_path(note), class: 'post-it--name', id: note.id, 'up-modal': '.modal'
-          = image_tag 'drag.svg', class: 'post-it--drag -hidden', 'drag': ''
-        .post-it--description
-          - note.description.split("\n").each do |paragraph|
-            %p= paragraph
-        = link_to (image_tag 'trash.svg'), note_path(note), method: :delete, class: 'post-it--delete -hidden', 'delete': '', 'up-target': '.no-target'
-        = form_for note, html: { 'up-target': '.no-target' } do |form|
-          = form.hidden_field :post_it_x, 'position-x': "post-it-x-#{note.id}"
-          = form.hidden_field :post_it_y, 'position-y': "post-it-y-#{note.id}"
+      = render 'notes/post_it', note: note, index: index

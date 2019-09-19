@@ -16,6 +16,7 @@ up.compiler('[position]', (element, data) => {
   let dragShiftY = 0
   let elementHeight = elementRect.height
   let elementWidth = elementRect.width
+  let color = element.getAttribute('color')
 
   let state = undefined
 
@@ -60,6 +61,7 @@ up.compiler('[position]', (element, data) => {
     if (data.flipped === true) {
       deleteLink.classList.add('-flipped')
     }
+    element.querySelector('svg').style.fill = color
 
     element.classList.add('-moving')
     setPosition()
