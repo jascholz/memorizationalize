@@ -45,7 +45,7 @@ up.compiler('[position]', (element, data) => {
       positionInRow = position % elementsPerRow
     }
     let row = Math.floor(position / elementsPerRow)
-    let y = row * elementHeight
+    let y = (row * elementHeight) + 100
     let x = elementWidth * positionInRow
 
     element.style.left = `${x}px`
