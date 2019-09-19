@@ -4,7 +4,7 @@ class DrawersController < ApplicationController
   skip_before_action :require_login, only: [:new, :invitation]
 
   power :drawers, map: {
-    [:update, :invite_code] => :updatable_drawers,
+    [:update, :invite_code, :index] => :updatable_drawers,
     [:new, :create] => :creatable_drawers,
     [:destroy] => :destroyable_drawers
   }, as: :drawer_scope

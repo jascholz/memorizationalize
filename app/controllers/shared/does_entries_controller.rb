@@ -61,11 +61,11 @@ module Shared::DoesEntriesController
       if instance_variable_get(instance_variable).save
         if domain == :drawer
           drawer = instance_variable_get(instance_variable).drawer
-        elsif respond_to?(:drawer)
-          drawer = instance_variable_get(instance_variable).send(domain).drawer
-        end
-        if drawer && current_user.drawers.exclude?(drawer)
-          current_user.drawers << drawer
+          current_user.drawer_mappings.find_by(drawer_id: drawer.id).touch
+        else
+          domain_object = instance_variable_get(instance_variable).send(domain)
+          domain_object.touch
+          domain_object.drawer.touch
         end
         redirect_to root_path
       end

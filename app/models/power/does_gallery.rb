@@ -5,7 +5,7 @@ module Power::DoesGallery
     end
 
     power :updatable_galleries do
-      updatable_drawers.traverse_association(:galleries)
+      updatable_drawers.traverse_association(:galleries).order('updated_at DESC')
     end
 
     power :creatable_galleries do

@@ -5,7 +5,7 @@ module Power::DoesCalendar
     end
 
     power :updatable_calendars do
-      updatable_drawers.traverse_association(:calendars)
+      updatable_drawers.traverse_association(:calendars).order('updated_at DESC')
     end
 
     power :creatable_calendars do
