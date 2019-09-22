@@ -1,5 +1,5 @@
-.home
-  .home-hero(scrolly-page)
+.home(scroll)
+  .home-hero(scroll-page)
     .home-hero--background
     .home-hero--tab.-left
       = render 'notes/hero_list'
@@ -13,5 +13,8 @@
       .home-hero--content
         = render 'options'
 
-  .home-content(scroll-page)
-    = render 'galleries/index_list'
+  - memo_kinds.each do |memo_kind|
+    .home-content(scroll-page)
+      = render "#{memo_kind.pluralize}/home_index"
+  -# .home-content(scroll-page)
+    -# = render 'galleries/index_list'
