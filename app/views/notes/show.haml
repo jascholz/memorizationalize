@@ -1,5 +1,7 @@
 .modal--header
   .headline.-bold= @note.name
+  .modal--edit= link_to 'edit', edit_note_path(@note), 'up-target': '.modal'
 .modal--content
-  - @note.description.split("\n").each do |line|
-    %p= line
+  .modal--text
+    - @note.description.split("\n").each do |line|
+      %p= line

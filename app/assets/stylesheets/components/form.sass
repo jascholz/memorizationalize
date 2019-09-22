@@ -1,6 +1,8 @@
 @import ../variables
 @import ../mixins
 
+$label-width: 150px
+
 =field
   height: $form--field-height
   padding: 2px $form--field-padding 1px $form--field-padding
@@ -8,15 +10,16 @@
   border-radius: 3px
   box-shadow: inset 0 0 2px $grey
   font-size: $font-size-small
-  width: calc(70% - #{$spacing})
-  margin-left: $spacing
+  width: calc(100% - #{$label-width * 2})
+  // margin-left: $spacing
 
 .form
   display: flex
   flex-direction: column
-  margin: $spacing
+  margin: $spacing 0
   display: flex
   justify-content: center
+  width: 100%
 
 .form--fields
   position: relative
@@ -26,9 +29,9 @@
   align-items: center
   width: 80%
   max-width: 900px
-  padding-left: $wide-spacing
+  // padding-left: $wide-spacing
   // padding-right: $wide-spacing
-  padding-right: 300px + $wide-spacing
+  // padding-right: 300px + $wide-spacing
   margin-left: auto
   margin-right: auto
 
@@ -46,18 +49,23 @@
     padding-bottom: $margin
 
 .form--group
+  position: relative
   display: flex
-  justify-content: space-between
+  justify-content: center
   margin-bottom: $form--group-margin
   width: 100%
-  min-width: 400px
+  // min-width: 400px
 
 .form--field
   +field
 
+  &.-inline
+    width: 200px
+
 .form--select
   +field
   height: $form--field-total-height
+  width: calc(100% - #{$label-width * 2} + #{$form--field-padding * 2})
   // width: 622px - $spacing
 
 .form--select-hightlighted
@@ -69,11 +77,19 @@
   height: $form--field-height * 4
 
 .form--label
+  position: absolute
+  left: -$small-spacing * 2 - $label-width
   font-size: 18px
   margin-bottom: 5px
-  max-width: 30%
-  min-width: 30%
+  width: $label-width * 2
+  height: 100%
   text-align: right
+
+  &.-inline
+    position: relative
+    left: 0
+    margin: 0 $spacing
+    width: auto
 
 .form--text
   color: darken(grey, 40)
@@ -91,14 +107,15 @@
 
 .form--button-section
   display: flex
+  justify-content: center
+  align-items: center
   width: 100%
-  min-width: 400px
-  max-width: 900px
 
 .form--button
   +button
-  margin-left: calc(30% + #{$spacing})
-  width: calc(70% - #{$spacing})
+  // margin-left: calc(30% + #{$spacing})
+  // width: calc(70% - #{$spacing})
+  width: calc(100% - #{$label-width * 2} + #{$spacing})
 
   &.-inline
     margin: 0 0 0 $spacing
@@ -123,7 +140,6 @@
 
 .form--text
   margin: $spacing 0
-
   p
     margin: 0
 

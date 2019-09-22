@@ -73,7 +73,7 @@ class DrawersController < ApplicationController
   def save_drawer
     @drawer.save
     # render :edit
-    render partial: 'drawers/edit_form', drawer: @drawer, locals: { drawer: @drawer }
+    render partial: 'drawers/index_form', drawer: @drawer, locals: { drawer: @drawer }
   end
 
   def save_new_drawer

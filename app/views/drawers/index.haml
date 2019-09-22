@@ -3,6 +3,6 @@
 .modal--content
   .drawers
     - @drawers.ordered.each do |drawer|
-      = render 'edit_form', drawer: drawer
+      = render 'index_form', drawer: drawer
 
   = render 'drawers/form'

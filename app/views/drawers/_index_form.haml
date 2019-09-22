@@ -8,11 +8,11 @@
       = link_to '⭯', invite_code_drawer_path(drawer), method: :patch, class: 'drawer--generate-invite-code', 'up-target': '.drawers'
 
     .drawer--name
-      = form.label :name, class: 'form--label'
-      = form.text_field :name, class: 'form--field'
+      = form.label :name, class: 'form--label -inline'
+      = form.text_field :name, class: 'form--field -inline'
     .drawer--description
-      = form.label :description, class: 'form--label'
-      = form.text_field :description, class: 'form--field'
+      = form.label :description, class: 'form--label -inline'
+      = form.text_field :description, class: 'form--field -inline'
 
     = form.submit 'Update', class: 'form--button -inline'
     = link_to "Remove", drawer, method: :delete, class: 'form--destroy', 'up-target': 'body'

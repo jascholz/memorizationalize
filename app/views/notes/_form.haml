@@ -1,4 +1,4 @@
 - @note ||= Note.new(creator: current_user)
 
-= form_for @note do |form|
+= form_for @note, html: { class: 'form' } do |form|
   = render 'notes/form_fields', form: form

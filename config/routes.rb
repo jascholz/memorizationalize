@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :events, only: [:create, :update, :new, :edit, :show]
-  resources :notes, only: [:create, :update, :show, :destroy]
+  resources :notes, only: [:create, :update, :show, :edit, :destroy]
   resources :ideas, only: [:create, :update, :show]
   resources :images, only: [:create, :update, :show]
   resources :todos, only: [:create, :update, :show, :index]
