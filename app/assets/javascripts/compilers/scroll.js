@@ -2,62 +2,49 @@ up.compiler('[scroll]', (scroll) => {
   let pages = scroll.querySelectorAll('[scroll-page]')
   let scrollIndex = 0
 
-  // console.log(pages);
-
-  // function isInViewport(elem) {
-  //   let bounding = elem.getBoundingClientRect()
-  //   let viewportHeight = (window.innerHeight || document.documentElement.clientHeight)
-  //   console.log(bounding.bottom)
-  //   console.log(window.innerHeight)
-  //   return (
-  //     bounding.top >= 0 &&
-  //     // bounding.left >= 0 &&
-  //     bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) // &&
-  //     // bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-  //   )
-  // }
-
-  function topVisible(page) {
-    var bounding = page.getBoundingClientRect()
-    // console.log(bounding.top)
-    return bounding.top > 0
-  }
-
-  function bottomVisible() {
-    var bounding = pages[scrollIndex].getBoundingClientRect()
+  function scrollTo(scrollY) {
     let viewportHeight = (window.innerHeight || document.documentElement.clientHeight)
-    return bounding.bottom - viewportHeight <= 0
-  }
+    let viewTop = 120
 
-  function currentPage() {
-    for (let i = 0; i < pages.length; ++i) {
+    if (scrollY > 0) {
+      for (let i = 0; i < pages.length; ++i) {
+        let page = pages[i]
+        let bounding = page.getBoundingClientRect()
+        let pageHeight = bounding.bottom - bounding.top
 
-      var bounding = pages[i].getBoundingClientRect()
-      let viewportHeight = (window.innerHeight || document.documentElement.clientHeight)
-      // console.log('top: ', bounding.top)
-      // console.log('bottom: ', bounding.bottom)
-      // console.log('viewportHeight', viewportHeight)
-
-      viewTop = 120 // HeaderHeight + homeFormHeight
-      if (bounding.top <= 120 && bounding.bottom >= viewportHeight) {
-        // console.log('dis')
-        return i
+        if (bounding.bottom <= viewportHeight && bounding.bottom > viewTop) {
+          console.log('nxt of', i)
+          return page.offsetTop + pageHeight
+        } else if (bounding.bottom <= viewportHeight + scrollY && bounding.bottom > viewTop) {
+          console.log('btm of', i)
+          return page.offsetTop + pageHeight
+        }
       }
+    } else if (scrollY < 0) {
+      for (let i = pages.length - 1; i >= 0 ; --i) {
+        let page = pages[i]
+        let bounding = page.getBoundingClientRect()
+        let pageHeight = bounding.bottom - bounding.top
 
-      // console.log(' ')
+        // if (bounding.top >= 0 && bounding.top > viewTop) {
+        //   console.log('nxt of', i)
+        //   return page.offsetTop + pageHeight
+        // } else if (bounding.bottom <= viewportHeight + scrollY && bounding.bottom > viewTop) {
+        //   console.log('btm of', i)
+        //   return page.offsetTop + pageHeight
+        // }
+      }
     }
+    // return 0
   }
 
   function onMouseWheel(event) {
-    // console.log(event)
-    // event.preventDefault()
-    // console.log(currentPage())
-    // console.log(pages.length > currentPage() + 1)
-    // if (event.deltaY > 0 && pages.length > currentPage() + 1) {
-    //   up.scroll(document.scrollingElement, pages[currentPage() + 1].offsetTop)
-    //   event.preventDefault()
-    // }
+    let scrollPosition = scrollTo(event.deltaY)
+    if (scrollPosition) {
+      up.scroll(document.scrollingElement, scrollPosition)
+      event.preventDefault()
+    }
   }
 
-  window.addEventListener ("mousewheel", onMouseWheel, {passive: false});
+  window.addEventListener ('wheel', onMouseWheel, {passive: false})
 })
