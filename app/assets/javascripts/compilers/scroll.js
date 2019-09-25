@@ -1,6 +1,6 @@
 up.compiler('[scroll]', (scroll) => {
   let pages = scroll.querySelectorAll('[scroll-page]')
-  let scrollIndex = 0
+  let scrolling = false
 
   function scrollTo(scrollY) {
     let viewportHeight = (window.innerHeight || document.documentElement.clientHeight)
@@ -13,10 +13,8 @@ up.compiler('[scroll]', (scroll) => {
         let pageHeight = bounding.bottom - bounding.top
 
         if (bounding.bottom <= viewportHeight && bounding.bottom > viewTop) {
-          console.log('nxt of', i)
           return page.offsetTop + pageHeight
         } else if (bounding.bottom <= viewportHeight + scrollY && bounding.bottom > viewTop) {
-          console.log('btm of', i)
           return page.offsetTop + pageHeight
         }
       }
@@ -26,22 +24,24 @@ up.compiler('[scroll]', (scroll) => {
         let bounding = page.getBoundingClientRect()
         let pageHeight = bounding.bottom - bounding.top
 
-        // if (bounding.top >= 0 && bounding.top > viewTop) {
-        //   console.log('nxt of', i)
-        //   return page.offsetTop + pageHeight
-        // } else if (bounding.bottom <= viewportHeight + scrollY && bounding.bottom > viewTop) {
-        //   console.log('btm of', i)
-        //   return page.offsetTop + pageHeight
-        // }
+        if (bounding.top < viewTop) {
+          return page.offsetTop
+        } else if (bounding.top <= viewTop) {
+          return page.offsetTop - pageHeight
+        }
       }
     }
-    // return 0
   }
 
   function onMouseWheel(event) {
     let scrollPosition = scrollTo(event.deltaY)
-    if (scrollPosition) {
-      up.scroll(document.scrollingElement, scrollPosition)
+    if (scrollPosition !== undefined && scrolling === false) {
+      scrolling = true
+      up.scroll(document.scrollingElement, scrollPosition, { behavior: 'smooth' }).then(() => {
+        scrolling = false
+      })
+      event.preventDefault()
+    } else if (scrolling === true) {
       event.preventDefault()
     }
   }
