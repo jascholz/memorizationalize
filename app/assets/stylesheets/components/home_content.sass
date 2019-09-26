@@ -5,20 +5,23 @@
   $color-1-transparent: transparentize($color-1, 0.5)
   @return linear-gradient($angle, $transparent 0%, $transparent $cut-position, $color-1 $cut-position, $color-1 $cut-position-after, $color-1-transparent $cut-position-after, $color-2 100%)
 
-$gradient-red: rgb(200, 0, 65)
+// $gradient-red: rgb(200, 0, 65)
 $gradient-blue: rgb(0, 212, 255)
-$gradient-green: rgb(0, 255, 235)
-$gradient-yellow: rgba(200, 255, 0, 0.5)
-$gradient-rose: #FFEDDF
-$gradient-dark: #172A3A
-$transparent: rgba(0, 0, 0, 0)
-$gradient-angle: 45deg
-$gradient-angle-reverse: 135deg
+// $gradient-green: rgb(0, 255, 235)
+// $gradient-yellow: rgba(200, 255, 0, 0.5)
+// $gradient-rose: #FFEDDF
+// $gradient-dark: #172A3A
+// $transparent: rgba(0, 0, 0, 0)
+// $gradient-angle: 45deg
+// $gradient-angle-reverse: 135deg
 
 .home-content
-  background: linear-gradient(0deg, lighten($grey, 15) 0%, lighten($gradient-blue, 35) 100%)
+  position: relative
+  // background: linear-gradient(0deg, lighten($grey, 15) 0%, lighten($gradient-blue, 35) 100%)
   // background-attachment: fixed
   background-attachment: absolute
+
+  border-top: 2px solid $black
 
 .home-content--section
   padding: $wide-spacing 0 $very-wide-spacing 0

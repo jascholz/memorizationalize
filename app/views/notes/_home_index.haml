@@ -1,2 +1,10 @@
 .home-index
-  .headline Notes
+  .home-index--headline.headline Notes
+  .home-index--content
+    .notes
+      - if @notes.length > 0
+        - @notes.ordered.each_with_index do |note, index|
+          .note
+            .headline= note.name
+            - note.description.split("\n").each do |line|
+              %p= line
