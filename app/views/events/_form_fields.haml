@@ -1,30 +1,32 @@
 .form--fields(event)
-  = render 'shared/basic_fields', domain: :calendar, form: form
 
-  .form--section
+  .home-form--scroll-content
+    = render 'shared/basic_fields', domain: :calendar, form: form
 
-    .form--group
-      = form.label :start_date, class: 'form--label'
-      = form.date_field :start_date, class: 'form--field'
+    .form--section
 
-    .form--group
-      = form.label :end_date, class: 'form--label'
-      = form.date_field :end_date, class: 'form--field'
+      .form--group
+        = form.label :start_date, class: 'form--label'
+        = form.date_field :start_date, class: 'form--field'
 
-    .form--group
-      = form.label :all_day, class: 'form--label'
-      = form.check_box :all_day, class: 'form--field', 'up-switch': '[event-show-for]'
+      .form--group
+        = form.label :end_date, class: 'form--label'
+        = form.date_field :end_date, class: 'form--field'
 
-    .form--group(event-show-for up-hide-for="1")
-      = form.label :start_time, class: 'form--label'
-      = form.text_field :start_time, value: form.object.start_time&.strftime("%H:%M"), class: 'form--field'
+      .form--group
+        = form.label :all_day, class: 'form--label'
+        = form.check_box :all_day, class: 'form--field', 'up-switch': '[event-show-for]'
 
-    .form--group(event-show-for up-hide-for="1")
-      = form.label :end_time, class: 'form--label'
-      = form.text_field :end_time, value: form.object.end_time&.strftime("%H:%M"), class: 'form--field '
+      .form--group(event-show-for up-hide-for="1")
+        = form.label :start_time, class: 'form--label'
+        = form.text_field :start_time, value: form.object.start_time&.strftime("%H:%M"), class: 'form--field'
 
-    .form--group
-      = form.label :repeating_interval, class: 'form--label'
-      = form.collection_select :repeating_interval, form.object.assignable_repeating_intervals, :to_s, :to_s, { include_blank: true }, class: 'form--select'
+      .form--group(event-show-for up-hide-for="1")
+        = form.label :end_time, class: 'form--label'
+        = form.text_field :end_time, value: form.object.end_time&.strftime("%H:%M"), class: 'form--field '
+
+      .form--group
+        = form.label :repeating_interval, class: 'form--label'
+        = form.collection_select :repeating_interval, form.object.assignable_repeating_intervals, :to_s, :to_s, { include_blank: true }, class: 'form--select'
 
   = render 'shared/submit_fields', form: form

@@ -6,11 +6,14 @@ html
 body
   font-family: $default-font
   margin: 0
-  //overflow-y: scroll
-  overflow-y: hidden
+  overflow-y: scroll
   background-color: $white
   display: flex
   flex-direction: column
+  min-width: 300px
+
+  @media (hover: hover) and (pointer: fine)
+    overflow-y: hidden
 
 .hidden
   display: none

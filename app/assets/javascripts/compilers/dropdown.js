@@ -65,7 +65,7 @@ up.compiler('[dropdown]', (dropdown, data) => {
         collapsableElementsHeight += parseInt(collapsableElement.style.height, 10)
       })
 
-      element.style.height = (contentHeight + collapseHeight + additionalHeight + 80) + 'px'
+      element.style.height = (contentHeight + collapseHeight + additionalHeight + 40) + 'px'
     }, 0)
   }
 

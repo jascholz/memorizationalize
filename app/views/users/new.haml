@@ -22,3 +22,6 @@
 
       .form--group
         = f.submit 'Submit', class: 'form--button'
+
+      .form--group
+        = link_to 'anmelden', new_session_path, class: 'form--link', 'up-target': 'body'

@@ -1,6 +1,12 @@
 @import ../variables
 
+$home-form-collapse-height: 40px
+
 .home-form
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
   position: relative
   overflow: hidden
   width: 100%
@@ -8,9 +14,9 @@
 
 .home-form--radio-buttons
   display: flex
-  justify-content: center
   align-items: center
-  width: 100%
+  max-width: 100%
+  overflow-x: auto
 
 .home-form--radio-button-label
   background-color: $grey
@@ -45,11 +51,10 @@
   position: absolute
   bottom: 0
   width: 100%
-  height: 40px
+  height: $home-form-collapse-height
   display: flex
   justify-content: center
   align-items: center
-  margin-top: 40px
   font-size: 20px
   transition: background-color 0.5s
 
@@ -70,7 +75,14 @@
 .home-form--dropdown
   z-index: 1
   position: relative
+
   & [dropdown-content]
     position: absolute
-    bottom: 80px
+    bottom: 40px
     width: 100%
+
+.home-form--scroll-content
+  width: 100%
+  max-height: calc(100vh - #{$header-height} - #{$home-form-header-height} - #{$home-form-collapse-height * 6})
+  overflow: auto
+  margin-bottom: $spacing

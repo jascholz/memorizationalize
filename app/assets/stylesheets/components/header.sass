@@ -4,6 +4,7 @@
   position: fixed
   top: 0
   width: 100%
+  height: 70px
 
   display: flex
   flex-wrap: wrap
@@ -14,29 +15,54 @@
 
 .header--banner
   display: flex
+  flex-wrap: wrap
   align-items: center
-  justify-content: space-between
+  justify-content: center
 
   width: 100%
-  // 20px: padding-top + padding-bottom
-  height: $header-height - 20px
   background-color: $header-color
-  padding: 10px 30px 10px 30px
+  padding: 10px $tiny-spacing
+
+  @media(min-width: #{$max-mobile-width})
+    justify-content: space-between
+    padding: 10px 30px
+    flex-wrap: nowrap
+    height: $header-height - 20px
 
 .header--title
   font-size: $font-size-big
+  line-height: $font-size-big
   color: white
+  width: 100%
+  text-align: center
+
+  &.-mobile
+    @media(min-width: #{$max-mobile-width})
+      display: none
+
+  &.-desktop
+    display: none
+    @media(min-width: #{$max-mobile-width})
+      display: block
+
+  @media(min-width: #{$max-mobile-width})
+    width: unset
+    text-align: unset
 
 .header--links
   display: flex
   align-items: center
-  justify-content: flex-end
+  justify-content: center
+  margin: $tiny-spacing 0 0 0
+
+  @media(min-width: #{$max-mobile-width})
+    margin: 0
 
 .header--link
   color: $white
   font-size: $font-size-small
   text-decoration: none
-  margin: 20px
+  margin-left: 20px
 
   &:hover
     color: $grey
