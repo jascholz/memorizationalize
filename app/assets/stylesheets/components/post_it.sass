@@ -1,30 +1,42 @@
 @import ../variables
 @import ../mixins
 
+$post-it-size: 30vw
+$post-it-content-size: calc(100% - 20px)
+
 .post-it
-  position: absolute
   display: flex
   flex-direction: column
   width: 200px
   height: 200px
+  max-width: $post-it-size
+  max-height: $post-it-size
   padding: 5px
   overflow: hidden
 
-  &.-moving:not(.-uninitialized)
-    transition: top 1s, left 1s
+  @media(min-width: #{$max-mobile-width})
+    position: absolute
 
-  &.-uninitialized
-    top: 50%
-    left: 50%
-    opacity: 0
+    &.-moving:not(.-uninitialized)
+      transition: top 1s, left 1s
+
+    &.-uninitialized
+      top: 50%
+      left: 50%
+      opacity: 0
+
+  // &.-dispatched
+  // position: absolute
 
 .post-it--image
   position: absolute
   top: 0px
   left: 0px
+  bottom: 0px
+  right: 0px
 
-  // svg
-  //   fill: $post-it-yellow
+  svg
+    fill: $post-it-yellow
 
 .post-it--header
   position: relative
@@ -33,14 +45,14 @@
   align-items: center
   text-align: center
   overflow: hidden
-  width: 180px
+  width: $post-it-content-size
   height: 30px
   padding: 5px
 
 .post-it--name
   display: inline-block
   position: relative
-  width: 180px
+  width: $post-it-content-size
   max-height: 45px
   text-overflow: ellipsis
   overflow: hidden
@@ -51,8 +63,8 @@
 .post-it--description
   overflow: hidden
   position: relative
-  width: 180px
-  height: 120px
+  width: $post-it-content-size
+  height: 60%
   padding: 5px
   font-size: $font-size-tiny
   word-wrap: break-word

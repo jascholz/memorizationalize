@@ -12,12 +12,18 @@ $scrollbar-width: 17px
 
 .up-modal-dialog
   position: fixed
-  top: 10%
-  left: 10%
-  height: 80%
-  width: calc((100% - 17px) - 20%)
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
   overflow: hidden
   background-color: transparentize($white, 0.3)
+
+  @media(min-width: #{$max-mobile-width})
+    width: calc((100% - 17px) - 20%)
+    height: 80%
+    top: 10%
+    left: 10%
 
 .up-modal-content
   height: 100%
@@ -32,7 +38,15 @@ $scrollbar-width: 17px
   background-color: transparentize($black, 0.3)
 
 .up-modal-close
-  display: none
+  &:before
+    position: absolute
+    top: 0
+    right: 0
+    content: 'close'
+    padding: $small-spacing
+
+  @media(min-width: #{$max-mobile-width})
+    display: none
 
 [up-show-for]:not(.up-switched)
   display: none

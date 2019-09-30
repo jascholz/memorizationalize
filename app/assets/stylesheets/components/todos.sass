@@ -1,16 +1,19 @@
 @import ../variables
 @import ../mixins
 
+.todos
+  overflow-x: auto
+
 .todos--table
   display: table
-  width: 100%
+  // width: 100%
   table-layout: fixed
-  overflow-wrap: break-word
+  // overflow-wrap: break-word
   border-collapse: collapse
 
 .todos--row
   display: table-row
-  overflow: hidden
+  // overflow: hidden
 
   &.todo:hover
     background-color: $hover-color
@@ -20,15 +23,17 @@
   vertical-align: middle
   font-size: $font-size
   padding: ($form--field-padding / 2) $form--field-padding
+  word-wrap: normal
+  text-overflow: ellipsis
 
   &[w-auto]
     width: auto
   &[w-1]
-    width: $todo--cell-width * 1.5
+    max-width: $todo--cell-width * 1.5
   &[w-2]
-    width: $todo--cell-width * 2
+    max-width: $todo--cell-width * 2
   &[w-3]
-    width: $todo--cell-width * 3
+    max-width: $todo--cell-width * 3
 
   &[align-center]
     text-align: center

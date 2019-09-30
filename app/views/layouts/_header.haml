@@ -3,9 +3,11 @@
   = link_to header_title, '', class: 'header--title -desktop'
   = link_to header_title_mobile, '', class: 'header--title -mobile'
 
-  .header--links
-    - if user_signed_in?
-      = link_to nil, class: 'header--icon', 'settings-toggle': '' do
-        = render 'svg/settings'
-      .header--sign-out
-        = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link', 'up-target': 'body'
+  .option-pane
+    .sidebar
+    .header--links
+      - if user_signed_in?
+        = link_to nil, class: 'header--icon', 'settings-toggle': '' do
+          = render 'svg/settings'
+        .header--sign-out
+          = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link', 'up-target': 'body'

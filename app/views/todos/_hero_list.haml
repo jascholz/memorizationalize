@@ -6,11 +6,11 @@
         (all)
     .todos--table(columns="5")
       .todos--row
-        .todos--cell(w-1 align-center) Done
-        .todos--cell(w-2 align-center) Priority
-        .todos--cell(w-auto) Name
-        .todos--cell(w-auto) Description
-        .todos--cell(w-3 align-right) Deadline
+        .todos--cell(align-center) Done
+        .todos--cell(align-center) Priority
+        .todos--cell Name
+        .todos--cell Description
+        .todos--cell(align-right) Deadline
 
       - @todos.ordered.first(3).each do |todo|
         = link_to todo, class: ['todos--row', 'todo'], id: todo.id, done: todo.done, 'up-modal': '.todo' do

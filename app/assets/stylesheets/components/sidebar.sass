@@ -5,14 +5,17 @@ $padding: 0 $spacing
 $width: $sidebar-width - $spacing * 2
 
 .sidebar
-  position: absolute
   top: 15%
   bottom: 15%
   left: 0
   display: flex
   flex-direction: column
+  width: 100vw
   padding: $padding
-  width: $width
+
+  @media(min-width: #{$max-mobile-width})
+    width: $width
+    position: absolute
 
 .sidebar--headline
   display: flex

@@ -8,4 +8,5 @@
       = form.date_select :calendar_date, { order: [:month, :year] }, { class: 'form--select' }
       = link_to '►', '', class: 'calendar--month-link', month: next_month.month, year: next_month.year
 
-    = calendar(form.object.calendar_date, current_power.calendars)
+    .calendar--month-container
+      = calendar(form.object.calendar_date, current_power.calendars)

@@ -1,18 +1,20 @@
 @import ../variables
 
-$hero-height: calc(100vh - #{$header-height + $home-form-header-height + $very-wide-spacing * 2})
+$hero-height: calc(100vh - #{$header-height + $home-form-header-height})
 
 .home-hero
   position: relative
   left: 0
   display: flex
-  justify-content: center
   align-items: center
-  padding: $very-wide-spacing 0
-  overflow: hidden
-  width: 200%
+  // min-height: $hero-height
   height: $hero-height
   transition: left 0.75s ease-in-out
+  width: 200%
+  // overflow: hidden
+
+  @media(min-width: #{$max-mobile-width})
+    // padding: $very-wide-spacing 0
 
   &.-options
     left: -100%
@@ -27,30 +29,46 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height + $very-w
   height: 100%
   width: 200%
   transition: 0.75s ease-in-out
-  background: image-url('backgrounds/notebook_wide.png')
-  background-size: auto 100%
+
+  @media(min-width: #{$max-mobile-width})
+    background-size: auto 100%
+    background: image-url('backgrounds/notebook_wide.png')
 
 .home-hero--tab
   position: relative
-  width: 100%
+  width: 100vw
   height: 100%
   display: flex
-  justify-content: center
+  flex-direction: column
+  // justify-content: center
+  // align-items: center
 
-  &.-left
-    padding-left: $sidebar-width
-  &.-right
-    padding-right: $sidebar-width
+  @media(min-width: #{$max-mobile-width})
+    flex-direction: row
+
+    &.-left
+      padding-left: $sidebar-width
+    &.-right
+      padding-right: $sidebar-width
+
+.home-hero--content-container
+  position: relative
+  display: flex
+  flex-direction: column
+  // justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+
+  @media(min-width: #{$max-mobile-width})
+    flex-direction: row
 
 .home-hero--content
   position: relative
   display: flex
   flex-direction: column
   background-color: transparentize($white, 0.5)
-  max-width: $hero-height
-  height: $hero-height
-  width: $hero-height
-  overflow: hidden
+  width: 100vw
   transition: height 0.5s, width 0.5s
 
   &.-minimized
@@ -58,9 +76,15 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height + $very-w
     height: 55px
     width: 55px
 
+  @media(min-width: #{$max-mobile-width})
+    width: $hero-height
+    max-width: $hero-height
+
 .home-hero--section
   margin: $margin
-  width: calc(100% - #{$margin * 2})
+  // width: calc(100% - #{$margin * 2})
+  // overflow-x: auto
+  // overflow-y: hidden
 
   &:not(:last-child)
     padding-bottom: $wide-spacing
@@ -70,19 +94,26 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height + $very-w
     display: none
 
 .home-hero--notes
-  position: absolute
-  top: 0
-  bottom: 0
-  left: $sidebar-width + 150px
-  right: 0
+  display: flex
+  flex-wrap: wrap
+  width: 100%
+
+  @media(min-width: #{$max-mobile-width})
+    position: absolute
+    top: 0
+    left: 0
 
 .home-hero--content-toggle
+  display: none
   position: absolute
   top: $spacing + 6px
   left: calc(50% - 12px)
   height: 25px
   width: 25px
   transition: transform 1s, top 0.5s, right 0.5s
+
+  @media(min-width: #{$max-mobile-width})
+    display: block
 
   .-minimized &
     top: 15px

@@ -34,6 +34,7 @@ up.compiler('[position]', (element, data) => {
 
       elementRect = element.getBoundingClientRect()
 
+      element.classList.add('-dispatched')
       state = 'positioned'
   }
 
@@ -46,12 +47,13 @@ up.compiler('[position]', (element, data) => {
       positionInRow = position % elementsPerRow
     }
     let row = Math.floor(position / elementsPerRow)
-    let y = (row * elementHeight) + 100
+    let y = (row * elementHeight)
     let x = elementWidth * positionInRow
 
     element.style.left = `${x}px`
     element.style.top = `${y}px`
 
+    element.classList.remove('-dispatched')
     state = 'arranged'
   }
 

@@ -16,7 +16,10 @@
   flex-direction: column
   justify-content: center
   align-items: center
-  padding: $spacing
+  padding: $tiny-spacing
+
+  @media(min-width: #{$max-mobile-width})
+    padding: $spacing
 
 .modal--edit
   +button
