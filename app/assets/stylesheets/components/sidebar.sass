@@ -5,17 +5,19 @@ $padding: 0 $spacing
 $width: $sidebar-width - $spacing * 2
 
 .sidebar
-  top: 15%
-  bottom: 15%
-  left: 0
+  // top: 15%
+  // bottom: 15%
+  // left: 0
   display: flex
   flex-direction: column
   width: 100vw
   padding: $padding
+  background-color: transparentize($white, 0.5)
 
   @media(min-width: #{$max-mobile-width})
     width: $width
-    position: absolute
+    height: calc(100% - 100px)
+    // position: absolute
 
 .sidebar--headline
   display: flex

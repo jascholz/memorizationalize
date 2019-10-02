@@ -27,7 +27,12 @@ up.compiler('[position]', (element, data) => {
       divisorY = heightRange / container.scrollHeight
 
       let percentX = data.x * divisorX
+      if (percentX < 0) { percentX = 0 }
+      else if (percentX > 100) { percentX = 100 }
+
       let percentY = data.y * divisorY
+      if (percentY < 0) { percentY = 0 }
+      else if (percentY > 100) { percentY = 100 }
 
       element.style.left = percentX + '%'
       element.style.top = percentY + '%'
@@ -40,15 +45,15 @@ up.compiler('[position]', (element, data) => {
 
   function arrange() {
     let position = parseInt(element.getAttribute('position'))
-    let placeableAreaWidth = element.parentElement.getBoundingClientRect().width
+    let placeableAreaWidth = element.parentElement.getBoundingClientRect().width // - 100
     let elementsPerRow = Math.floor(placeableAreaWidth / elementWidth)
     let positionInRow = 0
     if (elementsPerRow > 0) {
       positionInRow = position % elementsPerRow
     }
     let row = Math.floor(position / elementsPerRow)
-    let y = (row * elementHeight)
-    let x = elementWidth * positionInRow
+    let y = (row * elementHeight) + 100
+    let x = elementWidth * positionInRow // + 50
 
     element.style.left = `${x}px`
     element.style.top = `${y}px`

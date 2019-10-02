@@ -19,6 +19,10 @@ $calendar-margin: 2px
   overflow-x: scroll
   overflow-y: hidden
 
+  @media(min-width: #{$max-mobile-width})
+    overflow-x: auto
+    justify-content: center
+
 .calendar--month
   display: flex
   flex-direction: column

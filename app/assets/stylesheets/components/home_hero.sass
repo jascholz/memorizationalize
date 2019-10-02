@@ -10,7 +10,7 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   // min-height: $hero-height
   height: $hero-height
   transition: left 0.75s ease-in-out
-  width: 200%
+  width: 200vw
   // overflow: hidden
 
   @media(min-width: #{$max-mobile-width})
@@ -19,7 +19,7 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   &.-options
     left: -100%
     .home-hero--background
-      background-position: 100% 0
+      background-position: 130% 0
       left: -100%
 
 .home-hero--background
@@ -33,6 +33,7 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   @media(min-width: #{$max-mobile-width})
     background-size: auto 100%
     background: image-url('backgrounds/notebook_wide.png')
+    background-repeat: round
 
 .home-hero--tab
   position: relative
@@ -40,16 +41,16 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   height: 100%
   display: flex
   flex-direction: column
-  // justify-content: center
-  // align-items: center
+  justify-content: center
+  align-items: center
 
   @media(min-width: #{$max-mobile-width})
     flex-direction: row
 
-    &.-left
-      padding-left: $sidebar-width
-    &.-right
-      padding-right: $sidebar-width
+    // &.-left
+    //   padding-left: $sidebar-width
+    // &.-right
+    //   padding-right: $sidebar-width
 
 .home-hero--content-container
   position: relative
@@ -57,11 +58,14 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   flex-direction: column
   // justify-content: center
   align-items: center
-  width: 100%
-  height: 100%
 
   @media(min-width: #{$max-mobile-width})
-    flex-direction: row
+    width: calc(100% - #{$sidebar-width})
+    height: $hero-height
+    overflow: auto
+    // padding: 100px
+    // justify-content: center
+  //   flex-direction: row
 
 .home-hero--content
   position: relative
@@ -69,6 +73,7 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   flex-direction: column
   background-color: transparentize($white, 0.5)
   width: 100vw
+  height: 100%
   transition: height 0.5s, width 0.5s
 
   &.-minimized
@@ -77,8 +82,13 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
     width: 55px
 
   @media(min-width: #{$max-mobile-width})
-    width: $hero-height
-    max-width: $hero-height
+    // width: $hero-height
+    // max-width: $hero-height
+    width: calc(100% - 100px)
+    max-width: 900px
+    min-width: 600px
+    height: calc(100% - 100px)
+    margin-top: 50px
 
 .home-hero--section
   margin: $margin
@@ -100,8 +110,11 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
 
   @media(min-width: #{$max-mobile-width})
     position: absolute
-    top: 0
-    left: 0
+    top: 50px
+    left: 50px
+    width: calc(100% - 100px)
+    height: calc(100% - 100px)
+    // overflow: auto
 
 .home-hero--content-toggle
   display: none
