@@ -2,7 +2,7 @@
   .headline.-bold Drawers
 .modal--content
   .drawers
-    - @drawers.ordered.each do |drawer|
+    - @drawers.ordered.uniq.each do |drawer|
       = render 'index_form', drawer: drawer
 
   = render 'drawers/form'

@@ -1,3 +1,3 @@
 .form--group
   = form.label :"#{domain}_id", class: 'form--label'
-  = form.collection_select :"#{domain}_id", current_power.send("updatable_#{domain.to_s.pluralize}"), :id, :name, {}, { class: 'form--select' }
+  = form.collection_select :"#{domain}_id", current_power.send("updatable_#{domain.to_s.pluralize}").uniq, :id, :name, {}, { class: 'form--select' }
