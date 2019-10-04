@@ -1,14 +1,47 @@
 @import ../variables
 
+=drawer--field
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  // flex-direction: column
+  align-items: center
+  margin: 10px 15px
+  width: 100%
+
+  @media(min-width: #{$max-mobile-width})
+    flex-direction: row
+    margin: 0 15px
+    width: unset
+
 .drawers
   display: flex
   flex-direction: column
-  align-items: center
+  width: 100%
+  // align-items: center
 
 .drawer
+  position: relative
   display: flex
+  flex-wrap: wrap
+  flex-direction: column
   align-items: center
   margin-bottom: $spacing
+
+  @media(min-width: #{$max-mobile-width})
+    flex-direction: row
+    margin: $tiny-spacing
+
+.drawer--row
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+
+  @media(min-width: #{$max-mobile-width})
+    flex-direction: row
+    width: auto
 
 .drawer--color
   width: 1rem
@@ -22,21 +55,14 @@
     cursor: pointer
 
 .drawer--name
-  position: relative
-  display: flex
-  align-items: center
+  +drawer--field
   font-weight: bold
-  margin: 0 15px
 
 .drawer--description
-  position: relative
-  display: flex
-  align-items: center
-  margin: 0 15px
+  +drawer--field
 
 .drawer--users
-  display: flex
-  margin: 0 15px
+  +drawer--field
 
 .drawer--user
   margin: 0 5px
@@ -46,16 +72,16 @@
     text-decoration: none
 
 .drawer--invitation
-  display: flex
+  +drawer--field
   justify-content: space-between
   align-items: center
   height: calc(1.5em + 2px)
-  width: 150px
+  min-width: 150px
   background-color: lighten($light-grey, 10)
   border: 1px solid $grey
   border-radius: 3px
-  margin: 0 15px
   padding: 3px 15px
+  width: calc(100% - 30px)
 
 .drawer--invite-code
   position: relative

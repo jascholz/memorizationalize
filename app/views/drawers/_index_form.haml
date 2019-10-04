@@ -1,22 +1,27 @@
-= form_for drawer, html: { 'up-target': ".drawer[id=\"#{drawer.id}\"]" } do |form|
+= form_for drawer, html: { 'up-target': ".drawer[id=\"#{drawer.id}\"]", 'up-autosubmit': true } do |form|
   .drawer(id="#{drawer.id}")
     = form.hidden_field :id
-    .drawer--invitation
-      = form.label :color, '', class: 'drawer--color', colored: drawer.color, for: "drawer-color-#{drawer.id}"
-      = form.color_field :color, class: 'hidden', 'color-input': true, id: "drawer-color-#{drawer.id}"
-      .drawer--invite-code{ 'up-tooltip': ("valid until #{l(drawer.invitation_expiry, format: '%A, %d.%m.%Y')}" if drawer.invitation_expiry) }= drawer.invite_code
-      = link_to '⭯', invite_code_drawer_path(drawer), method: :patch, class: 'drawer--generate-invite-code', 'up-target': '.drawers'
 
-    .drawer--name
-      = form.label :name, class: 'form--label -inline'
-      = form.text_field :name, class: 'form--field -inline'
-    .drawer--description
-      = form.label :description, class: 'form--label -inline'
-      = form.text_field :description, class: 'form--field -inline'
+    .drawer--row
+      .drawer--invitation
+        = form.label :color, '', class: 'drawer--color', colored: drawer.color, for: "drawer-color-#{drawer.id}"
+        = form.color_field :color, class: 'hidden', 'color-input': true, id: "drawer-color-#{drawer.id}"
+        .drawer--invite-code{ 'up-tooltip': ("valid until #{l(drawer.invitation_expiry, format: '%A, %d.%m.%Y')}" if drawer.invitation_expiry) }= drawer.invite_code
+        = link_to '⭯', invite_code_drawer_path(drawer), method: :patch, class: 'drawer--generate-invite-code', 'up-target': '.drawers'
 
-    = form.submit 'Update', class: 'form--button -inline'
-    = link_to "Remove", drawer, method: :delete, class: 'form--destroy', 'up-target': 'body'
+      .drawer--name
+        = form.label :name, class: 'form--label -inline'
+        = form.text_field :name, class: 'form--field -inline'
 
-    .drawer--users
-      - drawer.users.where.not(id: current_user.id).each do |user|
-        = link_to user, user, class: 'drawer--user', 'up-target': '.modal'
+    .drawer--row
+      .drawer--description
+        = form.label :description, class: 'form--label -inline'
+        = form.text_field :description, class: 'form--field -inline'
+
+      = form.submit 'Update', class: 'form--button -inline'
+      = link_to "Remove", drawer, method: :delete, class: 'form--destroy', 'up-target': 'body'
+
+    .drawer--row
+      .drawer--users
+        - drawer.users.where.not(id: current_user.id).each do |user|
+          = link_to user, user, class: 'drawer--user', 'up-target': '.modal'

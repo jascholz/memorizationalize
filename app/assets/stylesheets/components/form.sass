@@ -61,8 +61,11 @@ $label-width: 150px
 .form--field
   +field
 
-  &.-inline
-    width: 200px
+  @media(min-width: #{$max-mobile-width})
+    flex-direction: row
+    &.-inline
+      width: 200px
+      flex-shrink: 1
 
 .form--select
   +field
@@ -91,11 +94,11 @@ $label-width: 150px
     position: absolute
     width: $label-width * 2
 
-  &.-inline
-    position: relative
-    left: 0
-    margin: 0 $spacing
-    width: auto
+    &.-inline
+      position: relative
+      left: 0
+      margin-right: $spacing
+      width: auto
 
 .form--text
   color: darken(grey, 40)
@@ -124,11 +127,11 @@ $label-width: 150px
   @media(min-width: #{$max-mobile-width})
     width: calc(100% - #{$label-width * 2} + #{$spacing})
 
-  &.-inline
-    margin: 0 0 0 $spacing
-    width: auto
-    height: $form--field-height + 3px
-    font-size: 1em
+    &.-inline
+      margin: 0 0 0 $spacing
+      width: auto
+      height: $form--field-height + 3px
+      font-size: 1em
 
 .form--radio_buttons
   display: flex
@@ -151,8 +154,10 @@ $label-width: 150px
     margin: 0
 
 .form--destroy
-  margin: 0 0 0 $spacing
   color: $highlight-color
+
+  @media(min-width: #{$max-mobile-width})
+    margin: 0 0 0 $spacing
 
   &:hover
     text-decoration: underline
