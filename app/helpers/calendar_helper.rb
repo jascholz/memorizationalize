@@ -32,6 +32,9 @@ module CalendarHelper
     def month_tag
       first_week = @first_day.cweek
       last_week = @last_day.cweek
+      if last_week < first_week
+        last_week = num_weeks(@first_day.year) + last_week
+      end
       weeks_count = last_week - first_week + 1
 
       @date_iterator = @first_day
@@ -47,8 +50,6 @@ module CalendarHelper
     end
 
     def week_tag
-      # week = @date_iterator.cweek
-      # first_day_of_week = Date.today.beginning_of_week
       content_tag(:div, class: 'calendar--week') do
         tags = ''.html_safe
         tags << content_tag(:div, nil, class: 'calendar--week-number')
@@ -127,6 +128,10 @@ module CalendarHelper
         tags << content_tag('div', '', class: 'calendar--week-days-spacer')
         tags
       end
+    end
+
+    def num_weeks(year)
+      Date.new(year, 12, 28).cweek
     end
   end
 end
