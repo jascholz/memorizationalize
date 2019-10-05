@@ -8,12 +8,12 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   display: flex
   align-items: center
   // min-height: $hero-height
-  height: $hero-height
   transition: left 0.75s ease-in-out
   width: 200vw
   // overflow: hidden
 
   @media(min-width: #{$max-mobile-width})
+    height: $hero-height
     // padding: $very-wide-spacing 0
 
   &.-options
@@ -76,18 +76,17 @@ $hero-height: calc(100vh - #{$header-height + $home-form-header-height})
   height: 100%
   transition: height 0.5s, width 0.5s
 
+  @media(min-width: #{$max-mobile-width})
+    width: calc(100% - 100px)
+    max-width: 900px
+    height: calc(100% - 100px)
+    margin: 50px
+
   &.-minimized
     transition: height 0.5s, width 0.5s 0.5s
     height: 55px
     width: 55px
-
-  @media(min-width: #{$max-mobile-width})
-    // width: $hero-height
-    // max-width: $hero-height
-    width: calc(100% - 100px)
-    max-width: 900px
-    height: calc(100% - 100px)
-    margin-top: 50px
+    min-height: inherit
 
 .home-hero--section
   margin: $margin
