@@ -6,6 +6,7 @@
       .home-hero--content-container
         = render 'notes/hero_list'
         .home-hero--content
+          .home-hero--content-backdrop{ colored: current_user&.color }
           = image_tag 'minimize.svg', class: 'home-hero--content-toggle', 'hero-content-toggle': ''
           = render 'todos/hero_list'
           = render 'calendars/hero_list'
@@ -13,6 +14,7 @@
     .home-hero--tab.-right
       .home-hero--content-container
         .home-hero--content
+          .home-hero--content-backdrop{ colored: current_user&.color }
           = render 'options'
 
   -# - memo_kinds.each do |memo_kind|

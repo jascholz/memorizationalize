@@ -4,18 +4,22 @@
 .todos
   overflow-x: auto
 
+  // @media(min-width: #{$max-mobile-width})
+  //   overflow-x: auto
+
 .todos--table
   display: table
-  // width: 100%
+  width: 100%
   table-layout: fixed
   // overflow-wrap: break-word
   border-collapse: collapse
 
-  @media(min-width: #{$max-mobile-width})
-    width: 100%
+  // @media(min-width: #{$max-mobile-width})
+  //   width: 100%
 
 .todos--row
   display: table-row
+  max-width: 100%
   // overflow: hidden
 
   &.todo:hover
@@ -26,17 +30,18 @@
   vertical-align: middle
   font-size: $font-size
   padding: ($form--field-padding / 2) $form--field-padding
+  overflow: hidden
   word-wrap: normal
   text-overflow: ellipsis
+  // width: auto
 
-  &[w-auto]
+  &[wide]
     width: auto
-  &[w-1]
-    max-width: $todo--cell-width * 1.5
-  &[w-2]
-    max-width: $todo--cell-width * 2
-  &[w-3]
-    max-width: $todo--cell-width * 3
+    min-width: 100px
+  &[semi-narrow]
+    width: 100px
+  &[narrow]
+    width: 60px
 
   &[align-center]
     text-align: center

@@ -1,22 +1,22 @@
 @import ../variables
 
 =todo--field
-  display: flex
+  display: block
   height: $form--field-height
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
   align-items: center
-  font-size: $font-size-tiny
+  font-size: $font-size-small
   font-weight: normal
 
 .todo--done
   +todo--field
-  justify-content: center
+  text-align: center
 
 .todo--priority
   +todo--field
-  justify-content: center
+  text-align: center
 
 .todo--name
   +todo--field
@@ -25,23 +25,24 @@
 
 .todo--description
   +todo--field
-  font-size: $font-size-small
+  // font-size: $font-size-small
 
 .todo--deadline
   +todo--field
-  justify-content: flex-end
-  font-size: $font-size-small
+  text-align: right
+  // font-size: $font-size-small
   font-weight: normal
 
 .todo--checkbox-label
   display: flex
+  justify-content: center
   align-items: center
   font-size: $font-size
   cursor: pointer
 
   &:hover
     & .checkbox
-      background-color: darken($todo-color, 10)
+      // background-color: darken($todo-color, 10)
       &:after
         content: '✔️'
         color: darken($grey, 30)

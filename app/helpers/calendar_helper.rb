@@ -63,7 +63,7 @@ module CalendarHelper
     end
 
     def day_tag
-      content_tag(:div, class: ['calendar--day', ('-today' if @date_iterator == Date.today), ('other-month' if @date_iterator.month != @date.month)], day: @date_iterator.day, 'up-modal': '.form[event]') do
+      content_tag(:div, class: ['calendar--day', 'color-hover', ('-today' if @date_iterator == Date.today), ('other-month' if @date_iterator.month != @date.month)], day: @date_iterator.day, 'up-modal': '.form[event]') do
         tags = ''.html_safe
         tags << link_to(@date_iterator.day.to_s, new_event_path(date: @date_iterator), class: 'calendar--day-number', 'up-modal': '.modal')
 
