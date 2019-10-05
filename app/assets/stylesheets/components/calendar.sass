@@ -30,6 +30,7 @@ $calendar-margin: 2px
 .calendar--date-fields
   display: flex
   align-items: center
+  margin-bottom: $spacing
 
   & select
     -webkit-appearance: none
@@ -96,6 +97,9 @@ $calendar-margin: 2px
   font-size: $font-size-tiny
   text-align: center
   margin: 4px
+
+  .other-month &
+    color: lighten($black, 40)
 
 .calendar--events
   display: flex

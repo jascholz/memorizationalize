@@ -30,19 +30,19 @@ module CalendarHelper
     private
 
     def month_tag
-      first_week = @first_day.cweek
-      last_week = @last_day.cweek
-      if last_week < first_week
-        last_week = num_weeks(@first_day.year) + last_week
-      end
-      weeks_count = last_week - first_week + 1
+      # first_week = @first_day.cweek
+      # last_week = @last_day.cweek
+      # if last_week < first_week
+      #   last_week = num_weeks(@first_day.year) + last_week
+      # end
+      # weeks_count = last_week - first_week + 1
 
       @date_iterator = @first_day
 
       content_tag('div', class: 'calendar--month') do
         tags = ''.html_safe
         tags << week_days_tag
-        weeks_count.times do
+        6.times do
           tags << week_tag
         end
         tags
@@ -63,7 +63,7 @@ module CalendarHelper
     end
 
     def day_tag
-      content_tag(:div, class: ['calendar--day', ('-today' if @date_iterator == Date.today)], day: @date_iterator.day, 'up-modal': '.form[event]') do
+      content_tag(:div, class: ['calendar--day', ('-today' if @date_iterator == Date.today), ('other-month' if @date_iterator.month != @date.month)], day: @date_iterator.day, 'up-modal': '.form[event]') do
         tags = ''.html_safe
         tags << link_to(@date_iterator.day.to_s, new_event_path(date: @date_iterator), class: 'calendar--day-number', 'up-modal': '.modal')
 
