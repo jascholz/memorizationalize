@@ -3,7 +3,7 @@ class Note < ApplicationRecord
 
   before_validation :randomize_post_it
 
-  scope :ordered, -> { order(updated_at: :asc) }
+  scope :ordered, -> { order(updated_at: :desc) }
 
   def to_s
     name
