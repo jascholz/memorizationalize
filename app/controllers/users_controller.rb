@@ -66,6 +66,7 @@ class UsersController < ApplicationController
       :name,
       :email,
       :password,
+      :color,
       :confirmed,
       :sign_up_message,
       :'calendar_date(1i)',
