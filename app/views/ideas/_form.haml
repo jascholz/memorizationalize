@@ -1,0 +1,4 @@
+- @idea ||= Idea.new(creator: current_user)
+
+= form_for @idea do |form|
+  = render 'ideas/form_fields', form: form

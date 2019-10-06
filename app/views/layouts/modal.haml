@@ -8,6 +8,7 @@
     = javascript_include_tag 'application'
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
     = favicon_link_tag asset_path('favicon-310.png')
+    = render 'shared/dynamic_styles'
 
   %body(layout="modal")
     .modal= yield
