@@ -13,12 +13,13 @@ $width: $sidebar-width - $spacing * 2
   display: flex
   flex-direction: column
   width: 100%
-  padding: $padding
+  padding: 0
   background-color: transparentize($white, 0.6)
 
   @media(min-width: #{$max-mobile-width})
     width: $width
     min-height: calc(100% - 100px)
+    padding: $padding
     padding-top: 25px
     // position: absolute
 
@@ -38,7 +39,10 @@ $width: $sidebar-width - $spacing * 2
   margin-bottom: $margin
 
 .sidebar--section
-  margin: 25px 0
+  margin: 25px
+
+  @media(min-width: #{$max-mobile-width})
+    margin: 25px 0
 
 .sidebar--drawers
   display: flex

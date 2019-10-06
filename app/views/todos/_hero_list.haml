@@ -15,7 +15,7 @@
       -# - @todos.ordered.first(3).each do |todo|
       - todos = @todos.ordered.all
       - todos.first(5).each do |todo|
-        = link_to todo, class: ['todos--row', 'todo', 'color-hover'], id: todo.id, done: todo.done, 'up-modal': '.todo' do
+        = link_to todo, class: ['todos--row', 'todo', 'color-hover'], id: todo.id, done: todo.done, 'up-modal': '.modal' do
           .todos--cell
             .todo--done
               = form_for todo, html: { 'up-autosubmit': 'true', 'up-target': '.todos', 'up-restore-scroll': 'true' } do |form|
