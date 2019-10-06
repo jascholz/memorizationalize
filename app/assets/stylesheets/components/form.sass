@@ -135,15 +135,23 @@ $label-width: 150px
 
 .form--radio_buttons
   display: flex
+  justify-content: center
   width: 100%
 
 .form--radio-button-label
   +button
-  margin: $spacing 0
-  border: none
-  border-radius: 0
-  flex-grow: 1
+  margin: $small-spacing 0
+  // flex-grow: 1
   box-shadow: none
+
+  &:first-of-type
+    border-right: none
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+  &:last-of-type
+    border-left: none
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
 
   &:hover
     cursor: pointer

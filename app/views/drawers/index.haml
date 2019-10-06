@@ -1,8 +1,7 @@
 .modal--header
   .headline.-bold Drawers
 .modal--content
-  .drawers
+  = render 'drawers/form'
+  .drawer--index
     - @drawers.ordered.uniq.each do |drawer|
       = render 'index_form', drawer: drawer
-
-  = render 'drawers/form'

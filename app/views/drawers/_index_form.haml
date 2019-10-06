@@ -19,7 +19,7 @@
         = form.text_field :description, class: 'form--field -inline'
 
       = form.submit 'Update', class: 'form--button -inline'
-      = link_to "Remove", drawer, method: :delete, class: 'form--destroy', 'up-target': 'body'
+      = link_to "Remove", drawer, method: :delete, class: 'form--destroy', 'up-target': '.drawer--index'
 
     .drawer--row
       .drawer--users

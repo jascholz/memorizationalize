@@ -35,7 +35,7 @@ class DrawersController < ApplicationController
 
   def destroy
     current_user.drawers.delete(current_user.drawers.find(params[:id]))
-    redirect_to root_path
+    redirect_to drawers_path
   end
 
   def invitation

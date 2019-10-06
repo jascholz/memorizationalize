@@ -3,7 +3,6 @@ class Attachment < ApplicationRecord
 
   mount_uploader :file, FileUploader
 
-  validates :creator, :name, presence: true
   validates :file, presence: true
 
   def to_s

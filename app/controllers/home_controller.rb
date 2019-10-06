@@ -9,12 +9,14 @@ class HomeController < ApplicationController
   private
 
   def load_entries
-    @users = current_power.users.active
-    @todos = current_power.todos.undone
-    @notes = current_power.notes.all
-    @ideas = current_power.ideas.all
+    @attachments = current_power.attachments.all
+    @bookmarks = current_power.bookmarks.all
     @calendars = current_power.calendars.all
     @drawers = current_power.drawers.all
     @galleries = current_power.galleries.all
+    @ideas = current_power.ideas.all
+    @notes = current_power.notes.all
+    @todos = current_power.todos.undone
+    @users = current_power.users.active
   end
 end

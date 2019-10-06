@@ -19,7 +19,7 @@ class Drawer::Invitation < ActiveType::Object
   private
 
   def find_drawer
-    self.drawer_id = Drawer.find_by(invite_code: invite_code).id
+    self.drawer_id = Drawer.find_by(invite_code: invite_code)&.id
   end
 
 end

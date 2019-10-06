@@ -5,7 +5,7 @@
       = label_tag('adding_' + b.value, b.value, class: 'form--radio-button-label', "#{b.value}": '') do
         = radio_button_tag(:adding, b.value, false, class: 'form--radio-button hidden', 'up-switch': '[drawer-form]', 'dropdown-trigger': true) + b.text
 
-  = form_for @drawer_invitation, url: invitation_drawers_path, html: { class: 'drawer-invitation-form', 'up-target': '.drawer-invitation-form', 'drawer-form': true, 'up-show-for': 'invitation' } do |f|
+  = form_for @drawer_invitation, url: invitation_drawers_path, html: { class: 'drawer-invitation-form', 'up-target': '.drawer-invitation-form .form--fields', 'drawer-form': true, 'up-show-for': 'invitation' } do |f|
     .form--fields
       .form--group
         = f.label :invite_code, class: 'form--label'
@@ -14,7 +14,7 @@
       .form--group
         = f.submit 'Submit', class: 'form--button'
 
-  = form_for @drawer, html: { class: 'drawer-form', 'up-target': '.drawer-form', 'drawer-form': true, 'up-show-for': 'new_drawer' } do |f|
+  = form_for @drawer, html: { class: 'drawer-form', 'up-target': '.drawer-form .form--fields', 'drawer-form': true, 'up-show-for': 'new_drawer' } do |f|
     .form--fields
       .form--group
         = f.label :name, class: 'form--label'
