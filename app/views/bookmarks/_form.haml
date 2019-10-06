@@ -1,0 +1,4 @@
+- @bookmark ||= Bookmark.new(creator: current_user)
+
+= form_for @bookmark do |form|
+  = render 'bookmarks/form_fields', form: form

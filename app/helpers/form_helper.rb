@@ -1,14 +1,14 @@
 module FormHelper
 
   def memo_kinds
-    ['bookmark', 'file', 'idea', 'note', 'todo', 'image', 'event']
+    ['bookmark', 'attachment', 'idea', 'note', 'todo', 'image', 'event']
   end
 
   def form_colors
     {
       colors: {
         bookmark: 'hsl(0, 80%, 80%)',
-        file: 'hsl(60, 80%, 80%)',
+        attachment: 'hsl(60, 80%, 80%)',
         idea: 'hsl(240, 80%, 80%)',
         note: 'hsl(180, 80%, 80%)',
         todo: '#FFAD05',

@@ -1,0 +1,4 @@
+- @attachment ||= Attachment.new(creator: current_user)
+
+= form_for @attachment do |form|
+  = render 'attachments/form_fields', form: form

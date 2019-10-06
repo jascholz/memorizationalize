@@ -10,7 +10,7 @@ class IdeasController < ApplicationController
   private
 
   def permitted_params
-    [ :creator_id, :drawer_id, :name, :description, :drawer ]
+    [ :creator_id, :drawer_id, :name, :description, :drawer, :text ]
   end
 
 end

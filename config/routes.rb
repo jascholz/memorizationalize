@@ -14,10 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :attachments, only: [:create, :update, :show, :edit, :destroy]
+  resources :bookmarks, only: [:create, :update, :show, :edit, :destroy]
   resources :events, only: [:create, :update, :new, :edit, :show]
-  resources :notes, only: [:create, :update, :show, :edit, :destroy]
   resources :ideas, only: [:create, :update, :show]
   resources :images, only: [:create, :update, :show]
+  resources :notes, only: [:create, :update, :show, :edit, :destroy]
   resources :todos, only: [:create, :update, :show, :index]
 
   # resources :categories, only: [:index, :create, :update]

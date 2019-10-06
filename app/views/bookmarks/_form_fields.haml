@@ -1,0 +1,10 @@
+.form--fields(bookmark)
+  = render 'shared/basic_fields', form: form
+
+  .form--section
+
+    .form--group
+      = form.label :url, class: 'form--label'
+      = form.text_field :url, class: 'form--field'
+
+  = render 'shared/submit_fields', form: form

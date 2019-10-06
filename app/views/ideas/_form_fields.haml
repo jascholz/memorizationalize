@@ -1,0 +1,10 @@
+.form--fields(idea)
+  = render 'shared/basic_fields', form: form
+
+  .form--section
+
+    .form--group
+      = form.label :text, class: 'form--label'
+      = form.text_area :text, class: 'form--text-area'
+
+  = render 'shared/submit_fields', form: form

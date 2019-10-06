@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_060545) do
+ActiveRecord::Schema.define(version: 2019_10_06_125816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "creator_id"
+    t.bigint "drawer_id"
+    t.string "name"
+    t.string "description"
+    t.string "file"
+    t.string "folder"
+    t.index ["creator_id"], name: "index_attachments_on_creator_id"
+    t.index ["drawer_id"], name: "index_attachments_on_drawer_id"
+  end
 
   create_table "bookmarks", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -65,19 +78,6 @@ ActiveRecord::Schema.define(version: 2019_10_05_060545) do
     t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
-  create_table "files", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "creator_id"
-    t.bigint "drawer_id"
-    t.string "name"
-    t.string "description"
-    t.string "file"
-    t.string "folder"
-    t.index ["creator_id"], name: "index_files_on_creator_id"
-    t.index ["drawer_id"], name: "index_files_on_drawer_id"
-  end
-
   create_table "galleries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,8 +96,11 @@ ActiveRecord::Schema.define(version: 2019_10_05_060545) do
     t.bigint "drawer_id"
     t.string "name"
     t.string "description"
+    t.bigint "gallery_id"
+    t.text "text"
     t.index ["creator_id"], name: "index_ideas_on_creator_id"
     t.index ["drawer_id"], name: "index_ideas_on_drawer_id"
+    t.index ["gallery_id"], name: "index_ideas_on_gallery_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -179,4 +182,5 @@ ActiveRecord::Schema.define(version: 2019_10_05_060545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "ideas", "galleries"
 end

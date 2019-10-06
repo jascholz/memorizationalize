@@ -1,6 +1,8 @@
 class Power
   include Consul::Power
 
+  include Power::DoesAttachment
+  include Power::DoesBookmark
   include Power::DoesCalendar
   include Power::DoesDrawer
   include Power::DoesEvent
