@@ -13,7 +13,8 @@
         .todos--cell(align-right semi-narrow) Deadline
 
       -# - @todos.ordered.first(3).each do |todo|
-      - @todos.ordered.first(3).each do |todo|
+      - todos = @todos.ordered.all
+      - todos.first(5).each do |todo|
         = link_to todo, class: ['todos--row', 'todo', 'color-hover'], id: todo.id, done: todo.done, 'up-modal': '.todo' do
           .todos--cell
             .todo--done
@@ -33,3 +34,6 @@
           .todos--cell
             .todo--deadline
               = todo.deadline.presence || '–'
+
+      - (5 - todos.size).times do
+        .todos--row.todo--placeholder
