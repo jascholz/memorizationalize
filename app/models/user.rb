@@ -14,10 +14,13 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
   validates :password, presence: true, on: :create
+  validates :color, presence: true
 
   assignable_values_for :role, default: 'editor' do
     ['admin', 'editor', 'viewer']
   end
+
+  has_defaults color: '#22181C'
 
   scope :unconfirmed, ->  { active.where(confirmed: false) }
 
