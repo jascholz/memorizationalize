@@ -20,7 +20,7 @@
             .todo--done
               = form_for todo, html: { 'up-autosubmit': 'true', 'up-target': '.todos', 'up-restore-scroll': 'true' } do |form|
                 = form.label :done, class: 'todo--checkbox-label', 'checkbox': true, for: "todo_#{todo.id}_done" do
-                  .checkbox{selected: form.object.done?}
+                  .checkbox{ selected: form.object.done?, colored: form.object.drawer.color }
                 = form.check_box :done, id: "todo_#{todo.id}_done", class: :hidden
           .todos--cell
             .todo--priority
