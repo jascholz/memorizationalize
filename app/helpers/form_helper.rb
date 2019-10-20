@@ -7,7 +7,9 @@ module FormHelper
   def form_colors
     {
       colors: {
-        📎: 'hsl(0, 80%, 80%)',
+        🔖: 'hsl(0, 80%, 80%)',
+        📎: 'hsl(60, 80%, 80%)',
+        🖼: 'rgb(188, 255, 155)',
         bookmark: 'hsl(0, 80%, 80%)',
         attachment: 'hsl(60, 80%, 80%)',
         idea: 'hsl(240, 80%, 80%)',

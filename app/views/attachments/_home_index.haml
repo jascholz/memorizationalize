@@ -1,2 +1,8 @@
-.home-index
+.form--fields{ 'dropdown-content': true, 'up-show-for': '📎' }
+  -# .home-index{ 📎: true }
   .headline Attachments
+  - @attachments.each do |attachment|
+    = link_to attachment.file.url do
+
+      = attachment.name
+      = attachment.description

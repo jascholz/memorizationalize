@@ -25,9 +25,11 @@ $home-form-collapse-height: 40px
   overflow-x: auto
   padding: 0 10px
 
-  &.-side
-    width: 50px
-    padding: 0
+  &[side="left"]
+    padding: 0 20px 0 0
+
+  &[side="right"]
+    padding: 0 0 0 20px
 
 .home-form--radio-button-label
   background-color: $grey
@@ -35,20 +37,24 @@ $home-form-collapse-height: 40px
   padding: 10px 30px
   transition: background-color 0.5s ease-out
 
-  .-side &
+  [side] &
     display: flex
     justify-content: center
     align-items: center
     padding: 10px 0
-    width: 100%
+    width: 50px
 
   &[dropdown-trigger-current], &:hover
     cursor: pointer
     box-shadow: 0px 0px 10px darken($grey, 30)
     z-index: 1
 
-    &[📎]
+    &[🔖]
       background-color: $bookmark-color
+    &[📎]
+      background-color: $attachment-color
+    &[🖼]
+      background-color: $image-color
     &[bookmark]
       background-color: $bookmark-color
     &[attachment]

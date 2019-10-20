@@ -1,18 +1,20 @@
 .home-form(dropdown up-data="#{form_colors.to_json}")
   .home-form--bar
-    .home-form--radio-buttons.-side
-      = collection_radio_buttons :form, :kind, ['📎'], :to_s, :humanize do |b|
-        = b.label(class: 'home-form--radio-button-label', "#{b.value}": '') do
-          = b.radio_button(class: 'home-form--radio-button hidden', 'up-switch': '[dropdown-content]', 'dropdown-trigger': true) + b.text
+    .home-form--radio-buttons(side="left")
+      = collection_radio_buttons :form, :kind, ['🔖', '📎', '🖼'], :to_s, :to_s do |b|
+        = b.label(class: 'home-form--radio-button-label', "#{b.value}": '', for: "form_kind_#{b.value}") do
+          = b.radio_button(class: 'home-form--radio-button hidden', 'up-switch': '[dropdown-content]', 'dropdown-trigger': true, id: "form_kind_#{b.value}") + b.text
     - kinds = memo_kinds
     .home-form--radio-buttons
       = collection_radio_buttons :form, :kind, kinds, :to_s, :humanize do |b|
         = b.label(class: 'home-form--radio-button-label', "#{b.value}": '') do
           = b.radio_button(class: 'home-form--radio-button hidden', 'up-switch': '[dropdown-content]', 'dropdown-trigger': true) + b.text
-    .home-form--radio-buttons.-side
+    .home-form--radio-buttons.-side(side="right")
 
   .home-form--dropdown(dropdown-element state="collapse")
+    = render 'attachments/home_index'
     = render 'bookmarks/home_index'
+    = render 'galleries/home_index'
     = render 'notes/home_form'
     = render 'todos/home_form'
     = render 'bookmarks/home_form'
