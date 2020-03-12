@@ -3,7 +3,7 @@
   .post-it--header
     = link_to note.name, note_path(note), class: 'post-it--name', id: note.id, 'up-modal': '.modal'
     = image_tag 'drag.svg', class: 'post-it--drag -hidden', 'drag': ''
-  .post-it--description
+  .post-it--description(copy-to-clipboard)
     - note.description.split("\n").each do |paragraph|
       %p= paragraph
   = link_to (image_tag 'trash.svg'), note_path(note), method: :delete, class: 'post-it--delete -hidden', 'delete': '', 'up-target': '.no-target'
