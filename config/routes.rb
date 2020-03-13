@@ -40,4 +40,18 @@ Rails.application.routes.draw do
   end
 
   resources :admin, only: :index
+
+  resource :united, only: [:show], controller: :united do
+    get :game
+    get :edit_game
+    patch :update_game
+    put :update_game
+  end
+
+  namespace :united do
+    resources :users, only: [:new, :create]
+    resource :votes, only: [] do
+      get :vote
+    end
+  end
 end

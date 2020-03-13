@@ -1,0 +1,8 @@
+.refresh-content
+  %h1.united--poll-question Spiel zu Ende!
+  - @polls.order(updated_at: :asc).each do |poll|
+    %h2.united--poll-question= poll.question
+    - poll.answers.split('#').each do |answer|
+      .united--poll-answer-result
+        %h1.united--poll-count= poll.votes.where(voted_for: answer).count
+        = answer

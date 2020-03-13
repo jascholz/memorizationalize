@@ -1,0 +1,17 @@
+
+- if @message.present?
+  .form--group
+    .united--notification= @message
+
+= form_for :user, url: united_users_path, html: { class: 'form' } do |f|
+  .form--fields
+
+    .form--group
+      .headline Neu hier? Bitte gib einen Namen ein!
+
+    .form--group
+      = f.label :name, class: 'form--label'
+      = f.text_field :name, class: 'form--field'
+
+    .form--group
+      = f.submit "Los geht's!", class: 'form--button'
