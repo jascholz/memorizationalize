@@ -1,0 +1,28 @@
+%h1= @game.name
+
+- if @game.pending?
+  = form_for @game, url: update_game_united_path  do |f|
+    = f.hidden_field :state_event, value: 'start'
+    = f.submit 'Start Game'
+
+- elsif @game.polling?
+  = form_for @game, url: update_game_united_path  do |f|
+    = f.hidden_field :state_event, value: 'finish_poll'
+    = f.submit 'Finish Poll'
+
+- elsif @game.poll_results?
+  - if @game.polls.pending.any?
+    = form_for @game, url: update_game_united_path  do |f|
+      = f.hidden_field :state_event, value: 'next_poll'
+      = f.submit 'Next Poll'
+  - else
+    No more questions available
+
+  = form_for @game, url: update_game_united_path  do |f|
+    = f.hidden_field :state_event, value: 'finish'
+    = f.submit 'Finish Game'
+
+- elsif @game.finished?
+  = form_for @game, url: update_game_united_path  do |f|
+    = f.hidden_field :state_event, value: 'end'
+    = f.submit 'End Game'

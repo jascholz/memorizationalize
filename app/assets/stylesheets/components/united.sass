@@ -1,0 +1,68 @@
+@import ../variables
+
+.united
+  z-index: 0
+  width: 90%
+
+.united--background
+  z-index: -1
+  position: fixed
+  top: -50px
+  left: -50px
+  height: calc(100vh + 100px)
+  width: calc(100vw + 100px)
+  transition: 0.75s ease-in-out
+  background-size: auto 100%
+  background: image-url('backgrounds/bg_no_notebook.png')
+  background-repeat: round
+  filter: grayscale(100%)
+
+.united--notification
+  padding: $small-spacing $wide-spacing
+  border: 1px solid $grey
+  border-radius: 3px
+  background-color: $notification-color
+
+.united--game
+  padding-bottom: $spacing
+  border-radius: 3px
+  background-color: transparentize($white, 0.5)
+
+.united--poll-question
+  padding: $spacing
+
+.united--poll-answer
+  padding: $small-spacing
+  margin: 0 $spacing $spacing $spacing
+  background-color: $notification-color
+  border-radius: 3px
+  text-align: center
+
+  &[selected]
+    background-color: red
+
+.united--poll-answer-result
+  display: flex
+  align-items: center
+  background-color: $notification-color
+  border-radius: 3px
+  text-align: center
+  padding: $tiny-spacing $spacing $tiny-spacing $spacing
+  margin: 0 $spacing 0 $spacing
+
+.united--poll-count
+  margin: 0 $spacing
+  width: 50px
+
+.united--text
+  text-align: center
+  padding: $spacing $spacing 0 $spacing
+
+.united--qr-code
+  display: flex
+  justify-content: center
+  margin: 20px
+  img
+    max-height: 50vh
+    max-width: 100%
+    width: 50vh

@@ -178,6 +178,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
+    rails_state_machine (2.0.0)
+      activerecord
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -273,6 +275,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.2)
+  rails_state_machine
   redis
   sass-rails (~> 5.0)
   selenium-webdriver
