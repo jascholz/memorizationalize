@@ -1,7 +1,7 @@
 class UnitedController < ApplicationController
   layout 'plain'
 
-  skip_before_action :require_login, except: [:edit, :update_game]
+  skip_before_action :require_login
   before_action :united_authentication
   before_action :init
 
@@ -17,6 +17,11 @@ class UnitedController < ApplicationController
     if @game.nil?
       @game = United::Game.seed
     end
+
+    if @game.polling?
+      @poll = @game.started_poll
+      @votes = United::Vote.where(poll_id: @poll.id)
+    end
   end
 
   def update_game
@@ -28,7 +33,7 @@ class UnitedController < ApplicationController
 
   def game
     game = United::Game.active.last
-    if game
+    if game && current_user.confirmed?
       if game.polling?
         @poll = game.started_poll
         @vote = United::Vote.where(user: @united_user, poll_id: @poll.id).first
@@ -54,18 +59,12 @@ class UnitedController < ApplicationController
   private
 
   def united_authentication
-    if current_user
-      @united_user = current_user.name
-    else
-      @united_user = cookies.encrypted[:united_user]
-    end
-
-    if @united_user.nil?
-      redirect_to new_united_user_path
-    end
+    redirect_to new_session_path, layout: 'plain' unless user_signed_in?
   end
 
   def init
+    current_user.touch
+    @united_user = current_user.id
     @header_title = 'United'
     @header_path = united_path
   end

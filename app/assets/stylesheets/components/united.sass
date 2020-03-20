@@ -1,4 +1,5 @@
 @import ../variables
+@import ../mixins
 
 .united
   z-index: 0
@@ -66,3 +67,23 @@
     max-height: 50vh
     max-width: 100%
     width: 50vh
+
+.united--notifications
+  width: 100%
+
+.united--admin
+  width: 100%
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.united--admin-box
+  width: 100%
+  padding: $spacing
+  border-radius: 3px
+  background-color: transparentize($white, 0.5)
+
+.united--admin-contols
+  input[type="submit"]
+    +button
+
