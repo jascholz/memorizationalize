@@ -35,7 +35,7 @@ gem 'whenever'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capistrano', require: false
-  gem 'capistrano-opscomplete', require: false
+  gem 'capistrano-opscomplete', '~> 0.6.6', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails'
   gem 'capistrano-sidekiq'
