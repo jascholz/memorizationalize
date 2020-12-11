@@ -87,3 +87,62 @@
   input[type="submit"]
     +button
 
+.united--week
+  max-width: 90vw
+  display: flex
+  overflow-x: auto
+  overflow-y: hidden
+
+.united--day
+  &:not(:last-of-type)
+    margin-right: $small-spacing
+
+.united--day-name
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  margin-bottom: $spacing
+
+.united--slot
+  position: relative
+  width: 100px
+  height: 50px
+  border: 1px solid $black
+  border-radius: 4px
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  align-items: center
+  font-size: 12px
+
+  background-color: $light-grey
+
+  &:hover
+    cursor: pointer
+
+  &[duration="30"]
+    height: 20px
+
+  &[duration="60"]
+    height: 40px
+
+  &[duration="90"]
+    height: 60px
+
+  &.-selected
+    background-color: $notification-color
+
+  //&:not(:last-of-type)
+  margin-bottom: $tiny-spacing
+
+.united--slot-edit
+  position: absolute
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 15px
+  //width: 15px
+  bottom: 0
+  right: 0
+  font-size: 20px

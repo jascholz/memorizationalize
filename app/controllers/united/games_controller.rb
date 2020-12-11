@@ -1,14 +1,9 @@
-class UnitedController < ApplicationController
-  layout 'plain'
-
-  skip_before_action :require_login
-  before_action :united_authentication
-  before_action :init
+class UnitedController < United::BaseController
 
   def show
-    if current_user&.role == 'admin'
-      redirect_to edit_game_united_path
-    end
+    # if current_user&.role == 'admin'
+    #   redirect_to edit_game_united_path
+    # end
   end
 
   def edit_game
@@ -54,19 +49,6 @@ class UnitedController < ApplicationController
   end
 
   def start_poll
-  end
-
-  private
-
-  def united_authentication
-    redirect_to new_session_path, layout: 'plain' unless user_signed_in?
-  end
-
-  def init
-    current_user.touch
-    @united_user = current_user.id
-    @header_title = 'United'
-    @header_path = united_path
   end
 
 end

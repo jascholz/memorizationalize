@@ -1,11 +1,15 @@
+- layout ||= 'application'
+- header_path = layout == 'united' ? united_path : ''
+
 .header--banner{ colored: current_user&.color }
-  = link_to (@header_title || header_title), (@header_path || ''), class: 'header--title -desktop'
-  = link_to (@header_title || header_title_mobile), (@header_path || ''), class: 'header--title -mobile'
+  = link_to header_title(united: (layout == 'united')), header_path || '', class: 'header--title -desktop'
+  = link_to header_title(united: (layout == 'united'), mobile: true), header_path || '', class: 'header--title -mobile'
 
   .option-pane
     .header--links
       - if user_signed_in?
-        = link_to nil, class: 'header--icon', 'settings-toggle': '' do
-          = render 'svg/settings'
+        - if layout == 'application'
+          = link_to nil, class: 'header--icon', 'settings-toggle': '' do
+            = render 'svg/settings'
         .header--sign-out
           = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link'

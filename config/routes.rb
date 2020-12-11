@@ -22,8 +22,6 @@ Rails.application.routes.draw do
   resources :notes, only: [:create, :update, :show, :edit, :destroy]
   resources :todos, only: [:create, :update, :show, :index]
 
-  # resources :categories, only: [:index, :create, :update]
-
   resources :galleries, only: [] do
     post :show_all
   end
@@ -41,12 +39,13 @@ Rails.application.routes.draw do
 
   resources :admin, only: :index
 
-  resource :united, only: [:show], controller: :united do
-    get :game
-    get :edit_game
-    patch :update_game
-    put :update_game
+  resource :united, only: [] do
+    resources :meetings, controller: 'united/meetings'
+    resources :games, only: [:index, :show, :edit, :update], controller: 'united/games'
+    resources :slots, controller: 'united/slots'
+    resources :users, only: [:update], controller: 'united/users'
   end
+  get '/united', to: 'united/meetings#index'
 
   namespace :united do
     resources :users, only: [:new, :create]

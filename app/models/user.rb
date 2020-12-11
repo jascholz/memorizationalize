@@ -9,7 +9,10 @@ class User < ApplicationRecord
   has_many :drawer_mappings, class_name: 'User::DrawerMapping', dependent: :destroy
   has_many :drawers, through: :drawer_mappings
 
+  has_many :united_user_slots, :class_name => 'United::UserSlot', dependent: :destroy
+
   accepts_nested_attributes_for :drawer_mappings, update_only: true
+  accepts_nested_attributes_for :united_user_slots
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true

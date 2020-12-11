@@ -23,7 +23,7 @@
 
       .form--group(event-show-for up-hide-for="1")
         = form.label :end_time, class: 'form--label'
-        = form.text_field :end_time, value: form.object.end_time&.strftime("%H:%M"), class: 'form--field '
+        = form.text_field :end_time, value: form.object.end_time&.strftime("%H:%M"), class: 'form--field'
 
       .form--group
         = form.label :repeating_interval, class: 'form--label'

@@ -1,0 +1,20 @@
+
+= form_for @slot, html: { class: 'form' } do |form|
+  .form--fields
+
+    .form--section
+
+      .form--group
+        = form.label :day, class: 'form--label'
+        = form.date_field :day, class: 'form--field'
+
+      .form--group
+        = form.label :start_time, class: 'form--label'
+        = form.text_field :start_time, class: 'form--field'
+
+      .form--group
+        = form.label :end_time, class: 'form--label'
+        = form.text_field :end_time, class: 'form--field'
+
+      .form--group
+        = form.submit 'Speichern', class: 'form--button'

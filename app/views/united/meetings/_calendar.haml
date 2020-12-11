@@ -1,0 +1,25 @@
+
+
+= form_for current_user, url: united_user_path(current_user) do |user_form|
+  .united--week
+    - (Date.today.beginning_of_week..Date.today.end_of_week).each do |day|
+      .united--day
+        .united--day-name
+          %div= t('date.day_names')[day.wday]
+          %div= l(day)
+
+          - day_slots = user_form.object.slots.select { |user_slot| United::Slot.for_day(day).ids.include?(user_slot.slot_id) }
+          = user_form.fields_for :slots, day_slots do |slot_fields|
+            - slot = slot_fields.object.slot
+
+            = slot_fields.label :available do
+              .united--slot{ duration: slot.duration, 'selectable-slot': true, class: ('-selected' if slot_fields.object.available) }
+                #{slot.start_time.strftime('%H:%M')} - #{slot.end_time.strftime('%H:%M')}
+                = link_to '✎', edit_united_slot_path(slot), class: 'united--slot-edit' if current_user.role == 'admin'
+                = slot_fields.check_box :available, class: 'hidden'
+
+        -#- @slots.where(day: day).each do |slot|
+          .united--slot{ duration: slot.duration }
+  = user_form.submit
+
+= link_to 'Neuer Slot', new_united_slot_path if current_user.role == 'admin'

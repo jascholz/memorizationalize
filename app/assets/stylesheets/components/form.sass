@@ -75,6 +75,17 @@ $label-width: 150px
   @media(min-width: #{$max-mobile-width})
     width: calc(100% - #{$label-width * 2} + #{$form--field-padding * 2})
 
+.form--time-field
+  height: $form--field-total-height
+  padding: 2px $form--field-padding 1px $form--field-padding
+  border: 1px solid $grey
+  border-radius: 3px
+  box-shadow: inset 0 0 2px $grey
+  font-size: $font-size-small
+
+  //@media(min-width: #{$max-mobile-width})
+  //  width: calc(100% - #{$label-width * 2} + #{$form--field-padding * 2})
+
 .form--select-hightlighted
   font-style: oblique
 
