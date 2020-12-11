@@ -7,8 +7,8 @@ set :user, 'deploy-memorizationalize_p'
 
 # shell: ssh deploy-memorizationalize_p@c23.makandra-3.makandra.de
 
-server 'c23.makandra-3.makandra.de', user: 'deploy-memorizationalize_p', roles: %w(app web cron db)
-server 'c42.makandra-3.makandra.de', user: 'deploy-memorizationalize_p', roles: %w(app web)
+server 'app01-prod.makandra.makandra.de', user: 'deploy-memorizationalize_p', roles: %w(app web cron db)
+server 'app02-prod.makandra.makandra.de', user: 'deploy-memorizationalize_p', roles: %w(app web)
 
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
