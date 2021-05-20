@@ -1,7 +1,6 @@
 .header--banner{ colored: current_user&.color }
-  -# = link_to header_title, root_path, class: 'header--title', 'up-target': '.content'
-  = link_to header_title, '', class: 'header--title -desktop'
-  = link_to header_title_mobile, '', class: 'header--title -mobile'
+  = link_to (@header_title || header_title), (@header_path || ''), class: 'header--title -desktop'
+  = link_to (@header_title || header_title_mobile), (@header_path || ''), class: 'header--title -mobile'
 
   .option-pane
     .header--links
@@ -9,4 +8,4 @@
         = link_to nil, class: 'header--icon', 'settings-toggle': '' do
           = render 'svg/settings'
         .header--sign-out
-          = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link', 'up-target': 'body'
+          = link_to "Abmelden", sessions_path, method: :delete, class: 'header--link'

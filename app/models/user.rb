@@ -36,4 +36,8 @@ class User < ApplicationRecord
     name
   end
 
+  def united_user?
+    sign_up_message.downcase.include?('united')
+  end
+
 end
