@@ -1,0 +1,6 @@
+.refresh-content
+  %h2.united--poll-question Ergebnis
+  - @poll.answers.split('#').each do |answer|
+    .united--poll-answer
+      = answer
+      %h1= @poll.votes.where(voted_for: answer).count

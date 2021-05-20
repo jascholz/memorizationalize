@@ -10,7 +10,12 @@ class Users::SessionsController < ApplicationController
   def create
     @user = User.active.find_by(email: params[:user_session][:email])
     sign_in @user if @user
-    redirect_to root_path
+
+    if current_user.united_user?
+      redirect_to united_path
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
