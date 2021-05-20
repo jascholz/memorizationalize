@@ -54,7 +54,12 @@ class UsersController < ApplicationController
     action = @user.new_record? ? :new : :edit
     if @user.save
       sign_in @user if action == :new
-      redirect_to root_path
+
+      if @user.united_user?
+        redirect_to united_path
+      else
+        redirect_to root_path
+      end
     else
       render action, layout: 'plain'
     end

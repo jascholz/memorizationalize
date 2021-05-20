@@ -1,0 +1,7 @@
+.refresh-content
+  .united--poll
+    %h2.united--poll-question= @poll.question
+
+    - @poll.answers.split('#').each do |answer|
+      = link_to vote_united_votes_path(user: @united_user, poll_id: @poll.id, voted_for: answer), 'up-target': '.refresh-content', 'up-cache': false, 'up-history': false do
+        .united--poll-answer{ selected: @vote&.voted_for == answer }= answer
