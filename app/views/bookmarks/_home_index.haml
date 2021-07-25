@@ -3,7 +3,7 @@
   .headline Bookmarks
   Hallo
   - @bookmarks.each do |bookmark|
-    = link_to bookmark.url do
+    = link_to bookmark.url, target: '_blank' do
 
       = bookmark.name
       = bookmark.url
