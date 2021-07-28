@@ -1,0 +1,14 @@
+.section
+  .section--text
+    %p
+      Unser
+      %span.section--headline<
+        Jahresplan
+      kann hier heruntergeladen werden:
+  .section--cards
+    = link_to 'Jahresplan herunterladen', program_feg_path, target: '_blank', class: 'button -primary'
+
+.section
+  .ct-calendar.-loading
+    .spinner
+    %iframe(width="100%" height="800px" style="border-width:0px" src="https://feg.church.tools/?q=churchcal&css_class=calendar&category_id=29,33,9,2&category_select=29,33,9,2&embedded=true&minical=true&viewname=calView#CalView/")

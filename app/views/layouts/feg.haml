@@ -1,0 +1,60 @@
+!!! 5
+
+%html
+  %head
+    %title FeG Augsburg-Süd
+    = csrf_meta_tags
+    = stylesheet_link_tag 'feg', media: 'all'
+    = javascript_include_tag 'application'
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
+    = favicon_link_tag asset_path('favicon-310.png')
+
+  %body(layout="feg")
+    .header
+      .header--banner
+        = link_to feg_path, class: 'header--title', 'up-target': 'body' do
+          = image_tag 'feg/logo.jpg'
+      .header--links
+        = link_to 'ChurchTools', 'https://feg.church.tools', class: 'button', target: '_blank'
+        = link_to 'Gottesdienst-Anmeldung', 'https://feg.church.tools/grouphomepage/ldtSwctUNT8CEGh1geOpjbqlxDT2slRx#/', class: 'button -primary', target: '_blank'
+    .header--spacer
+
+    .hero
+      -#.hero--image(up-hungry)
+      -#  - case @page_title
+      -#  - when 'about_us'
+      -#    = image_tag 'feg/gruppe.png'
+      = video_tag('walk-on-water_small.mp4', preload: 'none', muted: true, autoplay: true, class: 'hero--video', playsinline: true, loop: true)
+      .hero--caption-container
+        .hero--caption
+          .hero--headline Willkommen bei der FeG Augsburg-Süd
+          .hero--subline Bewegt von Gottes Liebe bauen wir lebendige Gemeinde.
+
+    .content-container
+      = render 'feg/nav_bar'
+
+      .jump-tag
+
+      .content
+        = yield
+
+    .footer
+      .footer--content
+        .footer--site-map
+          .footer--site-map-top
+            .footer--link= link_to 'Anfahrt', not_found_feg_path
+            .footer--link= link_to 'Impressum', not_found_feg_path
+            .footer--link= link_to 'Datenschutz', not_found_feg_path
+            .footer--link= link_to 'Links', not_found_feg_path
+
+          .footer--site-map-bottom
+            Copyright ©
+            = Time.now.in_time_zone('CET').year
+            FeG Augsburg-Süd
+            .footer--link
+              = link_to 'Albert-Leidl-Str. 6, 86179 Augsburg', 'https://www.openstreetmap.org/#map=19/48.29841/10.89949', target: '_blank'
+
+
+        .footer--address-map
+          - osm_src = 'https://www.openstreetmap.org/export/embed.html?bbox=10.897715985774994%2C48.29749665915397%2C10.901256501674654%2C48.29932025717047&amp;layer=mapnik'
+          %iframe(width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="#{osm_src}")

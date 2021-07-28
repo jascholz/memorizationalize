@@ -1,0 +1,22 @@
+@import 'feg_variables'
+
+html
+  ::-webkit-scrollbar
+    display: none
+
+body
+  margin: 0
+  display: flex
+  flex-direction: column
+  font-size: 14px
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    font-size: 16px
+
+a
+  color: $feg-blue
+  font-size: 1em
+
+  &:hover
+    text-decoration: underline
+    color: $feg-green

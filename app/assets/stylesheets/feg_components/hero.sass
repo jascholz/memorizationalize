@@ -1,0 +1,64 @@
+@import feg_variables
+
+.hero
+  background-color: #2E2F30
+  position: relative
+  min-width: 100%
+  width: auto
+  height: 35vw
+  min-height: 300px
+  z-index: -100
+  background-size: cover
+  overflow: hidden
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    margin-bottom: $header-height
+
+.hero--video
+  min-width: 100%
+  width: auto
+  z-index: -100
+  background-size: cover
+
+.hero--image
+  & img
+    min-width: 100vw
+    max-width: 100vw
+    width: auto
+    z-index: -99
+    object-fit: cover
+
+.hero--caption-container
+  position: absolute
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+
+.hero--caption
+  background-color: rgba($white, 0.5)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  padding: 1rem 0
+  min-width: 100%
+
+  @media(min-width: #{$screen-width-mobile})
+    width: 750px
+    min-width: unset
+
+.hero--headline
+  font-family: $headline-font
+  font-weight: bold
+  color: $feg_blue
+  font-size: 3em
+  text-align: center
+  padding: 1rem
+
+.hero--subline
+  font-size: 1.5em
+  padding: 1rem

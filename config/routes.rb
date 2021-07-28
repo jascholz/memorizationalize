@@ -40,4 +40,14 @@ Rails.application.routes.draw do
   end
 
   resources :admin, only: :index
+
+  resource :feg, only: :show, controller: 'feg' do
+    get 'about_us'
+    get 'our_believes'
+    get 'news'
+    get 'program'
+    get 'not_found'
+
+    resources :preaches, controller: 'feg/preaches'
+  end
 end

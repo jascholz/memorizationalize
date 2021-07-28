@@ -1,0 +1,13 @@
+.navbar-container
+  .navbar(up-hungry)
+    .navbar--links
+      = link_to feg_path, class: ['navbar--item', ('-current' if @page_title == 'feg')], 'up-target': '.content', 'up-reveal': '.jump-tag' do
+        Startseite
+      = link_to news_feg_path, class: ['navbar--item', ('-current' if @page_title == 'news')], 'up-target': '.content', 'up-reveal': '.jump-tag' do
+        Aktuelles & Kalender
+      = link_to feg_preaches_path, class: ['navbar--item', ('-current' if @page_title == 'preaches')], 'up-target': '.content', 'up-reveal': '.jump-tag' do
+        Gottesdienste & Predigten
+      = link_to about_us_feg_path, class: ['navbar--item', ('-current' if @page_title == 'about_us')], 'up-target': '.content', 'up-reveal': '.jump-tag' do
+        Das sind wir
+      = link_to our_believes_feg_path, class: ['navbar--item', ('-current' if @page_title == 'our_believes')], 'up-target': '.content', 'up-reveal': '.jump-tag' do
+        Was wir glauben

@@ -1,0 +1,58 @@
+@import feg_variables
+
+$feg-blue: #083c7a
+
+.header
+  width: 100%
+  height: $header-height-sm
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  z-index: 1
+  background-color: $white
+  border-bottom: 1px solid $light-grey
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    flex-direction: row
+    height: $header-height
+    position: fixed
+    top: 0
+
+.header--banner
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-wrap: nowrap
+
+  width: 100%
+  background-color: $white
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    height: $header-content-height
+    justify-content: space-between
+    padding: 0 10px
+
+.header--title
+  & img
+    width: 100%
+    height: $header-content-height
+    object-fit: cover
+    margin: 10px 0
+
+    @media(min-width: #{$screen-width-mobile-sm})
+      margin: 0
+      height: $header-content-height
+
+.header--links
+  display: flex
+  align-items: center
+  margin: 10px
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    margin: 0
+
+.header--spacer
+  @media(min-width: #{$screen-width-mobile-sm})
+    height: $header-height
+    display: block

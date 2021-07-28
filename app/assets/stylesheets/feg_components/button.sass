@@ -1,0 +1,27 @@
+@import feg_variables
+
+.button
+  background-color: $white
+  color: $feg-blue
+  border: 1px solid $feg-blue
+  border-radius: 5px
+  padding: 0.5rem 1rem
+  margin-right: 10px
+  white-space: nowrap
+  transition: background-color 0.125s, color 0.125s
+
+  &:first-of-type
+    margin-left: 10px
+
+  &:hover
+    background-color: $feg-blue
+    color: $white
+    text-decoration: none
+
+  &.-primary
+    background-color: $feg-blue
+    color: $white
+
+    &:hover
+      background-color: $white
+      color: $feg-blue

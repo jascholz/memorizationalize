@@ -1,0 +1,66 @@
+@import feg_variables
+
+.preach
+  display: flex
+  flex-direction: column-reverse
+
+  &:not(:last-of-type)
+    margin-bottom: 1rem
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    flex-direction: row
+
+    &:not(:last-of-type)
+      margin-bottom: 3rem
+
+.preach--info
+  width: 100%
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    padding: 1rem 2rem
+    width: 50%
+
+.preach--title
+  margin-top: 2rem
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    margin-top: 0
+    margin-bottom: 2rem
+    border-bottom: 1px solid $light-grey
+
+.preach--title-caption
+  font-family: $headline-font
+  font-size: 1.5em
+  font-weight: bold
+  color: $feg-blue
+
+.preach-date
+  color: $lighter-grey
+  font-size: 1em
+  margin-bottom: 0.5rem
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    font-size: 0.9em
+    margin-bottom: 0
+
+.preach--video
+  width: 100%
+
+  @media(min-width: #{$screen-width-mobile-sm})
+    width: 50%
+
+.video-container
+  position: relative
+  padding-bottom: 56.25%
+  padding-top: 0
+  height: 0
+  overflow: hidden
+  background-color: $feg-green
+  border-radius: 5px
+
+  & iframe, & object, & embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%

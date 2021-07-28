@@ -4,12 +4,18 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery(with: :exception, prepend: true)
   before_action :require_login, except: [:new, :create]
+  around_action :switch_locale
 
   current_power do
     Power.new(current_user)
   end
 
   private
+
+  def switch_locale(&action)
+    locale = I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
 
   def require_login
     if !user_signed_in?

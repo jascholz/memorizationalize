@@ -1,0 +1,28 @@
+@import feg_variables
+
+.content-container
+  position: relative
+  display: flex
+  flex-direction: column
+  margin-bottom: 50px
+
+  @media(min-width: #{$screen-width-mobile})
+    flex-direction: row
+
+.content
+  display: flex
+  flex-direction: column
+  align-items: center
+  //margin: 0 10px
+  width: 100%
+  min-height: calc(100vh - 600px)
+
+  @media(min-width: #{$screen-width-mobile})
+    align-items: start
+
+  @media(min-width: #{$screen-width-lg})
+    align-items: center
+
+  //margin: 0 350px
+  //margin-left: 350px
+  //margin-right: auto

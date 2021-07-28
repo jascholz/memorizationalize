@@ -1,0 +1,23 @@
+.section
+  .section--text
+    %p
+      Die meisten unserer
+      %span.section--headline<
+        Gottesdienste
+      streamen wir. Hier ist eine Auswahl der Streams.
+
+.section
+  .section--text
+    - @preaches.each do |preach|
+      .preach
+        .preach--video
+          .video-container
+            .spinner
+            %iframe(width="560" height="315" src="#{Feg::Preach::YOUTUBE_EMBED_URL}#{preach.url_code}" title="#{preach.title}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope" allowfullscreen)
+
+        .preach--info
+          .preach--title
+            = link_to(preach.title, Feg::Preach::YOUTUBE_URL + preach.url_code, class: 'preach--title-caption', target: '_blank')
+            .preach-date= I18n.l(preach.date.in_time_zone('CET'), format: :full)
+          .preach--description
+            = preach.description
